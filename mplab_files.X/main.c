@@ -36,23 +36,23 @@ unsigned int AN0Read(){
 unsigned int SevenSeg(unsigned int value){
     switch(value){
         case 0:
-            return 0b10111111;
+            return 0b00111111;
         case 1:
             return 0b00000110;
         case 2:
-            return 0b11011011;
+            return 0b01011011;
         case 3:
-            return 0b11001111;
+            return 0b01001111;
         case 4:
             return 0b01100110;
         case 5:
-            return 0b11101101;
+            return 0b01101101;
         case 6:
-            return 0b11111100;
+            return 0b01111100;
         case 7:
-            return 0b10000111;
+            return 0b00000111;
         case 8:
-            return 0b11111111;
+            return 0b01111111;
         case 9:
             return 0b01100111;
     }
