@@ -4,6 +4,10 @@
  */
 
 #include<htc.h>
+#include <stdlib.h>
+#include "spi.h"
+#include "nRF24L01.h"
+#include "wl_module.h"
 
 __CONFIG(FOSC_XT & WDTE_OFF & PWRTE_OFF & CP_OFF & BOREN_ON & LVP_ON & CPD_OFF & WRT_ON);
 #define _XTAL_FREQ 4000000
@@ -20,6 +24,13 @@ void Init(){
 	ADCON0=0b10000001;
 	//allineamento a sinistra e solo RA0 analogico, con Vref interna
 	ADCON1=0b00001110;//*/
+    wl_module_init();	//initialise nRF24L01+ Module
+    _delay_10ms(5);	//wait for nRF24L01+ Module
+    
+    INTCONbits.PEIE = 1; // peripheral interrupts enabled
+    INTCONbits.GIE = 1;  // global interrupt enable
+    
+    wl_module_tx_config( wl_module_TX_NR_0 ); //Config Module
 }
 
 //leggi da AN0
@@ -60,18 +71,27 @@ unsigned int SevenSeg(unsigned int value){
 
 
 int main() {
+    unsigned char payload[wl_module_PAYLOAD]; //Array for Payload
+    unsigned char maincounter =0;
+    unsigned char k;
+    
     Init();
+    
     while(1){
         unsigned int decVal=(AN0Read()*80)/256;
         unsigned int unita=decVal%10;
         unsigned int decine=(decVal/10)%10;
         
+        //on-device output
         PORTC=SevenSeg (unita);
-        
         if(decine)
             PORTB=SevenSeg (decine);
         else
             PORTB=0;
-        __delay_ms(498);
+        //nRF transmission
+        
+        
+        
+        __delay_ms(500);
     }
 }

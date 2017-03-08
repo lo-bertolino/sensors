@@ -32,10 +32,10 @@
 #ifndef _WL_MODULE_H_
 #define _WL_MODULE_H_
 
-#include <xc.h>
+#include <htc.h>
 #include "spi.h"
 
-//Externe Variable deklarieren
+//Extern Variable declaration
 extern volatile unsigned char PTX;
 
 // WL-Module settings

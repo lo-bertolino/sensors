@@ -6,22 +6,11 @@
  *      To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
  */
 #define _XTAL_FREQ 16000000UL
-#include <xc.h>
+#include <htc.h>
 #include <stdlib.h>
 #include "spi.h"
 #include "nRF24L01.h"
 #include "wl_module.h"
-
-#pragma config IESO=OFF         // Oscillator Switchover mode disabled
-#pragma config FOSC=HSMP        // external medium power oscillator
-#pragma config PRICLKEN=OFF     // Primary clock can be disabled by software
-#pragma config FCMEN=ON         // Fail-Safe Clock Monitor enabled
-#pragma config PLLCFG=OFF       // disable 4xPLL
-#pragma config BOREN=SBORDIS    // disable software BOR
-#pragma config BORV=190         // Brown-out voltage 1.9V
-#pragma config PWRTEN=ON        // Power up timer enabled
-#pragma config WDTEN=OFF        // WDT off
-#pragma config MCLRE=EXTMCLR    // external MCLR pin enabled
 
 #define MAX_STRLEN 14
 char received_string[MAX_STRLEN+1];
