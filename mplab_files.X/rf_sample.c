@@ -33,7 +33,7 @@ int main(void){
     LATDbits.LATD4 = 1;
 
     wl_module_init();	//initialise nRF24L01+ Module
-    _delay_10ms(5);	//wait for nRF24L01+ Module
+    __delay_ms(50);	//wait for nRF24L01+ Module
 
     INTCONbits.PEIE = 1; // peripheral interrupts enabled
     INTCONbits.GIE = 1;  // global interrupt enable
@@ -55,9 +55,9 @@ int main(void){
 	if (maincounter > 0x0F){
             maincounter = 0;
         }
-        _delay_10ms(50);
+        __delay_ms(500);
         LATDbits.LATD4 = 1; // turn indicator LED off
-        _delay_10ms(50);
+        __delay_ms(500);
     }
 
     return 0;

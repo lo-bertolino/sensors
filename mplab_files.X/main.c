@@ -3,15 +3,13 @@
  * Created on 20 december 2016, 9:31
  */
 
-#include<htc.h>
-#include <stdlib.h>
+#include <htc.h>
 #include "spi.h"
 #include "nRF24L01.h"
 #include "wl_module.h"
 
 __CONFIG(FOSC_XT & WDTE_OFF & PWRTE_OFF & CP_OFF & BOREN_ON & LVP_ON & CPD_OFF & WRT_ON);
 #define _XTAL_FREQ 4000000
-
 
 //inizializza uC
 void Init(){
@@ -31,6 +29,7 @@ void Init(){
     INTCONbits.GIE = 1;  // global interrupt enable
     
     wl_module_tx_config( wl_module_TX_NR_0 ); //Config Module
+    spi_init();
 }
 
 //leggi da AN0
