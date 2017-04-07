@@ -55,8 +55,8 @@ void wl_module_init(void)
     // set up INT2
     ANSELBbits.ANSB2 = 0; // digital input buffer enabled
     TRISBbits.TRISB2 = 1; // RB2 as input
-    INTCONbits.INTEDG2 = 0; // trigger interrupt on falling edge
-    INTCONbits.INT2IE = 1; // enable INT2 interrupt
+    INTCON2bits.INTEDG2 = 0; // trigger interrupt on falling edge
+    INTCON3bits.INT2IE = 1; // enable INT2 interrupt
 
     // Initialize spi module
     spi_init();

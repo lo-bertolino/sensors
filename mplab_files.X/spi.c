@@ -12,13 +12,13 @@ void spi_init(void){
     // disable MSSP
     SSPCONbits.SSPEN = 0;
     // SDI set
-    TRISC4 = 1;
+    TRISCbits.TRISC4 = 1; // configure RC4 as input
     // SS set
-    TRISA5 = 1;
+    TRISAbits.TRISA5 = 1;
     // SDO cleared
     // SCK cleared
-    TRISC5 = 0;
-    TRISC3 = 0;
+    TRISCbits.TRISC5 = 0;
+    TRISCbits.TRISC3 = 0;
 
     // SPI mode 0
     SSPCONbits.CKP = 0; // Idle state for clock is a low level

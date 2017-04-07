@@ -3,7 +3,7 @@
  * Created on 20 december 2016, 9:31
  */
 
-#include <htc.h>
+#include <xc.h>
 #include "spi.h"
 #include "nRF24L01.h"
 #include "wl_module.h"
