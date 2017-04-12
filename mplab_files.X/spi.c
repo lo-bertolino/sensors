@@ -31,23 +31,23 @@ void spi_init(void){
 void spi_transmit_sync(unsigned char * data, unsigned int length){
     unsigned char tmp;
     while(length){
-	SSPBUF = *data;
-	while(!PIR1bits.SSPIF); // wait for buffer full
+		SSPBUF = *data;
+		while(!PIR1bits.SSPIF); // wait for buffer full
         PIR1bits.SSPIF = 0; // clear SSPIF
         tmp = SSPBUF; // read out data
         length--;
-	data++;
+		data++;
     }
 }
 
 void spi_transfer_sync(unsigned char * dataout, unsigned char * datain, unsigned int length){
     while(length){
-	SSPBUF = *dataout;
-	while(!PIR1bits.SSPIF); // wait for buffer full
+		SSPBUF = *dataout;
+		while(!PIR1bits.SSPIF); // wait for buffer full
         PIR1bits.SSPIF = 0; // clear SSPIF
         *datain = SSPBUF; // read out data
         length--;
-	dataout++;
+		dataout++;
         datain++;
     }
 }
