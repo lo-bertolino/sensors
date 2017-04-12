@@ -8,6 +8,11 @@
 #ifndef _SPI_H_
 #define	_SPI_H_
 
+#define wl_module_CSN_hi     PORTCbits.RC0=1
+#define wl_module_CSN_lo     PORTCbits.RC0=0
+#define wl_module_CE_hi      PORTCbits.RC1=1
+#define wl_module_CE_lo      PORTCbits.RC1=0
+
 extern void spi_init(void);
 extern void spi_transfer_sync(unsigned char* dataout, unsigned char* datain, unsigned int length);
 extern void spi_transmit_sync(unsigned char* data, unsigned int length);

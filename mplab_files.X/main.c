@@ -91,9 +91,11 @@ void main (){
 void main (){
 	Init();
 	char *tmp;
-	*tmp = "Hello world";
+	*tmp = "Hello world\n";
 	while(1){
-		spi_transfer_sync(tmp, tmp, 12);
+		wl_module_CSN_lo;
+		spi_transfer_sync(tmp, tmp, 13);
+		wl_module_CSN_lo;
 		__delay_ms(1000);
 	}
 }

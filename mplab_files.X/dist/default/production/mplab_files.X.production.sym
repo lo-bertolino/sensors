@@ -7,8 +7,8 @@ _GIE 5F 0 ABS
 __Hintentry 0 0 CODE
 __Lintentry 0 0 CODE
 _WREN C62 0 ABS
-_main 7AD 0 CODE
-_Init 78C 0 CODE
+_main 7A7 0 CODE
+_Init 784 0 CODE
 btemp 7E 0 ABS
 _exit 0 0 CODE
 start 0 0 CODE
@@ -37,7 +37,7 @@ _PIR1bits C 0 ABS
 spi_transfer_sync@datain 70 0 COMMON
 spi_transfer_sync@length 71 0 COMMON
 _EEDATA 10C 0 ABS
-_spi_init 797 0 CODE
+_spi_init 78F 0 CODE
 _SSPBUF 13 0 ABS
 __Habs1 0 0 ABS
 __Labs1 0 0 ABS
@@ -48,24 +48,27 @@ __Lsfr1 0 0 ABS
 __Hsfr2 0 0 ABS
 __Lsfr2 0 0 ABS
 __Hsfr3 0 0 ABS
-__ptext100 7D3 0 CODE
 __Lsfr3 0 0 ABS
-__ptext101 797 0 CODE
-__ptext102 0 0 CODE
+__ptext104 0 0 CODE
 ?_spi_transfer_sync 70 0 COMMON
+__ptext105 784 0 CODE
 __Hcode 0 0 ABS
 __Lcode 0 0 ABS
+__ptext106 7D3 0 CODE
 ??_main 75 0 COMMON
+__ptext107 78F 0 CODE
 ??_Init 70 0 COMMON
 __Hinit 0 0 CODE
 __Linit 0 0 CODE
 ??_spi_transfer_sync 73 0 COMMON
 __end_of_main 7D3 0 CODE
+__ptext108 0 0 CODE
 __Htext 0 0 ABS
 __Ltext 0 0 ABS
-end_of_initialization 788 0 CODE
+end_of_initialization 780 0 CODE
 _TRISAbits 85 0 ABS
 _TRISCbits 87 0 ABS
+_PORTCbits 7 0 ABS
 __Hstrings 0 0 ABS
 __Lstrings 0 0 ABS
 __pstrings 3 0 STRING
@@ -84,7 +87,7 @@ __Lpowerup 0 0 CODE
 __Hclrtext 0 0 ABS
 __Lclrtext 0 0 ABS
 _SSPSTATbits 94 0 ABS
-__end_of_spi_init 7AD 0 CODE
+__end_of_spi_init 7A7 0 CODE
 __Hidloc 0 0 IDLOC
 __Lidloc 0 0 IDLOC
 __end_of_spi_transfer_sync 800 0 CODE
@@ -94,13 +97,11 @@ __Lcinit 0 0 ABS
 __size_of_spi_init 0 0 ABS
 __size_of_main 0 0 ABS
 __size_of_spi_transfer_sync 0 0 ABS
-__end_of_Init 797 0 CODE
+__end_of_Init 78F 0 CODE
 _SSPCONbits 14 0 ABS
 __Hend_init 3 0 CODE
 __Lend_init 0 0 CODE
-__ptext98 0 0 CODE
 ??_spi_init 70 0 COMMON
-__ptext99 78C 0 CODE
 __Hreset_vec 0 0 CODE
 __Lreset_vec 0 0 CODE
 intlevel0 0 0 CODE
@@ -114,58 +115,62 @@ _spi_transfer_sync 7D3 0 CODE
 __HcstackCOMMON 0 0 ABS
 __LcstackCOMMON 0 0 ABS
 __pcstackCOMMON 70 0 COMMON
-start_initialization 788 0 CODE
+start_initialization 780 0 CODE
 __Hmaintext 0 0 ABS
 __Lmaintext 0 0 ABS
-__pmaintext 7AD 0 CODE
+__pmaintext 7A7 0 CODE
 %segments
 reset_vec 0 5 CODE 0
 config 400E 400F CONFIG 400E
 cstackCOMMON 70 78 COMMON 70
-text100 FA6 FFF CODE FA6
-maintext F5A FA5 CODE F5A
-text101 F2E F59 CODE F2E
-strings 6 29 STRING 6
-text99 F18 F2D CODE F18
-cinit F10 F17 CODE F10
+text106 FA6 FFF CODE FA6
+maintext F4E FA5 CODE F4E
+text107 F1E F4D CODE F1E
+strings 6 2B STRING 6
+text105 F08 F1D CODE F08
+cinit F00 F07 CODE F00
 %locals
 dist/default/production\mplab_files.X.production.obj
 main.c
 16 2007 0 CONFIG
-C:\Users\Lorenzo\AppData\Local\Temp\s31o.
-131 788 0 CODE
-132 789 0 CODE
+C:\Users\Lorenzo\AppData\Local\Temp\s9gk.
+134 780 0 CODE
+135 781 0 CODE
 main.c
-92 7AD 0 CODE
-96 7B3 0 CODE
-97 7C1 0 CODE
+92 7A7 0 CODE
+96 7AD 0 CODE
+97 7B0 0 CODE
+98 7BE 0 CODE
+99 7C1 0 CODE
 95 7CF 0 CODE
-99 7D0 0 CODE
-23 78C 0 CODE
-24 78F 0 CODE
-25 790 0 CODE
-27 791 0 CODE
-38 796 0 CODE
+101 7D0 0 CODE
+23 784 0 CODE
+24 787 0 CODE
+25 788 0 CODE
+27 789 0 CODE
+38 78E 0 CODE
 spi.c
-43 7D3 0 CODE
-44 7D4 0 CODE
-45 7D5 0 CODE
-46 7DC 0 CODE
-47 7E1 0 CODE
-48 7E2 0 CODE
-49 7E9 0 CODE
-50 7EF 0 CODE
-51 7F3 0 CODE
-44 7F8 0 CODE
-53 7FF 0 CODE
-13 797 0 CODE
-15 79A 0 CODE
-17 79D 0 CODE
-20 79E 0 CODE
-21 79F 0 CODE
-24 7A0 0 CODE
-25 7A3 0 CODE
-26 7A6 0 CODE
-27 7A7 0 CODE
-28 7AB 0 CODE
-29 7AC 0 CODE
+46 7D3 0 CODE
+47 7D4 0 CODE
+48 7D5 0 CODE
+49 7DC 0 CODE
+50 7E1 0 CODE
+51 7E2 0 CODE
+52 7E9 0 CODE
+53 7EF 0 CODE
+54 7F3 0 CODE
+47 7F8 0 CODE
+56 7FF 0 CODE
+14 78F 0 CODE
+16 792 0 CODE
+18 795 0 CODE
+21 796 0 CODE
+22 797 0 CODE
+24 798 0 CODE
+25 799 0 CODE
+27 79C 0 CODE
+28 79D 0 CODE
+29 7A0 0 CODE
+30 7A1 0 CODE
+31 7A5 0 CODE
+32 7A6 0 CODE

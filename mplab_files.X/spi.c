@@ -6,6 +6,7 @@
  *      To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
  */
 #include <htc.h>
+#include <pic16f876.h>
 #include "spi.h"
 
 void spi_init(void){
@@ -20,6 +21,8 @@ void spi_init(void){
     TRISCbits.TRISC5 = 0;
     TRISCbits.TRISC3 = 0;
 
+	TRISCbits.TRISC1 = 0;
+	wl_module_CSN_hi;
     // SPI mode 0
     SSPCONbits.CKP = 0; // Idle state for clock is a low level
     SSPSTATbits.CKE = 1; // Transmit occurs on transition from active to Idle clock state

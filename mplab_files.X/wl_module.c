@@ -46,11 +46,6 @@ volatile unsigned char PTX;
 // Initializes pins and interrupt to communicate with the wl_module
 // Should be called in the early initializing phase at startup.
 void wl_module_init(void){
-    // Define CSN and CE as Output and set them to default
-	TRISBbits.TRISB4 = 0;
-    TRISBbits.TRISB3 = 0;
-    wl_module_CE_lo;
-    wl_module_CSN_hi;
 
     // set up INT2
 	ANSELBbits.ANSB2 = 0; // digital input buffer enabled

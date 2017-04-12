@@ -932,7 +932,7 @@ extern void _delay(unsigned long);
 # 36 "wl_module.h"
 extern volatile unsigned char PTX;
 
-# 63
+# 56
 extern void wl_module_init(void);
 extern void wl_module_config(void);
 extern void wl_module_send(unsigned char * value, unsigned char len);
@@ -970,7 +970,7 @@ extern void wl_module_config_register(unsigned char reg, unsigned char value);
 extern void wl_module_read_register(unsigned char reg, unsigned char * value, unsigned char len);
 extern void wl_module_write_register(unsigned char reg, unsigned char * value, unsigned char len);
 
-# 11 "spi.h"
+# 16 "spi.h"
 extern void spi_init(void);
 extern void spi_transfer_sync(unsigned char* dataout, unsigned char* datain, unsigned int length);
 extern void spi_transmit_sync(unsigned char* data, unsigned int length);

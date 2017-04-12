@@ -929,7 +929,7 @@ extern void memcpyee(eeprom unsigned char *to, const unsigned char *from, unsign
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
-# 11 "spi.h"
+# 16 "spi.h"
 extern void spi_init(void);
 extern void spi_transfer_sync(unsigned char* dataout, unsigned char* datain, unsigned int length);
 extern void spi_transmit_sync(unsigned char* data, unsigned int length);
@@ -956,9 +956,11 @@ spi_init();
 void main (){
 Init();
 char *tmp;
-*tmp = "Hello world";
+*tmp = "Hello world\n";
 while(1){
-spi_transfer_sync(tmp, tmp, 12);
+PORTCbits.RC0=0;
+spi_transfer_sync(tmp, tmp, 13);
+PORTCbits.RC0=0;
 _delay((unsigned long)((1000)*(4000000/4000.0)));
 }
 }

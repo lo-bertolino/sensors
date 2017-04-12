@@ -16,7 +16,7 @@ Linker command line:
   -ACONFIG=02007h-02007h -pconfig=CONFIG -DCONFIG=2 -AIDLOC=02000h-02003h \
   -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA \
   -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\Lorenzo\AppData\Local\Temp\s31o.obj \
+  C:\Users\Lorenzo\AppData\Local\Temp\s9gk.obj \
   dist/default/production\mplab_files.X.production.obj 
 
 Object code version is 3.10
@@ -26,35 +26,35 @@ Machine type is 16F876
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Lorenzo\AppData\Local\Temp\s31o.obj
+C:\Users\Lorenzo\AppData\Local\Temp\s9gk.obj
                 end_init                              0        0        3        0       0
 dist/default/production\mplab_files.X.production.obj
                 config                             2007     2007        1     400E       0
-                text101                             797      797       16      F2E       0
-                text100                             7D3      7D3       2D      FA6       0
-                text99                              78C      78C        B      F18       0
-                maintext                            7AD      7AD       26      F5A       0
+                text107                             78F      78F       18      F1E       0
+                text106                             7D3      7D3       2D      FA6       0
+                text105                             784      784        B      F08       0
+                maintext                            7A7      7A7       2C      F4E       0
                 cstackCOMMON                         70       70        9       70       1
-                cinit                               788      788        4      F10       0
-                strings                               3        3       12        6       0
+                cinit                               780      780        4      F00       0
+                strings                               3        3       13        6       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CONST          
 
         CLASS   CODE           
                 end_init                              0        0        3         0
-                text101                             797      797       16         0
-                text100                             7D3      7D3       2D         0
-                text99                              78C      78C        B         0
-                maintext                            7AD      7AD       26         0
-                cinit                               788      788        4         0
+                text107                             78F      78F       18         0
+                text106                             7D3      7D3       2D         0
+                text105                             784      784        B         0
+                maintext                            7A7      7A7       2C         0
+                cinit                               780      780        4         0
 
         CLASS   STRCODE        
 
         CLASS   ENTRY          
 
         CLASS   STRING         
-                strings                               3        3       12         0
+                strings                               3        3       13         0
 
         CLASS   BANK0          
 
@@ -92,13 +92,13 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000003  000003         0       0  CODE        2
-                strings                        000003  000012  000015         6       0  STRING      2
+                strings                        000003  000013  000016         6       0  STRING      2
                 cstackCOMMON                   000070  000009  000079        70       1  COMMON      1
-                cinit                          000788  000004  00078C       F10       0  CODE        2
-                text99                         00078C  00000B  000797       F18       0  CODE        2
-                text101                        000797  000016  0007AD       F2E       0  CODE        2
-                maintext                       0007AD  000026  0007D3       F5A       0  CODE        2
-                text100                        0007D3  00002D  000800       FA6       0  CODE        2
+                cinit                          000780  000004  000784       F00       0  CODE        2
+                text105                        000784  00000B  00078F       F08       0  CODE        2
+                text107                        00078F  000018  0007A7       F1E       0  CODE        2
+                maintext                       0007A7  00002C  0007D3       F4E       0  CODE        2
+                text106                        0007D3  00002D  000800       FA6       0  CODE        2
                 config                         002007  000001  002008      400E       0  CONFIG      2
 
 
@@ -109,13 +109,13 @@ UNUSED ADDRESS RANGES
         BANK1            00A0-00EF             50           1
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
-        CODE             0015-0787            773           2
+        CODE             0016-077F            76A           2
                          0800-1FFF            800
         COMMON           0079-007D              5           1
-        CONST            0015-0787            100           2
+        CONST            0016-077F            100           2
                          0800-1FFF            100
         EEDATA           2100-21FF            100           2
-        ENTRY            0015-0787            100           2
+        ENTRY            0016-077F            100           2
                          0800-1FFF            100
         IDLOC            2000-2003              4           2
         RAM              0020-006F             50           1
@@ -126,9 +126,9 @@ UNUSED ADDRESS RANGES
         SFR1             0080-009F             20           1
         SFR2             0100-010F             10           1
         SFR3             0180-018F             10           1
-        STRCODE          0015-0787            773           2
+        STRCODE          0016-077F            76A           2
                          0800-1FFF           1800
-        STRING           0015-0787            100           2
+        STRING           0016-077F            100           2
                          0800-1FFF            100
 
                                   Symbol Table
@@ -147,8 +147,9 @@ _EECON1                     (abs)        018C
 _EECON2                     (abs)        018D
 _EEDATA                     (abs)        010C
 _GIE                        (abs)        005F
-_Init                       text99       078C
+_Init                       text105      0784
 _PIR1bits                   (abs)        000C
+_PORTCbits                  (abs)        0007
 _RD                         (abs)        0C60
 _SSPBUF                     (abs)        0013
 _SSPCONbits                 (abs)        0014
@@ -217,28 +218,28 @@ __Ltext                     text         0000
 __S0                        (abs)        2008
 __S1                        (abs)        0079
 __S2                        (abs)        0000
-__end_of_Init               text99       0797
+__end_of_Init               text105      078F
 __end_of_main               maintext     07D3
-__end_of_spi_init           text101      07AD
-__end_of_spi_transfer_sync  text100      0800
+__end_of_spi_init           text107      07A7
+__end_of_spi_transfer_sync  text106      0800
 __pcstackCOMMON             cstackCOMMON 0070
-__pmaintext                 maintext     07AD
+__pmaintext                 maintext     07A7
 __pstrings                  strings      0003
-__ptext100                  text100      07D3
-__ptext101                  text101      0797
-__ptext102                  text102      0000
-__ptext98                   text98       0000
-__ptext99                   text99       078C
+__ptext104                  text104      0000
+__ptext105                  text105      0784
+__ptext106                  text106      07D3
+__ptext107                  text107      078F
+__ptext108                  text108      0000
 __size_of_Init              (abs)        0000
 __size_of_main              (abs)        0000
 __size_of_spi_init          (abs)        0000
 __size_of_spi_transfer_sync (abs)        0000
 _exit                       init         0000
-_main                       maintext     07AD
-_spi_init                   text101      0797
-_spi_transfer_sync          text100      07D3
+_main                       maintext     07A7
+_spi_init                   text107      078F
+_spi_transfer_sync          text106      07D3
 btemp                       (abs)        007E
-end_of_initialization       cinit        0788
+end_of_initialization       cinit        0780
 intlevel0                   functab      0000
 intlevel1                   functab      0000
 intlevel2                   functab      0000
@@ -251,5 +252,5 @@ spi_transfer_sync@datain    cstackCOMMON 0070
 spi_transfer_sync@dataout   cstackCOMMON 0074
 spi_transfer_sync@length    cstackCOMMON 0071
 start                       init         0000
-start_initialization        cinit        0788
+start_initialization        cinit        0780
 wtemp0                      (abs)        007E

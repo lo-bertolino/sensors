@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC LITE Macro Assembler V9.82 build 9453 
-                                                                                               Wed Apr 12 21:35:27 2017
+                                                                                               Wed Apr 12 22:16:19 2017
 
 HI-TECH Software Omniscient Code Generator (Lite mode) build 9453
      1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 9453"
@@ -54,694 +54,718 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 9453
     48                           	FNCALL	_Init,_spi_init
     49                           	FNROOT	_main
     50                           	global	_PIR1bits
-    51                           psect	text98,local,class=CODE,delta=2
-    52                           global __ptext98
-    53  0000                     __ptext98:
+    51                           psect	text104,local,class=CODE,delta=2
+    52                           global __ptext104
+    53  0000                     __ptext104:
     54  000C                     _PIR1bits	set	12
-    55                           	global	_SSPBUF
-    56  0013                     _SSPBUF	set	19
-    57                           	global	_SSPCONbits
-    58  0014                     _SSPCONbits	set	20
-    59                           	global	_CARRY
-    60  0018                     _CARRY	set	24
-    61                           	global	_GIE
-    62  005F                     _GIE	set	95
-    63                           	global	_SSPSTATbits
-    64  0094                     _SSPSTATbits	set	148
-    65                           	global	_TRISA
-    66  0085                     _TRISA	set	133
-    67                           	global	_TRISAbits
-    68  0085                     _TRISAbits	set	133
-    69                           	global	_TRISB
-    70  0086                     _TRISB	set	134
-    71                           	global	_TRISC
-    72  0087                     _TRISC	set	135
-    73                           	global	_TRISCbits
-    74  0087                     _TRISCbits	set	135
-    75                           	global	_EEADR
-    76  010D                     _EEADR	set	269
-    77                           	global	_EEDATA
-    78  010C                     _EEDATA	set	268
-    79                           	global	_EECON1
-    80  018C                     _EECON1	set	396
-    81                           	global	_EECON2
-    82  018D                     _EECON2	set	397
-    83                           	global	_RD
-    84  0C60                     _RD	set	3168
-    85                           	global	_WR
-    86  0C61                     _WR	set	3169
-    87                           	global	_WREN
-    88  0C62                     _WREN	set	3170
-    89                           psect	strings,class=STRING,delta=2
-    90                           global __pstrings
-    91  0003                     __pstrings:
-    92                           ;	global	stringdir,stringtab,__stringbase
-    93  0003                     stringtab:
-    94                           ;	String table - string pointers are 1 byte each
-    95  0003                     stringcode:stringdir:
+    55                           	global	_PORTCbits
+    56  0007                     _PORTCbits	set	7
+    57                           	global	_SSPBUF
+    58  0013                     _SSPBUF	set	19
+    59                           	global	_SSPCONbits
+    60  0014                     _SSPCONbits	set	20
+    61                           	global	_CARRY
+    62  0018                     _CARRY	set	24
+    63                           	global	_GIE
+    64  005F                     _GIE	set	95
+    65                           	global	_SSPSTATbits
+    66  0094                     _SSPSTATbits	set	148
+    67                           	global	_TRISA
+    68  0085                     _TRISA	set	133
+    69                           	global	_TRISAbits
+    70  0085                     _TRISAbits	set	133
+    71                           	global	_TRISB
+    72  0086                     _TRISB	set	134
+    73                           	global	_TRISC
+    74  0087                     _TRISC	set	135
+    75                           	global	_TRISCbits
+    76  0087                     _TRISCbits	set	135
+    77                           	global	_EEADR
+    78  010D                     _EEADR	set	269
+    79                           	global	_EEDATA
+    80  010C                     _EEDATA	set	268
+    81                           	global	_EECON1
+    82  018C                     _EECON1	set	396
+    83                           	global	_EECON2
+    84  018D                     _EECON2	set	397
+    85                           	global	_RD
+    86  0C60                     _RD	set	3168
+    87                           	global	_WR
+    88  0C61                     _WR	set	3169
+    89                           	global	_WREN
+    90  0C62                     _WREN	set	3170
+    91                           psect	strings,class=STRING,delta=2
+    92                           global __pstrings
+    93  0003                     __pstrings:
+    94                           ;	global	stringdir,stringtab,__stringbase
+    95  0003                     stringtab:
+    96                           ;	String table - string pointers are 1 byte each
+    97  0003                     stringcode:stringdir:
       + 0003                     stringdir:	
-    96  0003  3000               movlw high(stringdir)
-    97  0004  008A               movwf pclath
-    98  0005  0804               movf fsr,w
-    99  0006  0A84               incf fsr
-   100  0007  0782               	addwf pc
-   101  0008                     __stringbase:
-   102  0008  3400               	retlw	0
-   103                           psect	strings
-   104                           	
-   105  0009                     STR_1:	
-   106  0009  3448               	retlw	72	;'H'
-   107  000A  3465               	retlw	101	;'e'
-   108  000B  346C               	retlw	108	;'l'
-   109  000C  346C               	retlw	108	;'l'
-   110  000D  346F               	retlw	111	;'o'
-   111  000E  3420               	retlw	32	;' '
-   112  000F  3477               	retlw	119	;'w'
-   113  0010  346F               	retlw	111	;'o'
-   114  0011  3472               	retlw	114	;'r'
-   115  0012  346C               	retlw	108	;'l'
-   116  0013  3464               	retlw	100	;'d'
-   117  0014  3400               	retlw	0
-   118                           psect	strings
-   119                           	file	"C:\Users\Lorenzo\AppData\Local\Temp\s31o."
-   120                           	line	#
-   121                           psect cinit,class=CODE,delta=2
-   122                           global start_initialization
-   123  0788                     start_initialization:
-   124                           
-   125                           psect cinit,class=CODE,delta=2
-   126                           global end_of_initialization
+    98  0003  3000               movlw high(stringdir)
+    99  0004  008A               movwf pclath
+   100  0005  0804               movf fsr,w
+   101  0006  0A84               incf fsr
+   102  0007  0782               	addwf pc
+   103  0008                     __stringbase:
+   104  0008  3400               	retlw	0
+   105                           psect	strings
+   106                           	
+   107  0009                     STR_1:	
+   108  0009  3448               	retlw	72	;'H'
+   109  000A  3465               	retlw	101	;'e'
+   110  000B  346C               	retlw	108	;'l'
+   111  000C  346C               	retlw	108	;'l'
+   112  000D  346F               	retlw	111	;'o'
+   113  000E  3420               	retlw	32	;' '
+   114  000F  3477               	retlw	119	;'w'
+   115  0010  346F               	retlw	111	;'o'
+   116  0011  3472               	retlw	114	;'r'
+   117  0012  346C               	retlw	108	;'l'
+   118  0013  3464               	retlw	100	;'d'
+   119  0014  340A               	retlw	10
+   120  0015  3400               	retlw	0
+   121                           psect	strings
+   122                           	file	"C:\Users\Lorenzo\AppData\Local\Temp\s9gk."
+   123                           	line	#
+   124                           psect cinit,class=CODE,delta=2
+   125                           global start_initialization
+   126  0780                     start_initialization:
    127                           
-   128                           ;End of C runtime variable initialization code
-   129                           
-   130  0788                     end_of_initialization:
-   131  0788  0183               clrf status
-   132  0789  120A  118A  2FAD   ljmp _main	;jump to C main() function
-   133                           psect	cstackCOMMON,class=COMMON,space=1
-   134                           global __pcstackCOMMON
-   135  0070                     __pcstackCOMMON:
-   136                           	global	?_spi_init
-   137  0070                     ?_spi_init:	; 0 bytes @ 0x0
-   138                           	global	??_spi_init
-   139  0070                     ??_spi_init:	; 0 bytes @ 0x0
-   140                           	global	?_spi_transfer_sync
-   141  0070                     ?_spi_transfer_sync:	; 0 bytes @ 0x0
-   142                           	global	?_Init
-   143  0070                     ?_Init:	; 0 bytes @ 0x0
-   144                           	global	??_Init
-   145  0070                     ??_Init:	; 0 bytes @ 0x0
-   146                           	global	?_main
-   147  0070                     ?_main:	; 0 bytes @ 0x0
-   148                           	global	spi_transfer_sync@datain
-   149  0070                     spi_transfer_sync@datain:	; 1 bytes @ 0x0
-   150  0070                     	ds	1
-   151                           	global	spi_transfer_sync@length
-   152  0071                     spi_transfer_sync@length:	; 2 bytes @ 0x1
-   153  0071                     	ds	2
-   154                           	global	??_spi_transfer_sync
-   155  0073                     ??_spi_transfer_sync:	; 0 bytes @ 0x3
-   156  0073                     	ds	1
-   157                           	global	spi_transfer_sync@dataout
-   158  0074                     spi_transfer_sync@dataout:	; 1 bytes @ 0x4
-   159  0074                     	ds	1
-   160                           	global	??_main
-   161  0075                     ??_main:	; 0 bytes @ 0x5
-   162  0075                     	ds	3
-   163                           	global	main@tmp
-   164  0078                     main@tmp:	; 1 bytes @ 0x8
-   165  0078                     	ds	1
-   166 ;;Data sizes: Strings 12, constant 0, data 0, bss 0, persistent 0 stack 0
-   167 ;;Auto spaces:   Size  Autos    Used
-   168 ;; COMMON          14      9       9
-   169 ;; BANK0           80      0       0
-   170 ;; BANK1           80      0       0
-   171 ;; BANK3           96      0       0
-   172 ;; BANK2           96      0       0
-   173                           
-   174 ;;
-   175 ;; Pointer list with targets:
+   128                           psect cinit,class=CODE,delta=2
+   129                           global end_of_initialization
+   130                           
+   131                           ;End of C runtime variable initialization code
+   132                           
+   133  0780                     end_of_initialization:
+   134  0780  0183               clrf status
+   135  0781  120A  118A  2FA7   ljmp _main	;jump to C main() function
+   136                           psect	cstackCOMMON,class=COMMON,space=1
+   137                           global __pcstackCOMMON
+   138  0070                     __pcstackCOMMON:
+   139                           	global	?_spi_init
+   140  0070                     ?_spi_init:	; 0 bytes @ 0x0
+   141                           	global	??_spi_init
+   142  0070                     ??_spi_init:	; 0 bytes @ 0x0
+   143                           	global	?_spi_transfer_sync
+   144  0070                     ?_spi_transfer_sync:	; 0 bytes @ 0x0
+   145                           	global	?_Init
+   146  0070                     ?_Init:	; 0 bytes @ 0x0
+   147                           	global	??_Init
+   148  0070                     ??_Init:	; 0 bytes @ 0x0
+   149                           	global	?_main
+   150  0070                     ?_main:	; 0 bytes @ 0x0
+   151                           	global	spi_transfer_sync@datain
+   152  0070                     spi_transfer_sync@datain:	; 1 bytes @ 0x0
+   153  0070                     	ds	1
+   154                           	global	spi_transfer_sync@length
+   155  0071                     spi_transfer_sync@length:	; 2 bytes @ 0x1
+   156  0071                     	ds	2
+   157                           	global	??_spi_transfer_sync
+   158  0073                     ??_spi_transfer_sync:	; 0 bytes @ 0x3
+   159  0073                     	ds	1
+   160                           	global	spi_transfer_sync@dataout
+   161  0074                     spi_transfer_sync@dataout:	; 1 bytes @ 0x4
+   162  0074                     	ds	1
+   163                           	global	??_main
+   164  0075                     ??_main:	; 0 bytes @ 0x5
+   165  0075                     	ds	3
+   166                           	global	main@tmp
+   167  0078                     main@tmp:	; 1 bytes @ 0x8
+   168  0078                     	ds	1
+   169 ;;Data sizes: Strings 13, constant 0, data 0, bss 0, persistent 0 stack 0
+   170 ;;Auto spaces:   Size  Autos    Used
+   171 ;; COMMON          14      9       9
+   172 ;; BANK0           80      0       0
+   173 ;; BANK1           80      0       0
+   174 ;; BANK3           96      0       0
+   175 ;; BANK2           96      0       0
    176                           
-   177 ;; spi_transfer_sync@datain	PTR unsigned char  size(1) Largest target is 0
-   178 ;;
-   179 ;; spi_transfer_sync@dataout	PTR unsigned char  size(1) Largest target is 0
-   180 ;;
-   181                           
-   182                           
+   177 ;;
+   178 ;; Pointer list with targets:
+   179                           
+   180 ;; spi_transfer_sync@datain	PTR unsigned char  size(1) Largest target is 0
+   181 ;;
+   182 ;; spi_transfer_sync@dataout	PTR unsigned char  size(1) Largest target is 0
    183 ;;
-   184 ;; Critical Paths under _main in COMMON
-   185 ;;
-   186 ;;   _main->_spi_transfer_sync
-   187 ;;
-   188 ;; Critical Paths under _main in BANK0
-   189 ;;
-   190 ;;   None.
-   191 ;;
-   192 ;; Critical Paths under _main in BANK1
-   193 ;;
-   194 ;;   None.
-   195 ;;
-   196 ;; Critical Paths under _main in BANK3
-   197 ;;
-   198 ;;   None.
-   199 ;;
-   200 ;; Critical Paths under _main in BANK2
-   201 ;;
-   202 ;;   None.
-   203                           
+   184                           
+   185                           
+   186 ;;
+   187 ;; Critical Paths under _main in COMMON
+   188 ;;
+   189 ;;   _main->_spi_transfer_sync
+   190 ;;
+   191 ;; Critical Paths under _main in BANK0
+   192 ;;
+   193 ;;   None.
+   194 ;;
+   195 ;; Critical Paths under _main in BANK1
+   196 ;;
+   197 ;;   None.
+   198 ;;
+   199 ;; Critical Paths under _main in BANK3
+   200 ;;
+   201 ;;   None.
+   202 ;;
+   203 ;; Critical Paths under _main in BANK2
    204 ;;
-   205 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
-   206 ;;
-   207                           
-   208 ;;
-   209 ;;Call Graph Tables:
-   210 ;;
-   211 ;; ---------------------------------------------------------------------------------
-   212 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
-   213 ;; ---------------------------------------------------------------------------------
-   214 ;; (0) _main                                                 4     4      0      80
-   215 ;;                                              5 COMMON     4     4      0
-   216 ;;                               _Init
-   217 ;;                  _spi_transfer_sync
-   218 ;; ---------------------------------------------------------------------------------
-   219 ;; (1) _Init                                                 0     0      0       0
-   220 ;;                           _spi_init
+   205 ;;   None.
+   206                           
+   207 ;;
+   208 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
+   209 ;;
+   210                           
+   211 ;;
+   212 ;;Call Graph Tables:
+   213 ;;
+   214 ;; ---------------------------------------------------------------------------------
+   215 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   216 ;; ---------------------------------------------------------------------------------
+   217 ;; (0) _main                                                 4     4      0      80
+   218 ;;                                              5 COMMON     4     4      0
+   219 ;;                               _Init
+   220 ;;                  _spi_transfer_sync
    221 ;; ---------------------------------------------------------------------------------
-   222 ;; (1) _spi_transfer_sync                                    5     2      3      45
-   223 ;;                                              0 COMMON     5     2      3
+   222 ;; (1) _Init                                                 0     0      0       0
+   223 ;;                           _spi_init
    224 ;; ---------------------------------------------------------------------------------
-   225 ;; (2) _spi_init                                             0     0      0       0
-   226 ;; ---------------------------------------------------------------------------------
-   227 ;; Estimated maximum stack depth 2
-   228 ;; ---------------------------------------------------------------------------------
-   229                           
-   230 ;; Call Graph Graphs:
-   231                           
-   232 ;; _main (ROOT)
-   233 ;;   _Init
-   234 ;;     _spi_init
-   235 ;;   _spi_transfer_sync
-   236 ;;
-   237                           
-   238 ;; Address spaces:
-   239                           
-   240 ;;Name               Size   Autos  Total    Cost      Usage
-   241 ;;BITCOMMON            E      0       0       0        0.0%
-   242 ;;EEDATA             100      0       0       0        0.0%
-   243 ;;NULL                 0      0       0       0        0.0%
-   244 ;;CODE                 0      0       0       0        0.0%
-   245 ;;COMMON               E      9       9       1       64.3%
-   246 ;;BITSFR0              0      0       0       1        0.0%
-   247 ;;SFR0                 0      0       0       1        0.0%
-   248 ;;BITSFR1              0      0       0       2        0.0%
-   249 ;;SFR1                 0      0       0       2        0.0%
-   250 ;;STACK                0      0       2       2        0.0%
-   251 ;;ABS                  0      0       0       3        0.0%
-   252 ;;BITBANK0            50      0       0       4        0.0%
-   253 ;;BITSFR3              0      0       0       4        0.0%
-   254 ;;SFR3                 0      0       0       4        0.0%
-   255 ;;BANK0               50      0       0       5        0.0%
-   256 ;;BITSFR2              0      0       0       5        0.0%
-   257 ;;SFR2                 0      0       0       5        0.0%
-   258 ;;BITBANK1            50      0       0       6        0.0%
-   259 ;;BANK1               50      0       0       7        0.0%
-   260 ;;BITBANK3            60      0       0       8        0.0%
-   261 ;;BANK3               60      0       0       9        0.0%
-   262 ;;BITBANK2            60      0       0      10        0.0%
-   263 ;;BANK2               60      0       0      11        0.0%
-   264 ;;DATA                 0      0       0      12        0.0%
-   265                           
-   266                           	global	_main
-   267                           psect	maintext,global,class=CODE,delta=2
-   268                           global __pmaintext
-   269  07AD                     __pmaintext:
-   270                           
-   271 ;; *************** function _main *****************
-   272 ;; Defined at:
-   273 ;;		line 91 in file "main.c"
-   274 ;; Parameters:    Size  Location     Type
-   275 ;;		None
-   276 ;; Auto vars:     Size  Location     Type
-   277 ;;  tmp             1    8[COMMON] PTR unsigned char 
-   278 ;; Return value:  Size  Location     Type
-   279 ;;		None               void
-   280 ;; Registers used:
-   281 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
-   282 ;; Tracked objects:
-   283 ;;		On entry : 17F/0
-   284 ;;		On exit  : 0/0
-   285 ;;		Unchanged: 0/0
-   286 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   287 ;;      Params:         0       0       0       0       0
-   288 ;;      Locals:         1       0       0       0       0
-   289 ;;      Temps:          3       0       0       0       0
-   290 ;;      Totals:         4       0       0       0       0
-   291 ;;Total ram usage:        4 bytes
-   292 ;; Hardware stack levels required when called:    2
-   293 ;; This function calls:
-   294 ;;		_Init
-   295 ;;		_spi_transfer_sync
-   296 ;; This function is called by:
-   297 ;;		Startup code after reset
-   298 ;; This function uses a non-reentrant model
-   299 ;;
-   300                           psect	maintext
-   301                           	file	"main.c"
-   302                           	line	91
-   303                           	global	__size_of_main
-   304  0026                     	__size_of_main	equ	__end_of_main-_main
-   305                           	
-   306  07AD                     _main:	
-   307                           	opt	stack 6
-   308                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
-   309                           	line	92
-   310                           	
-   311  07AD                     l3579:	
-   312                           ;main.c: 93: char *tmp;
-   313                           ;main.c: 94: *tmp = "Hello world";
-   314  07AD  120A  118A  278C   	fcall	_Init
+   225 ;; (1) _spi_transfer_sync                                    5     2      3      45
+   226 ;;                                              0 COMMON     5     2      3
+   227 ;; ---------------------------------------------------------------------------------
+   228 ;; (2) _spi_init                                             0     0      0       0
+   229 ;; ---------------------------------------------------------------------------------
+   230 ;; Estimated maximum stack depth 2
+   231 ;; ---------------------------------------------------------------------------------
+   232                           
+   233 ;; Call Graph Graphs:
+   234                           
+   235 ;; _main (ROOT)
+   236 ;;   _Init
+   237 ;;     _spi_init
+   238 ;;   _spi_transfer_sync
+   239 ;;
+   240                           
+   241 ;; Address spaces:
+   242                           
+   243 ;;Name               Size   Autos  Total    Cost      Usage
+   244 ;;BITCOMMON            E      0       0       0        0.0%
+   245 ;;EEDATA             100      0       0       0        0.0%
+   246 ;;NULL                 0      0       0       0        0.0%
+   247 ;;CODE                 0      0       0       0        0.0%
+   248 ;;COMMON               E      9       9       1       64.3%
+   249 ;;BITSFR0              0      0       0       1        0.0%
+   250 ;;SFR0                 0      0       0       1        0.0%
+   251 ;;BITSFR1              0      0       0       2        0.0%
+   252 ;;SFR1                 0      0       0       2        0.0%
+   253 ;;STACK                0      0       2       2        0.0%
+   254 ;;ABS                  0      0       0       3        0.0%
+   255 ;;BITBANK0            50      0       0       4        0.0%
+   256 ;;BITSFR3              0      0       0       4        0.0%
+   257 ;;SFR3                 0      0       0       4        0.0%
+   258 ;;BANK0               50      0       0       5        0.0%
+   259 ;;BITSFR2              0      0       0       5        0.0%
+   260 ;;SFR2                 0      0       0       5        0.0%
+   261 ;;BITBANK1            50      0       0       6        0.0%
+   262 ;;BANK1               50      0       0       7        0.0%
+   263 ;;BITBANK3            60      0       0       8        0.0%
+   264 ;;BANK3               60      0       0       9        0.0%
+   265 ;;BITBANK2            60      0       0      10        0.0%
+   266 ;;BANK2               60      0       0      11        0.0%
+   267 ;;DATA                 0      0       0      12        0.0%
+   268                           
+   269                           	global	_main
+   270                           psect	maintext,global,class=CODE,delta=2
+   271                           global __pmaintext
+   272  07A7                     __pmaintext:
+   273                           
+   274 ;; *************** function _main *****************
+   275 ;; Defined at:
+   276 ;;		line 91 in file "main.c"
+   277 ;; Parameters:    Size  Location     Type
+   278 ;;		None
+   279 ;; Auto vars:     Size  Location     Type
+   280 ;;  tmp             1    8[COMMON] PTR unsigned char 
+   281 ;; Return value:  Size  Location     Type
+   282 ;;		None               void
+   283 ;; Registers used:
+   284 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   285 ;; Tracked objects:
+   286 ;;		On entry : 17F/0
+   287 ;;		On exit  : 0/0
+   288 ;;		Unchanged: 0/0
+   289 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   290 ;;      Params:         0       0       0       0       0
+   291 ;;      Locals:         1       0       0       0       0
+   292 ;;      Temps:          3       0       0       0       0
+   293 ;;      Totals:         4       0       0       0       0
+   294 ;;Total ram usage:        4 bytes
+   295 ;; Hardware stack levels required when called:    2
+   296 ;; This function calls:
+   297 ;;		_Init
+   298 ;;		_spi_transfer_sync
+   299 ;; This function is called by:
+   300 ;;		Startup code after reset
+   301 ;; This function uses a non-reentrant model
+   302 ;;
+   303                           psect	maintext
+   304                           	file	"main.c"
+   305                           	line	91
+   306                           	global	__size_of_main
+   307  002C                     	__size_of_main	equ	__end_of_main-_main
+   308                           	
+   309  07A7                     _main:	
+   310                           	opt	stack 6
+   311                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   312                           	line	92
+   313                           	
+   314  07A7                     l3579:	
+   315                           ;main.c: 93: char *tmp;
+   316                           ;main.c: 94: *tmp = "Hello world\n";
+   317  07A7  120A  118A  2784   	fcall	_Init
               120A  118A         
-   315  07B2  2FB3               	goto	l3581
-   316                           	line	95
-   317                           ;main.c: 95: while(1){
-   318                           	
-   319  07B3                     l578:	
-   320                           	line	96
+   318  07AC  2FAD               	goto	l3581
+   319                           	line	95
+   320                           ;main.c: 95: while(1){
    321                           	
-   322  07B3                     l3581:	
-   323                           ;main.c: 96: spi_transfer_sync(tmp, tmp, 12);
-   324  07B3  0878               	movf	(main@tmp),w
-   325  07B4  00F5               	movwf	(??_main+0)+0
-   326  07B5  0875               	movf	(??_main+0)+0,w
-   327  07B6  00F0               	movwf	(?_spi_transfer_sync)
-   328  07B7  300C               	movlw	low(0Ch)
-   329  07B8  00F1               	movwf	0+(?_spi_transfer_sync)+01h
-   330  07B9  3000               	movlw	high(0Ch)
-   331  07BA  00F2               	movwf	(0+(?_spi_transfer_sync)+01h)+1
-   332  07BB  0878               	movf	(main@tmp),w
-   333  07BC  120A  118A  27D3   	fcall	_spi_transfer_sync
+   322  07AD                     l578:	
+   323                           	line	96
+   324                           	
+   325  07AD                     l3581:	
+   326                           ;main.c: 96: PORTCbits.RC0=0;
+   327  07AD  1283               	bcf	status, 5	;RP0=0, select bank0
+   328  07AE  1303               	bcf	status, 6	;RP1=0, select bank0
+   329  07AF  1007               	bcf	(7),0	;volatile
+   330                           	line	97
+   331                           	
+   332  07B0                     l3583:	
+   333                           ;main.c: 97: spi_transfer_sync(tmp, tmp, 13);
+   334  07B0  0878               	movf	(main@tmp),w
+   335  07B1  00F5               	movwf	(??_main+0)+0
+   336  07B2  0875               	movf	(??_main+0)+0,w
+   337  07B3  00F0               	movwf	(?_spi_transfer_sync)
+   338  07B4  300D               	movlw	low(0Dh)
+   339  07B5  00F1               	movwf	0+(?_spi_transfer_sync)+01h
+   340  07B6  3000               	movlw	high(0Dh)
+   341  07B7  00F2               	movwf	(0+(?_spi_transfer_sync)+01h)+1
+   342  07B8  0878               	movf	(main@tmp),w
+   343  07B9  120A  118A  27D3   	fcall	_spi_transfer_sync
               120A  118A         
-   334                           	line	97
-   335                           	
-   336  07C1                     l3583:	
-   337                           ;main.c: 97: _delay((unsigned long)((1000)*(4000000/4000.0)));
-   338                           	opt asmopt_off
-   339  07C1  3006               movlw  6
-   340  07C2  00F7               movwf	((??_main+0)+0+2),f
-   341  07C3  3013               movlw	19
-   342  07C4  00F6               movwf	((??_main+0)+0+1),f
-   343  07C5  30B1               	movlw	177
-   344  07C6  00F5               movwf	((??_main+0)+0),f
-   345  07C7                     u2277:
-   346  07C7  0BF5               	decfsz	((??_main+0)+0),f
-   347  07C8  2FC7               	goto	u2277
-   348  07C9  0BF6               	decfsz	((??_main+0)+0+1),f
-   349  07CA  2FC7               	goto	u2277
-   350  07CB  0BF7               	decfsz	((??_main+0)+0+2),f
-   351  07CC  2FC7               	goto	u2277
-   352  07CD  2FCE               	nop2
-   353                           opt asmopt_on
-   354                           
-   355  07CE  2FB3               	goto	l3581
-   356                           	line	98
-   357                           	
-   358  07CF                     l579:	
-   359                           	line	95
-   360  07CF  2FB3               	goto	l3581
-   361                           	
-   362  07D0                     l580:	
-   363                           	line	99
-   364                           	
-   365  07D0                     l581:	
-   366                           	global	start
-   367  07D0  120A  118A  2800   	ljmp	start
-   368                           	opt stack 0
-   369                           GLOBAL	__end_of_main
-   370  07D3                     	__end_of_main:
-   371 ;; =============== function _main ends ============
-   372                           
-   373                           	signat	_main,88
-   374                           	global	_Init
-   375                           psect	text99,local,class=CODE,delta=2
-   376                           global __ptext99
-   377  078C                     __ptext99:
-   378                           
-   379 ;; *************** function _Init *****************
-   380 ;; Defined at:
-   381 ;;		line 21 in file "main.c"
-   382 ;; Parameters:    Size  Location     Type
-   383 ;;		None
-   384 ;; Auto vars:     Size  Location     Type
-   385 ;;		None
-   386 ;; Return value:  Size  Location     Type
-   387 ;;		None               void
-   388 ;; Registers used:
-   389 ;;		wreg, status,2, status,0, pclath, cstack
-   390 ;; Tracked objects:
-   391 ;;		On entry : 0/0
-   392 ;;		On exit  : 0/0
-   393 ;;		Unchanged: 0/0
-   394 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   395 ;;      Params:         0       0       0       0       0
-   396 ;;      Locals:         0       0       0       0       0
-   397 ;;      Temps:          0       0       0       0       0
-   398 ;;      Totals:         0       0       0       0       0
-   399 ;;Total ram usage:        0 bytes
-   400 ;; Hardware stack levels used:    1
-   401 ;; Hardware stack levels required when called:    1
-   402 ;; This function calls:
-   403 ;;		_spi_init
-   404 ;; This function is called by:
-   405 ;;		_main
-   406 ;; This function uses a non-reentrant model
-   407 ;;
-   408                           psect	text99
-   409                           	file	"main.c"
-   410                           	line	21
-   411                           	global	__size_of_Init
-   412  000B                     	__size_of_Init	equ	__end_of_Init-_Init
-   413                           	
-   414  078C                     _Init:	
-   415                           	opt	stack 6
-   416                           ; Regs used in _Init: [wreg+status,2+status,0+pclath+cstack]
-   417                           	line	23
-   418                           	
-   419  078C                     l3575:	
-   420                           ;main.c: 23: TRISA = 0;
-   421  078C  1683               	bsf	status, 5	;RP0=1, select bank1
-   422  078D  1303               	bcf	status, 6	;RP1=0, select bank1
-   423  078E  0185               	clrf	(133)^080h	;volatile
-   424                           	line	24
-   425                           ;main.c: 24: TRISB = 0;
-   426  078F  0186               	clrf	(134)^080h	;volatile
-   427                           	line	25
-   428                           ;main.c: 25: TRISC = 0;
-   429  0790  0187               	clrf	(135)^080h	;volatile
-   430                           	line	27
-   431                           	
-   432  0791                     l3577:	
-   433                           ;main.c: 27: spi_init();
-   434  0791  120A  118A  2797   	fcall	_spi_init
+   344                           	line	98
+   345                           	
+   346  07BE                     l3585:	
+   347                           ;main.c: 98: PORTCbits.RC0=0;
+   348  07BE  1283               	bcf	status, 5	;RP0=0, select bank0
+   349  07BF  1303               	bcf	status, 6	;RP1=0, select bank0
+   350  07C0  1007               	bcf	(7),0	;volatile
+   351                           	line	99
+   352                           	
+   353  07C1                     l3587:	
+   354                           ;main.c: 99: _delay((unsigned long)((1000)*(4000000/4000.0)));
+   355                           	opt asmopt_off
+   356  07C1  3006               movlw  6
+   357  07C2  00F7               movwf	((??_main+0)+0+2),f
+   358  07C3  3013               movlw	19
+   359  07C4  00F6               movwf	((??_main+0)+0+1),f
+   360  07C5  30B1               	movlw	177
+   361  07C6  00F5               movwf	((??_main+0)+0),f
+   362  07C7                     u2277:
+   363  07C7  0BF5               	decfsz	((??_main+0)+0),f
+   364  07C8  2FC7               	goto	u2277
+   365  07C9  0BF6               	decfsz	((??_main+0)+0+1),f
+   366  07CA  2FC7               	goto	u2277
+   367  07CB  0BF7               	decfsz	((??_main+0)+0+2),f
+   368  07CC  2FC7               	goto	u2277
+   369  07CD  2FCE               	nop2
+   370                           opt asmopt_on
+   371                           
+   372  07CE  2FAD               	goto	l3581
+   373                           	line	100
+   374                           	
+   375  07CF                     l579:	
+   376                           	line	95
+   377  07CF  2FAD               	goto	l3581
+   378                           	
+   379  07D0                     l580:	
+   380                           	line	101
+   381                           	
+   382  07D0                     l581:	
+   383                           	global	start
+   384  07D0  120A  118A  2800   	ljmp	start
+   385                           	opt stack 0
+   386                           GLOBAL	__end_of_main
+   387  07D3                     	__end_of_main:
+   388 ;; =============== function _main ends ============
+   389                           
+   390                           	signat	_main,88
+   391                           	global	_Init
+   392                           psect	text105,local,class=CODE,delta=2
+   393                           global __ptext105
+   394  0784                     __ptext105:
+   395                           
+   396 ;; *************** function _Init *****************
+   397 ;; Defined at:
+   398 ;;		line 21 in file "main.c"
+   399 ;; Parameters:    Size  Location     Type
+   400 ;;		None
+   401 ;; Auto vars:     Size  Location     Type
+   402 ;;		None
+   403 ;; Return value:  Size  Location     Type
+   404 ;;		None               void
+   405 ;; Registers used:
+   406 ;;		wreg, status,2, status,0, pclath, cstack
+   407 ;; Tracked objects:
+   408 ;;		On entry : 0/0
+   409 ;;		On exit  : 0/0
+   410 ;;		Unchanged: 0/0
+   411 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   412 ;;      Params:         0       0       0       0       0
+   413 ;;      Locals:         0       0       0       0       0
+   414 ;;      Temps:          0       0       0       0       0
+   415 ;;      Totals:         0       0       0       0       0
+   416 ;;Total ram usage:        0 bytes
+   417 ;; Hardware stack levels used:    1
+   418 ;; Hardware stack levels required when called:    1
+   419 ;; This function calls:
+   420 ;;		_spi_init
+   421 ;; This function is called by:
+   422 ;;		_main
+   423 ;; This function uses a non-reentrant model
+   424 ;;
+   425                           psect	text105
+   426                           	file	"main.c"
+   427                           	line	21
+   428                           	global	__size_of_Init
+   429  000B                     	__size_of_Init	equ	__end_of_Init-_Init
+   430                           	
+   431  0784                     _Init:	
+   432                           	opt	stack 6
+   433                           ; Regs used in _Init: [wreg+status,2+status,0+pclath+cstack]
+   434                           	line	23
+   435                           	
+   436  0784                     l3575:	
+   437                           ;main.c: 23: TRISA = 0;
+   438  0784  1683               	bsf	status, 5	;RP0=1, select bank1
+   439  0785  1303               	bcf	status, 6	;RP1=0, select bank1
+   440  0786  0185               	clrf	(133)^080h	;volatile
+   441                           	line	24
+   442                           ;main.c: 24: TRISB = 0;
+   443  0787  0186               	clrf	(134)^080h	;volatile
+   444                           	line	25
+   445                           ;main.c: 25: TRISC = 0;
+   446  0788  0187               	clrf	(135)^080h	;volatile
+   447                           	line	27
+   448                           	
+   449  0789                     l3577:	
+   450                           ;main.c: 27: spi_init();
+   451  0789  120A  118A  278F   	fcall	_spi_init
               120A  118A         
-   435                           	line	38
-   436                           	
-   437  0796                     l575:	
-   438  0796  0008               	return
-   439                           	opt stack 0
-   440                           GLOBAL	__end_of_Init
-   441  0797                     	__end_of_Init:
-   442 ;; =============== function _Init ends ============
-   443                           
-   444                           	signat	_Init,88
-   445                           	global	_spi_transfer_sync
-   446                           psect	text100,local,class=CODE,delta=2
-   447                           global __ptext100
-   448  07D3                     __ptext100:
-   449                           
-   450 ;; *************** function _spi_transfer_sync *****************
-   451 ;; Defined at:
-   452 ;;		line 43 in file "spi.c"
-   453 ;; Parameters:    Size  Location     Type
-   454 ;;  dataout         1    wreg     PTR unsigned char 
-   455 ;;  datain          1    0[COMMON] PTR unsigned char 
-   456 ;;  length          2    1[COMMON] unsigned int 
-   457 ;; Auto vars:     Size  Location     Type
-   458 ;;  dataout         1    4[COMMON] PTR unsigned char 
-   459 ;; Return value:  Size  Location     Type
-   460 ;;		None               void
-   461 ;; Registers used:
-   462 ;;		wreg, fsr0l, fsr0h, status,2, status,0
-   463 ;; Tracked objects:
-   464 ;;		On entry : 0/0
-   465 ;;		On exit  : 0/0
-   466 ;;		Unchanged: 0/0
-   467 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   468 ;;      Params:         3       0       0       0       0
-   469 ;;      Locals:         1       0       0       0       0
-   470 ;;      Temps:          1       0       0       0       0
-   471 ;;      Totals:         5       0       0       0       0
-   472 ;;Total ram usage:        5 bytes
-   473 ;; Hardware stack levels used:    1
-   474 ;; This function calls:
-   475 ;;		Nothing
-   476 ;; This function is called by:
-   477 ;;		_main
-   478 ;; This function uses a non-reentrant model
-   479 ;;
-   480                           psect	text100
-   481                           	file	"spi.c"
-   482                           	line	43
-   483                           	global	__size_of_spi_transfer_sync
-   484  002D                     	__size_of_spi_transfer_sync	equ	__end_of_spi_transfer_sync-_spi_transfer_sync
-   485                           	
-   486  07D3                     _spi_transfer_sync:	
-   487                           	opt	stack 7
-   488                           ; Regs used in _spi_transfer_sync: [wreg-fsr0h+status,2+status,0]
-   489                           ;spi_transfer_sync@dataout stored from wreg
-   490  07D3  00F4               	movwf	(spi_transfer_sync@dataout)
-   491                           	line	44
-   492                           	
-   493  07D4                     l2689:	
-   494                           ;spi.c: 44: while(length){
-   495  07D4  2FF8               	goto	l2701
-   496                           	
-   497  07D5                     l1729:	
-   498                           	line	45
-   499                           	
-   500  07D5                     l2691:	
-   501                           ;spi.c: 45: SSPBUF = *dataout;
-   502  07D5  0874               	movf	(spi_transfer_sync@dataout),w
-   503  07D6  0084               	movwf	fsr0
-   504  07D7  1383               	bcf	status, 7	;select IRP bank0
-   505  07D8  0800               	movf	indf,w
-   506  07D9  1283               	bcf	status, 5	;RP0=0, select bank0
-   507  07DA  1303               	bcf	status, 6	;RP1=0, select bank0
-   508  07DB  0093               	movwf	(19)	;volatile
-   509                           	line	46
-   510                           ;spi.c: 46: while(!PIR1bits.SSPIF);
-   511  07DC  2FDD               	goto	l1730
-   512                           	
-   513  07DD                     l1731:	
-   514                           	
-   515  07DD                     l1730:	
-   516  07DD  1D8C               	btfss	(12),3	;volatile
-   517  07DE  2FE0               	goto	u11
-   518  07DF  2FE1               	goto	u10
-   519  07E0                     u11:
-   520  07E0  2FDD               	goto	l1730
-   521  07E1                     u10:
-   522                           	
-   523  07E1                     l1732:	
-   524                           	line	47
-   525                           ;spi.c: 47: PIR1bits.SSPIF = 0;
-   526  07E1  118C               	bcf	(12),3	;volatile
-   527                           	line	48
-   528                           	
-   529  07E2                     l2693:	
-   530                           ;spi.c: 48: *datain = SSPBUF;
-   531  07E2  0813               	movf	(19),w	;volatile
-   532  07E3  00F3               	movwf	(??_spi_transfer_sync+0)+0
-   533  07E4  0870               	movf	(spi_transfer_sync@datain),w
-   534  07E5  0084               	movwf	fsr0
-   535  07E6  0873               	movf	(??_spi_transfer_sync+0)+0,w
-   536  07E7  1383               	bcf	status, 7	;select IRP bank0
-   537  07E8  0080               	movwf	indf
-   538                           	line	49
+   452                           	line	38
+   453                           	
+   454  078E                     l575:	
+   455  078E  0008               	return
+   456                           	opt stack 0
+   457                           GLOBAL	__end_of_Init
+   458  078F                     	__end_of_Init:
+   459 ;; =============== function _Init ends ============
+   460                           
+   461                           	signat	_Init,88
+   462                           	global	_spi_transfer_sync
+   463                           psect	text106,local,class=CODE,delta=2
+   464                           global __ptext106
+   465  07D3                     __ptext106:
+   466                           
+   467 ;; *************** function _spi_transfer_sync *****************
+   468 ;; Defined at:
+   469 ;;		line 46 in file "spi.c"
+   470 ;; Parameters:    Size  Location     Type
+   471 ;;  dataout         1    wreg     PTR unsigned char 
+   472 ;;  datain          1    0[COMMON] PTR unsigned char 
+   473 ;;  length          2    1[COMMON] unsigned int 
+   474 ;; Auto vars:     Size  Location     Type
+   475 ;;  dataout         1    4[COMMON] PTR unsigned char 
+   476 ;; Return value:  Size  Location     Type
+   477 ;;		None               void
+   478 ;; Registers used:
+   479 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+   480 ;; Tracked objects:
+   481 ;;		On entry : 0/0
+   482 ;;		On exit  : 0/0
+   483 ;;		Unchanged: 0/0
+   484 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   485 ;;      Params:         3       0       0       0       0
+   486 ;;      Locals:         1       0       0       0       0
+   487 ;;      Temps:          1       0       0       0       0
+   488 ;;      Totals:         5       0       0       0       0
+   489 ;;Total ram usage:        5 bytes
+   490 ;; Hardware stack levels used:    1
+   491 ;; This function calls:
+   492 ;;		Nothing
+   493 ;; This function is called by:
+   494 ;;		_main
+   495 ;; This function uses a non-reentrant model
+   496 ;;
+   497                           psect	text106
+   498                           	file	"spi.c"
+   499                           	line	46
+   500                           	global	__size_of_spi_transfer_sync
+   501  002D                     	__size_of_spi_transfer_sync	equ	__end_of_spi_transfer_sync-_spi_transfer_sync
+   502                           	
+   503  07D3                     _spi_transfer_sync:	
+   504                           	opt	stack 7
+   505                           ; Regs used in _spi_transfer_sync: [wreg-fsr0h+status,2+status,0]
+   506                           ;spi_transfer_sync@dataout stored from wreg
+   507  07D3  00F4               	movwf	(spi_transfer_sync@dataout)
+   508                           	line	47
+   509                           	
+   510  07D4                     l2689:	
+   511                           ;spi.c: 47: while(length){
+   512  07D4  2FF8               	goto	l2701
+   513                           	
+   514  07D5                     l1729:	
+   515                           	line	48
+   516                           	
+   517  07D5                     l2691:	
+   518                           ;spi.c: 48: SSPBUF = *dataout;
+   519  07D5  0874               	movf	(spi_transfer_sync@dataout),w
+   520  07D6  0084               	movwf	fsr0
+   521  07D7  1383               	bcf	status, 7	;select IRP bank0
+   522  07D8  0800               	movf	indf,w
+   523  07D9  1283               	bcf	status, 5	;RP0=0, select bank0
+   524  07DA  1303               	bcf	status, 6	;RP1=0, select bank0
+   525  07DB  0093               	movwf	(19)	;volatile
+   526                           	line	49
+   527                           ;spi.c: 49: while(!PIR1bits.SSPIF);
+   528  07DC  2FDD               	goto	l1730
+   529                           	
+   530  07DD                     l1731:	
+   531                           	
+   532  07DD                     l1730:	
+   533  07DD  1D8C               	btfss	(12),3	;volatile
+   534  07DE  2FE0               	goto	u11
+   535  07DF  2FE1               	goto	u10
+   536  07E0                     u11:
+   537  07E0  2FDD               	goto	l1730
+   538  07E1                     u10:
    539                           	
-   540  07E9                     l2695:	
-   541                           ;spi.c: 49: length--;
-   542  07E9  3001               	movlw	low(01h)
-   543  07EA  02F1               	subwf	(spi_transfer_sync@length),f
-   544  07EB  3000               	movlw	high(01h)
-   545  07EC  1C03               	skipc
-   546  07ED  03F2               	decf	(spi_transfer_sync@length+1),f
-   547  07EE  02F2               	subwf	(spi_transfer_sync@length+1),f
-   548                           	line	50
-   549                           	
-   550  07EF                     l2697:	
-   551                           ;spi.c: 50: dataout++;
-   552  07EF  3001               	movlw	(01h)
-   553  07F0  00F3               	movwf	(??_spi_transfer_sync+0)+0
-   554  07F1  0873               	movf	(??_spi_transfer_sync+0)+0,w
-   555  07F2  07F4               	addwf	(spi_transfer_sync@dataout),f
-   556                           	line	51
-   557                           	
-   558  07F3                     l2699:	
-   559                           ;spi.c: 51: datain++;
-   560  07F3  3001               	movlw	(01h)
-   561  07F4  00F3               	movwf	(??_spi_transfer_sync+0)+0
-   562  07F5  0873               	movf	(??_spi_transfer_sync+0)+0,w
-   563  07F6  07F0               	addwf	(spi_transfer_sync@datain),f
-   564  07F7  2FF8               	goto	l2701
-   565                           	line	52
+   540  07E1                     l1732:	
+   541                           	line	50
+   542                           ;spi.c: 50: PIR1bits.SSPIF = 0;
+   543  07E1  118C               	bcf	(12),3	;volatile
+   544                           	line	51
+   545                           	
+   546  07E2                     l2693:	
+   547                           ;spi.c: 51: *datain = SSPBUF;
+   548  07E2  0813               	movf	(19),w	;volatile
+   549  07E3  00F3               	movwf	(??_spi_transfer_sync+0)+0
+   550  07E4  0870               	movf	(spi_transfer_sync@datain),w
+   551  07E5  0084               	movwf	fsr0
+   552  07E6  0873               	movf	(??_spi_transfer_sync+0)+0,w
+   553  07E7  1383               	bcf	status, 7	;select IRP bank0
+   554  07E8  0080               	movwf	indf
+   555                           	line	52
+   556                           	
+   557  07E9                     l2695:	
+   558                           ;spi.c: 52: length--;
+   559  07E9  3001               	movlw	low(01h)
+   560  07EA  02F1               	subwf	(spi_transfer_sync@length),f
+   561  07EB  3000               	movlw	high(01h)
+   562  07EC  1C03               	skipc
+   563  07ED  03F2               	decf	(spi_transfer_sync@length+1),f
+   564  07EE  02F2               	subwf	(spi_transfer_sync@length+1),f
+   565                           	line	53
    566                           	
-   567  07F8                     l1728:	
-   568                           	line	44
-   569                           	
-   570  07F8                     l2701:	
-   571  07F8  0872               	movf	((spi_transfer_sync@length+1)),w
-   572  07F9  0471               	iorwf	((spi_transfer_sync@length)),w
-   573  07FA  1D03               	skipz
-   574  07FB  2FFD               	goto	u21
-   575  07FC  2FFE               	goto	u20
-   576  07FD                     u21:
-   577  07FD  2FD5               	goto	l2691
-   578  07FE                     u20:
-   579  07FE  2FFF               	goto	l1734
-   580                           	
-   581  07FF                     l1733:	
-   582                           	line	53
+   567  07EF                     l2697:	
+   568                           ;spi.c: 53: dataout++;
+   569  07EF  3001               	movlw	(01h)
+   570  07F0  00F3               	movwf	(??_spi_transfer_sync+0)+0
+   571  07F1  0873               	movf	(??_spi_transfer_sync+0)+0,w
+   572  07F2  07F4               	addwf	(spi_transfer_sync@dataout),f
+   573                           	line	54
+   574                           	
+   575  07F3                     l2699:	
+   576                           ;spi.c: 54: datain++;
+   577  07F3  3001               	movlw	(01h)
+   578  07F4  00F3               	movwf	(??_spi_transfer_sync+0)+0
+   579  07F5  0873               	movf	(??_spi_transfer_sync+0)+0,w
+   580  07F6  07F0               	addwf	(spi_transfer_sync@datain),f
+   581  07F7  2FF8               	goto	l2701
+   582                           	line	55
    583                           	
-   584  07FF                     l1734:	
-   585  07FF  0008               	return
-   586                           	opt stack 0
-   587                           GLOBAL	__end_of_spi_transfer_sync
-   588  0800                     	__end_of_spi_transfer_sync:
-   589 ;; =============== function _spi_transfer_sync ends ============
-   590                           
-   591                           	signat	_spi_transfer_sync,12408
-   592                           	global	_spi_init
-   593                           psect	text101,local,class=CODE,delta=2
-   594                           global __ptext101
-   595  0797                     __ptext101:
-   596                           
-   597 ;; *************** function _spi_init *****************
-   598 ;; Defined at:
-   599 ;;		line 11 in file "spi.c"
-   600 ;; Parameters:    Size  Location     Type
-   601 ;;		None
-   602 ;; Auto vars:     Size  Location     Type
-   603 ;;		None
-   604 ;; Return value:  Size  Location     Type
-   605 ;;		None               void
-   606 ;; Registers used:
-   607 ;;		wreg, status,2, status,0
-   608 ;; Tracked objects:
-   609 ;;		On entry : 0/0
-   610 ;;		On exit  : 0/0
-   611 ;;		Unchanged: 0/0
-   612 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   613 ;;      Params:         0       0       0       0       0
-   614 ;;      Locals:         0       0       0       0       0
-   615 ;;      Temps:          0       0       0       0       0
-   616 ;;      Totals:         0       0       0       0       0
-   617 ;;Total ram usage:        0 bytes
-   618 ;; Hardware stack levels used:    1
-   619 ;; This function calls:
-   620 ;;		Nothing
-   621 ;; This function is called by:
-   622 ;;		_Init
-   623 ;; This function uses a non-reentrant model
-   624 ;;
-   625                           psect	text101
-   626                           	file	"spi.c"
-   627                           	line	11
-   628                           	global	__size_of_spi_init
-   629  0016                     	__size_of_spi_init	equ	__end_of_spi_init-_spi_init
-   630                           	
-   631  0797                     _spi_init:	
-   632                           	opt	stack 6
-   633                           ; Regs used in _spi_init: [wreg+status,2+status,0]
-   634                           	line	13
-   635                           	
-   636  0797                     l2683:	
-   637                           ;spi.c: 13: SSPCONbits.SSPEN = 0;
-   638  0797  1283               	bcf	status, 5	;RP0=0, select bank0
-   639  0798  1303               	bcf	status, 6	;RP1=0, select bank0
-   640  0799  1294               	bcf	(20),5	;volatile
-   641                           	line	15
-   642                           ;spi.c: 15: TRISCbits.TRISC4 = 1;
-   643  079A  1683               	bsf	status, 5	;RP0=1, select bank1
-   644  079B  1303               	bcf	status, 6	;RP1=0, select bank1
-   645  079C  1607               	bsf	(135)^080h,4	;volatile
-   646                           	line	17
-   647                           ;spi.c: 17: TRISAbits.TRISA5 = 1;
-   648  079D  1685               	bsf	(133)^080h,5	;volatile
-   649                           	line	20
-   650                           ;spi.c: 20: TRISCbits.TRISC5 = 0;
-   651  079E  1287               	bcf	(135)^080h,5	;volatile
-   652                           	line	21
-   653                           ;spi.c: 21: TRISCbits.TRISC3 = 0;
-   654  079F  1187               	bcf	(135)^080h,3	;volatile
-   655                           	line	24
-   656                           ;spi.c: 24: SSPCONbits.CKP = 0;
-   657  07A0  1283               	bcf	status, 5	;RP0=0, select bank0
-   658  07A1  1303               	bcf	status, 6	;RP1=0, select bank0
-   659  07A2  1214               	bcf	(20),4	;volatile
-   660                           	line	25
-   661                           ;spi.c: 25: SSPSTATbits.CKE = 1;
-   662  07A3  1683               	bsf	status, 5	;RP0=1, select bank1
-   663  07A4  1303               	bcf	status, 6	;RP1=0, select bank1
-   664  07A5  1714               	bsf	(148)^080h,6	;volatile
-   665                           	line	26
-   666                           ;spi.c: 26: SSPSTATbits.SMP = 1;
-   667  07A6  1794               	bsf	(148)^080h,7	;volatile
-   668                           	line	27
-   669                           	
-   670  07A7                     l2685:	
-   671                           ;spi.c: 27: SSPCONbits.SSPM = 0;
-   672  07A7  30F0               	movlw	((0 & ((1<<4)-1))<<0)|not (((1<<4)-1)<<0)
-   673  07A8  1283               	bcf	status, 5	;RP0=0, select bank0
-   674  07A9  1303               	bcf	status, 6	;RP1=0, select bank0
-   675  07AA  0594               	andwf	(20),f	;volatile
-   676                           	line	28
-   677                           	
-   678  07AB                     l2687:	
-   679                           ;spi.c: 28: SSPCONbits.SSPEN = 1;
-   680  07AB  1694               	bsf	(20),5	;volatile
-   681                           	line	29
-   682                           	
-   683  07AC                     l1716:	
-   684  07AC  0008               	return
-   685                           	opt stack 0
-   686                           GLOBAL	__end_of_spi_init
-   687  07AD                     	__end_of_spi_init:
-   688 ;; =============== function _spi_init ends ============
-   689                           
-   690                           	signat	_spi_init,88
-   691                           psect	text102,local,class=CODE,delta=2
-   692                           global __ptext102
-   693  0000                     __ptext102:
-   694                           	global	btemp
-   695  007E                     	btemp set 07Eh
-   696                           
-   697                           	DABS	1,126,2	;btemp
-   698                           	global	wtemp0
-   699  007E                     	wtemp0 set btemp
+   584  07F8                     l1728:	
+   585                           	line	47
+   586                           	
+   587  07F8                     l2701:	
+   588  07F8  0872               	movf	((spi_transfer_sync@length+1)),w
+   589  07F9  0471               	iorwf	((spi_transfer_sync@length)),w
+   590  07FA  1D03               	skipz
+   591  07FB  2FFD               	goto	u21
+   592  07FC  2FFE               	goto	u20
+   593  07FD                     u21:
+   594  07FD  2FD5               	goto	l2691
+   595  07FE                     u20:
+   596  07FE  2FFF               	goto	l1734
+   597                           	
+   598  07FF                     l1733:	
+   599                           	line	56
+   600                           	
+   601  07FF                     l1734:	
+   602  07FF  0008               	return
+   603                           	opt stack 0
+   604                           GLOBAL	__end_of_spi_transfer_sync
+   605  0800                     	__end_of_spi_transfer_sync:
+   606 ;; =============== function _spi_transfer_sync ends ============
+   607                           
+   608                           	signat	_spi_transfer_sync,12408
+   609                           	global	_spi_init
+   610                           psect	text107,local,class=CODE,delta=2
+   611                           global __ptext107
+   612  078F                     __ptext107:
+   613                           
+   614 ;; *************** function _spi_init *****************
+   615 ;; Defined at:
+   616 ;;		line 12 in file "spi.c"
+   617 ;; Parameters:    Size  Location     Type
+   618 ;;		None
+   619 ;; Auto vars:     Size  Location     Type
+   620 ;;		None
+   621 ;; Return value:  Size  Location     Type
+   622 ;;		None               void
+   623 ;; Registers used:
+   624 ;;		wreg, status,2, status,0
+   625 ;; Tracked objects:
+   626 ;;		On entry : 0/0
+   627 ;;		On exit  : 0/0
+   628 ;;		Unchanged: 0/0
+   629 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   630 ;;      Params:         0       0       0       0       0
+   631 ;;      Locals:         0       0       0       0       0
+   632 ;;      Temps:          0       0       0       0       0
+   633 ;;      Totals:         0       0       0       0       0
+   634 ;;Total ram usage:        0 bytes
+   635 ;; Hardware stack levels used:    1
+   636 ;; This function calls:
+   637 ;;		Nothing
+   638 ;; This function is called by:
+   639 ;;		_Init
+   640 ;; This function uses a non-reentrant model
+   641 ;;
+   642                           psect	text107
+   643                           	file	"spi.c"
+   644                           	line	12
+   645                           	global	__size_of_spi_init
+   646  0018                     	__size_of_spi_init	equ	__end_of_spi_init-_spi_init
+   647                           	
+   648  078F                     _spi_init:	
+   649                           	opt	stack 6
+   650                           ; Regs used in _spi_init: [wreg+status,2+status,0]
+   651                           	line	14
+   652                           	
+   653  078F                     l2683:	
+   654                           ;spi.c: 14: SSPCONbits.SSPEN = 0;
+   655  078F  1283               	bcf	status, 5	;RP0=0, select bank0
+   656  0790  1303               	bcf	status, 6	;RP1=0, select bank0
+   657  0791  1294               	bcf	(20),5	;volatile
+   658                           	line	16
+   659                           ;spi.c: 16: TRISCbits.TRISC4 = 1;
+   660  0792  1683               	bsf	status, 5	;RP0=1, select bank1
+   661  0793  1303               	bcf	status, 6	;RP1=0, select bank1
+   662  0794  1607               	bsf	(135)^080h,4	;volatile
+   663                           	line	18
+   664                           ;spi.c: 18: TRISAbits.TRISA5 = 1;
+   665  0795  1685               	bsf	(133)^080h,5	;volatile
+   666                           	line	21
+   667                           ;spi.c: 21: TRISCbits.TRISC5 = 0;
+   668  0796  1287               	bcf	(135)^080h,5	;volatile
+   669                           	line	22
+   670                           ;spi.c: 22: TRISCbits.TRISC3 = 0;
+   671  0797  1187               	bcf	(135)^080h,3	;volatile
+   672                           	line	24
+   673                           ;spi.c: 24: TRISCbits.TRISC1 = 0;
+   674  0798  1087               	bcf	(135)^080h,1	;volatile
+   675                           	line	25
+   676                           ;spi.c: 25: PORTCbits.RC0=1;
+   677  0799  1283               	bcf	status, 5	;RP0=0, select bank0
+   678  079A  1303               	bcf	status, 6	;RP1=0, select bank0
+   679  079B  1407               	bsf	(7),0	;volatile
+   680                           	line	27
+   681                           ;spi.c: 27: SSPCONbits.CKP = 0;
+   682  079C  1214               	bcf	(20),4	;volatile
+   683                           	line	28
+   684                           ;spi.c: 28: SSPSTATbits.CKE = 1;
+   685  079D  1683               	bsf	status, 5	;RP0=1, select bank1
+   686  079E  1303               	bcf	status, 6	;RP1=0, select bank1
+   687  079F  1714               	bsf	(148)^080h,6	;volatile
+   688                           	line	29
+   689                           ;spi.c: 29: SSPSTATbits.SMP = 1;
+   690  07A0  1794               	bsf	(148)^080h,7	;volatile
+   691                           	line	30
+   692                           	
+   693  07A1                     l2685:	
+   694                           ;spi.c: 30: SSPCONbits.SSPM = 0;
+   695  07A1  30F0               	movlw	((0 & ((1<<4)-1))<<0)|not (((1<<4)-1)<<0)
+   696  07A2  1283               	bcf	status, 5	;RP0=0, select bank0
+   697  07A3  1303               	bcf	status, 6	;RP1=0, select bank0
+   698  07A4  0594               	andwf	(20),f	;volatile
+   699                           	line	31
+   700                           	
+   701  07A5                     l2687:	
+   702                           ;spi.c: 31: SSPCONbits.SSPEN = 1;
+   703  07A5  1694               	bsf	(20),5	;volatile
+   704                           	line	32
+   705                           	
+   706  07A6                     l1716:	
+   707  07A6  0008               	return
+   708                           	opt stack 0
+   709                           GLOBAL	__end_of_spi_init
+   710  07A7                     	__end_of_spi_init:
+   711 ;; =============== function _spi_init ends ============
+   712                           
+   713                           	signat	_spi_init,88
+   714                           psect	text108,local,class=CODE,delta=2
+   715                           global __ptext108
+   716  0000                     __ptext108:
+   717                           	global	btemp
+   718  007E                     	btemp set 07Eh
+   719                           
+   720                           	DABS	1,126,2	;btemp
+   721                           	global	wtemp0
+   722  007E                     	wtemp0 set btemp
 
 
 HI-TECH Software PICC Macro Assembler V9.82 build 9453 
-Symbol Table                                                                                   Wed Apr 12 21:35:27 2017
+Symbol Table                                                                                   Wed Apr 12 22:16:19 2017
 
                          pc 0002                 _SSPSTATbits 0094                          _RD 0C60  
                         u10 07E1                          u11 07E0                          u20 07FE  
                         u21 07FD                          _WR 0C61                          fsr 0004  
-                       l580 07D0                         l581 07D0                         l575 0796  
-                       l578 07B3                         l579 07CF                         _GIE 005F  
+                       l580 07D0                         l581 07D0                         l575 078E  
+                       l578 07AD                         l579 07CF                         _GIE 005F  
                        fsr0 0004                         indf 0000                        l1730 07DD  
-                      l1731 07DD                        l1716 07AC                        l1732 07E1  
+                      l1731 07DD                        l1716 07A6                        l1732 07E1  
                       l1733 07FF                        l2701 07F8                        l1734 07FF  
-                      l1728 07F8                        l1729 07D5                        l2683 0797  
-                      l2691 07D5                        l2685 07A7                        l2693 07E2  
-                      l3581 07B3                        l2687 07AB                        l2695 07E9  
-                      l3575 078C                        l3583 07C1                        l2697 07EF  
-                      l2689 07D4                        l3577 0791                        l2699 07F3  
-                      l3579 07AD                        STR_1 0009                        u2277 07C7  
-                      _WREN 0C62                        _Init 078C                        _main 07AD  
-                      btemp 007E                        start 0000                       ?_Init 0070  
-                     ?_main 0070                       _EEADR 010D                       _CARRY 0018  
-                     _TRISA 0085                       _TRISB 0086                       _TRISC 0087  
-                     pclath 000A                       status 0003                       wtemp0 007E  
-              __end_of_Init 0797                __end_of_main 07D3                      ??_Init 0070  
-                    ??_main 0075                      _EEDATA 010C                      _EECON1 018C  
-                    _EECON2 018D    spi_transfer_sync@dataout 0074                      _SSPBUF 0013  
-          __end_of_spi_init 07AD              __pcstackCOMMON 0070                  __pmaintext 07AD  
-                 ?_spi_init 0070                     main@tmp 0078        end_of_initialization 0788  
-                ??_spi_init 0070                   _TRISAbits 0085                   _TRISCbits 0087  
-       start_initialization 0788     spi_transfer_sync@datain 0070     spi_transfer_sync@length 0071  
+                      l1728 07F8                        l1729 07D5                        l2683 078F  
+                      l2691 07D5                        l2685 07A1                        l2693 07E2  
+                      l3581 07AD                        l2687 07A5                        l2695 07E9  
+                      l3575 0784                        l3583 07B0                        l2697 07EF  
+                      l2689 07D4                        l3577 0789                        l3585 07BE  
+                      l2699 07F3                        l3587 07C1                        l3579 07A7  
+                      STR_1 0009                        u2277 07C7                        _WREN 0C62  
+                      _Init 0784                        _main 07A7                        btemp 007E  
+                      start 0000                       ?_Init 0070                       ?_main 0070  
+                     _EEADR 010D                       _CARRY 0018                       _TRISA 0085  
+                     _TRISB 0086                       _TRISC 0087                       pclath 000A  
+                     status 0003                       wtemp0 007E                __end_of_Init 078F  
+              __end_of_main 07D3                      ??_Init 0070                      ??_main 0075  
+                    _EEDATA 010C                      _EECON1 018C                      _EECON2 018D  
+  spi_transfer_sync@dataout 0074                      _SSPBUF 0013            __end_of_spi_init 07A7  
+            __pcstackCOMMON 0070                  __pmaintext 07A7                   ?_spi_init 0070  
+                   main@tmp 0078        end_of_initialization 0780                  ??_spi_init 0070  
+                 _PORTCbits 0007                   _TRISAbits 0085                   _TRISCbits 0087  
+       start_initialization 0780     spi_transfer_sync@datain 0070     spi_transfer_sync@length 0071  
          _spi_transfer_sync 07D3          ?_spi_transfer_sync 0070         ??_spi_transfer_sync 0073  
- __end_of_spi_transfer_sync 0800                   __ptext100 07D3                   __ptext101 0797  
-                 __ptext102 0000           __size_of_spi_init 0016                   __pstrings 0003  
-                  _PIR1bits 000C                 __stringbase 0008  __size_of_spi_transfer_sync 002D  
-                  __ptext98 0000                    __ptext99 078C               __size_of_Init 000B  
-             __size_of_main 0026                    _spi_init 0797                   stringcode 0003  
+ __end_of_spi_transfer_sync 0800                   __ptext104 0000                   __ptext105 0784  
+                 __ptext106 07D3                   __ptext107 078F                   __ptext108 0000  
+         __size_of_spi_init 0018                   __pstrings 0003                    _PIR1bits 000C  
+               __stringbase 0008  __size_of_spi_transfer_sync 002D               __size_of_Init 000B  
+             __size_of_main 002C                    _spi_init 078F                   stringcode 0003  
                   stringdir 0003                    stringtab 0003                  _SSPCONbits 0014  

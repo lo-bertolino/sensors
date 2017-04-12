@@ -739,10 +739,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _EECON1bits `VS86  1 e@396 ]
 "1006 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\pic16f876.h
 [v _EECON2 `Vuc  1 e@397 ]
-"11 spi.h
+"16 spi.h
 [v _spi_init `(v  0 ef ]
 [p mainexit ]
-"12 spi.h
+"17 spi.h
 [v _spi_transfer_sync `(v  0 ef3`*uc`*uc`ui ]
 "154 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\pic.h
 [v __delay `(v  0 ef1`ul ]
@@ -1447,10 +1447,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eeprom_routines.h: 43: extern void eecpymem(volatile unsigned char *to, eeprom unsigned char *from, unsigned char size);
 [; ;eeprom_routines.h: 44: extern void memcpyee(eeprom unsigned char *to, const unsigned char *from, unsigned char size);
 [; ;pic.h: 154: extern void _delay(unsigned long);
-[; ;spi.h: 11: extern void spi_init(void);
-[; ;spi.h: 12: extern void spi_transfer_sync(unsigned char* dataout, unsigned char* datain, unsigned int length);
-[; ;spi.h: 13: extern void spi_transmit_sync(unsigned char* data, unsigned int length);
-[; ;spi.h: 14: extern unsigned char spi_fast_shift(unsigned char data);
+[; ;spi.h: 16: extern void spi_init(void);
+[; ;spi.h: 17: extern void spi_transfer_sync(unsigned char* dataout, unsigned char* datain, unsigned int length);
+[; ;spi.h: 18: extern void spi_transmit_sync(unsigned char* data, unsigned int length);
+[; ;spi.h: 19: extern unsigned char spi_fast_shift(unsigned char data);
 "16 main.c
 [; ;main.c: 16: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFD & 0xFFFB & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF");
 [; 	psect config,class=CONFIG,delta=2 ;#
@@ -1489,29 +1489,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 "93
 [v _tmp `*uc  1 a ]
 [; ;main.c: 93: char *tmp;
-[; ;main.c: 94: *tmp = "Hello world";
+[; ;main.c: 94: *tmp = "Hello world\n";
 "94
 [e = *U _tmp -> :s 1C `uc ]
 [; ;main.c: 95: while(1){
 "95
 [e :U 91 ]
 {
-[; ;main.c: 96: spi_transfer_sync(tmp, tmp, 12);
+[; ;main.c: 96: PORTCbits.RC0=0;
 "96
-[e ( _spi_transfer_sync (3 , , _tmp _tmp -> -> 12 `i `ui ]
-[; ;main.c: 97: _delay((unsigned long)((1000)*(4000000/4000.0)));
+[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 97: spi_transfer_sync(tmp, tmp, 13);
 "97
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[e ( _spi_transfer_sync (3 , , _tmp _tmp -> -> 13 `i `ui ]
+[; ;main.c: 98: PORTCbits.RC0=0;
 "98
+[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 99: _delay((unsigned long)((1000)*(4000000/4000.0)));
+"99
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"100
 }
 [e :U 90 ]
 "95
 [e $U 91  ]
 [e :U 92 ]
-[; ;main.c: 98: }
-[; ;main.c: 99: }
-"99
+[; ;main.c: 100: }
+[; ;main.c: 101: }
+"101
 [e :UE 89 ]
 }
-[a 1C 72 101 108 108 111 32 119 111 114 108 100 0 ]
+[a 1C 72 101 108 108 111 32 119 111 114 108 100 10 0 ]
 
