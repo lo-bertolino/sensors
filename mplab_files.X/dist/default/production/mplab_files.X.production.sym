@@ -129,10 +129,10 @@ strings 6 29 STRING 6
 text99 F18 F2D CODE F18
 cinit F10 F17 CODE F10
 %locals
-dist/default/debug\mplab_files.X.debug.obj
+dist/default/production\mplab_files.X.production.obj
 main.c
 16 2007 0 CONFIG
-C:\Users\Lorenzo\AppData\Local\Temp\s24s.
+C:\Users\Lorenzo\AppData\Local\Temp\s31o.
 131 788 0 CODE
 132 789 0 CODE
 main.c

@@ -739,14 +739,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _EECON1bits `VS86  1 e@396 ]
 "1006 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\pic16f876.h
 [v _EECON2 `Vuc  1 e@397 ]
-"11 spi.h
-[v _spi_init `(v  0 ef ]
-[p mainexit ]
-"12 spi.h
-[v _spi_transfer_sync `(v  0 ef3`*uc`*uc`ui ]
-"154 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\pic.h
-[v __delay `(v  0 ef1`ul ]
-[p i __delay ]
 [; ;pic16f876.h: 82: volatile unsigned char INDF @ 0x000;
 [; ;pic16f876.h: 86: volatile unsigned char TMR0 @ 0x001;
 [; ;pic16f876.h: 90: volatile unsigned char PCL @ 0x002;
@@ -1451,67 +1443,170 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;spi.h: 12: extern void spi_transfer_sync(unsigned char* dataout, unsigned char* datain, unsigned int length);
 [; ;spi.h: 13: extern void spi_transmit_sync(unsigned char* data, unsigned int length);
 [; ;spi.h: 14: extern unsigned char spi_fast_shift(unsigned char data);
-"16 main.c
-[; ;main.c: 16: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFD & 0xFFFB & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF");
-[; 	psect config,class=CONFIG,delta=2 ;#
-[; 	dw 0xFFFD & 0xFFFB & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF ;#
-"21
-[v _Init `(v  1 ef ]
+"11 spi.c
+[v _spi_init `(v  1 ef ]
 {
-[; ;main.c: 21: void Init(){
-[e :U _Init ]
+[; ;spi.c: 11: void spi_init(void){
+[e :U _spi_init ]
 [f ]
-[; ;main.c: 23: TRISA = 0;
-"23
-[e = _TRISA -> -> 0 `i `uc ]
-[; ;main.c: 24: TRISB = 0;
+[; ;spi.c: 13: SSPCONbits.SSPEN = 0;
+"13
+[e = . . _SSPCONbits 0 2 -> -> 0 `i `uc ]
+[; ;spi.c: 15: TRISCbits.TRISC4 = 1;
+"15
+[e = . . _TRISCbits 0 4 -> -> 1 `i `uc ]
+[; ;spi.c: 17: TRISAbits.TRISA5 = 1;
+"17
+[e = . . _TRISAbits 0 5 -> -> 1 `i `uc ]
+[; ;spi.c: 20: TRISCbits.TRISC5 = 0;
+"20
+[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+[; ;spi.c: 21: TRISCbits.TRISC3 = 0;
+"21
+[e = . . _TRISCbits 0 3 -> -> 0 `i `uc ]
+[; ;spi.c: 24: SSPCONbits.CKP = 0;
 "24
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;main.c: 25: TRISC = 0;
+[e = . . _SSPCONbits 0 1 -> -> 0 `i `uc ]
+[; ;spi.c: 25: SSPSTATbits.CKE = 1;
 "25
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 27: spi_init();
+[e = . . _SSPSTATbits 0 6 -> -> 1 `i `uc ]
+[; ;spi.c: 26: SSPSTATbits.SMP = 1;
+"26
+[e = . . _SSPSTATbits 0 7 -> -> 1 `i `uc ]
+[; ;spi.c: 27: SSPCONbits.SSPM = 0;
 "27
-[e ( _spi_init ..  ]
-[; ;main.c: 38: }
-"38
+[e = . . _SSPCONbits 0 0 -> -> 0 `i `uc ]
+[; ;spi.c: 28: SSPCONbits.SSPEN = 1;
+"28
+[e = . . _SSPCONbits 0 2 -> -> 1 `i `uc ]
+[; ;spi.c: 29: }
+"29
 [e :UE 88 ]
 }
-"91
-[v _main `(v  1 ef ]
+"31
+[v _spi_transmit_sync `(v  1 ef2`*uc`ui ]
 {
-[; ;main.c: 91: void main (){
-[e :U _main ]
+[; ;spi.c: 31: void spi_transmit_sync(unsigned char * data, unsigned int length){
+[e :U _spi_transmit_sync ]
+[v _data `*uc  1 r1 ]
+[v _length `ui  1 r2 ]
 [f ]
-[; ;main.c: 92: Init();
-"92
-[e ( _Init ..  ]
-"93
-[v _tmp `*uc  1 a ]
-[; ;main.c: 93: char *tmp;
-[; ;main.c: 94: *tmp = "Hello world";
-"94
-[e = *U _tmp -> :s 1C `uc ]
-[; ;main.c: 95: while(1){
-"95
+"32
+[v _tmp `uc  1 a ]
+[; ;spi.c: 32: unsigned char tmp;
+[; ;spi.c: 33: while(length){
+"33
+[e $U 90  ]
 [e :U 91 ]
 {
-[; ;main.c: 96: spi_transfer_sync(tmp, tmp, 12);
-"96
-[e ( _spi_transfer_sync (3 , , _tmp _tmp -> -> 12 `i `ui ]
-[; ;main.c: 97: _delay((unsigned long)((1000)*(4000000/4000.0)));
-"97
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"98
+[; ;spi.c: 34: SSPBUF = *data;
+"34
+[e = _SSPBUF *U _data ]
+[; ;spi.c: 35: while(!PIR1bits.SSPIF);
+"35
+[e $U 93  ]
+[e :U 94 ]
+[e :U 93 ]
+[e $ ! != -> . . _PIR1bits 0 3 `i -> -> -> 0 `i `Vuc `i 94  ]
+[e :U 95 ]
+[; ;spi.c: 36: PIR1bits.SSPIF = 0;
+"36
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;spi.c: 37: tmp = SSPBUF;
+"37
+[e = _tmp _SSPBUF ]
+[; ;spi.c: 38: length--;
+"38
+[e -- _length -> -> 1 `i `ui ]
+[; ;spi.c: 39: data++;
+"39
+[e ++ _data * -> -> 1 `i `x -> -> # *U _data `i `x ]
+"40
 }
 [e :U 90 ]
-"95
-[e $U 91  ]
+"33
+[e $ != _length -> -> 0 `i `ui 91  ]
 [e :U 92 ]
-[; ;main.c: 98: }
-[; ;main.c: 99: }
-"99
+[; ;spi.c: 40: }
+[; ;spi.c: 41: }
+"41
 [e :UE 89 ]
 }
-[a 1C 72 101 108 108 111 32 119 111 114 108 100 0 ]
-
+"43
+[v _spi_transfer_sync `(v  1 ef3`*uc`*uc`ui ]
+{
+[; ;spi.c: 43: void spi_transfer_sync(unsigned char * dataout, unsigned char * datain, unsigned int length){
+[e :U _spi_transfer_sync ]
+[v _dataout `*uc  1 r1 ]
+[v _datain `*uc  1 r2 ]
+[v _length `ui  1 r3 ]
+[f ]
+[; ;spi.c: 44: while(length){
+"44
+[e $U 97  ]
+[e :U 98 ]
+{
+[; ;spi.c: 45: SSPBUF = *dataout;
+"45
+[e = _SSPBUF *U _dataout ]
+[; ;spi.c: 46: while(!PIR1bits.SSPIF);
+"46
+[e $U 100  ]
+[e :U 101 ]
+[e :U 100 ]
+[e $ ! != -> . . _PIR1bits 0 3 `i -> -> -> 0 `i `Vuc `i 101  ]
+[e :U 102 ]
+[; ;spi.c: 47: PIR1bits.SSPIF = 0;
+"47
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;spi.c: 48: *datain = SSPBUF;
+"48
+[e = *U _datain _SSPBUF ]
+[; ;spi.c: 49: length--;
+"49
+[e -- _length -> -> 1 `i `ui ]
+[; ;spi.c: 50: dataout++;
+"50
+[e ++ _dataout * -> -> 1 `i `x -> -> # *U _dataout `i `x ]
+[; ;spi.c: 51: datain++;
+"51
+[e ++ _datain * -> -> 1 `i `x -> -> # *U _datain `i `x ]
+"52
+}
+[e :U 97 ]
+"44
+[e $ != _length -> -> 0 `i `ui 98  ]
+[e :U 99 ]
+[; ;spi.c: 52: }
+[; ;spi.c: 53: }
+"53
+[e :UE 96 ]
+}
+"55
+[v _spi_fast_shift `(uc  1 ef1`uc ]
+{
+[; ;spi.c: 55: unsigned char spi_fast_shift(unsigned char data){
+[e :U _spi_fast_shift ]
+[v _data `uc  1 r1 ]
+[f ]
+[; ;spi.c: 56: SSPBUF = data;
+"56
+[e = _SSPBUF _data ]
+[; ;spi.c: 57: while(!PIR1bits.SSPIF);
+"57
+[e $U 104  ]
+[e :U 105 ]
+[e :U 104 ]
+[e $ ! != -> . . _PIR1bits 0 3 `i -> -> -> 0 `i `Vuc `i 105  ]
+[e :U 106 ]
+[; ;spi.c: 58: PIR1bits.SSPIF = 0;
+"58
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;spi.c: 59: return SSPBUF;
+"59
+[e ) _SSPBUF ]
+[e $UE 103  ]
+[; ;spi.c: 60: }
+"60
+[e :UE 103 ]
+}

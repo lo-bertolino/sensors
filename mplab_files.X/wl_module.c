@@ -33,9 +33,11 @@
 #include "nRF24L01.h"
 #include "spi.h"
 
+#define TEST_SPI
+#ifndef TEST_SPI
 // Defines for setting the wl_module registers for transmitting or receiving mode
-#define TX_POWERUP wl_module_config_register(CONFIG, wl_module_CONFIG | ( (1<<PWR_UP) | (0<<PRIM_RX) ) )
-#define RX_POWERUP wl_module_config_register(CONFIG, wl_module_CONFIG | ( (1<<PWR_UP) | (1<<PRIM_RX) ) )
+#    define TX_POWERUP wl_module_config_register(CONFIG0, wl_module_CONFIG | ( (1<<PWR_UP) | (0<<PRIM_RX) ) )
+#    define RX_POWERUP wl_module_config_register(CONFIG0, wl_module_CONFIG | ( (1<<PWR_UP) | (1<<PRIM_RX) ) )
 
 
 // Flag which denotes transmitting mode
@@ -128,7 +130,7 @@ extern void wl_module_tx_config(unsigned char tx_nr){
 	// Set data speed & Output Power configured in wl_module.h
 	wl_module_config_register(RF_SETUP,wl_module_RF_SETUP);
 	//Config the CONFIG Register (Mask IRQ, CRC, etc)
-	wl_module_config_register(CONFIG, wl_module_CONFIG);
+	wl_module_config_register(CONFIG0, wl_module_CONFIG);
     // Set length of incoming payload
     //wl_module_config_register(RX_PW_P0, wl_module_PAYLOAD);
 
@@ -200,14 +202,14 @@ extern void wl_module_set_tx_addr(unsigned char * address, unsigned char len){
 extern void wl_module_set_as_tx(void){
 	unsigned char config;
 
-	wl_module_read_register(CONFIG, &config, 1);
+	wl_module_read_register(CONFIG0, &config, 1);
 
 	if((config & CONFIG_PRIM_RX) == 0)
 		return;
 
 	config &= (~CONFIG_PRIM_RX);
 
-	wl_module_write_register(CONFIG, &config, 1);
+	wl_module_write_register(CONFIG0, &config, 1);
 
 	wl_module_CE_lo;
 }
@@ -220,14 +222,14 @@ extern void wl_module_set_as_tx(void){
 extern void wl_module_power_down(void){
 	unsigned char config;
 
-	wl_module_read_register(CONFIG, &config, 1);
+	wl_module_read_register(CONFIG0, &config, 1);
 
 	if((config & CONFIG_PWR_UP) == 0)
 		return;
 
 	config &= (~CONFIG_PWR_UP);
 
-	wl_module_write_register(CONFIG, &config, 1);
+	wl_module_write_register(CONFIG0, &config, 1);
 
 	wl_module_CE_lo;
 }
@@ -425,3 +427,4 @@ void wl_module_send(unsigned char * value, unsigned char len){
     __delay_us(10);						// Grünes Modul funktioniert nicht mit 10µs delay
     wl_module_CE_lo;
 }
+#endif //TEST_SPI

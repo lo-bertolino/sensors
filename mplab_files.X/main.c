@@ -3,16 +3,20 @@
  * Created on 20 december 2016, 9:31
  */
 
+#define TEST_SPI
+
 #include <htc.h>
-#include <pic16f876.h>
 #include "spi.h"
 #include "nRF24L01.h"
-#include "wl_module.h"
+
+#ifndef TEST_SPI
+#    include "wl_module.h"
+#endif
 
 __CONFIG (FOSC_XT & WDTE_OFF & PWRTE_OFF & CP_OFF & BOREN_ON & LVP_ON & CPD_OFF & WRT_ON);
 #define _XTAL_FREQ 4000000
 
-#define TEST_SPI
+
 //inizializza uC
 void Init(){
 	//Port Configuration
@@ -22,6 +26,7 @@ void Init(){
 
 	spi_init();
 
+#ifndef TEST_SPI
 	wl_module_init();//initialise nRF24L01+ Module
     __delay_ms(50);	//wait for nRF24L01+ Module
 
@@ -29,9 +34,12 @@ void Init(){
     INTCONbits.GIE = 1;  // global interrupt enable
 
     wl_module_tx_config( wl_module_TX_NR_0 ); //Config Module
+#endif
 }
 
-bit dht_get(int * temp, int * RH ){
+#ifndef TEST_SPI
+
+bit dht_get (int * temp, int * RH){
     char dati[5];
 
     //request data to dht22 ^ as datasheet advices
@@ -65,10 +73,9 @@ bit dht_get(int * temp, int * RH ){
 	&RH = (dati[0]<<8)|dati[1];
     return 1;
 }
-
+#endif
 
 #ifndef TEST_SPI
-
 void main (){
 	Init();
 	char payload[7]; //Array for Payload
@@ -78,15 +85,15 @@ void main (){
 
         //nRF transmission
 
-    }
+	}
 }
 #else
-
 void main (){
 	Init();
-	char tmp = 'a';
+	char *tmp;
+	*tmp = "Hello world";
 	while(1){
-		spi_transmit_sync(tmp, 1);
+		spi_transfer_sync(tmp, tmp, 12);
 		__delay_ms(1000);
 	}
 }

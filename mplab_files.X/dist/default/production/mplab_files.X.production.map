@@ -4,11 +4,11 @@ Linker command line:
 
 -W-3 \
   --edf=C:\Program Files (x86)\HI-TECH Software\PICC\9.82\dat\en_msgs.txt \
-  -cs -h+dist/default/debug\mplab_files.X.debug.sym -z -Q16F876 -ol.obj \
-  -Mdist/default/debug/mplab_files.X.debug.map -E1 -ACONST=00h-0FFhx32 \
-  -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh -AENTRY=00h-0FFhx32 \
-  -ASTRING=00h-0FFhx32 -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh \
-  -ABANK2=0110h-016Fh -ABANK3=0190h-01EFh \
+  -cs -h+dist/default/production\mplab_files.X.production.sym -z -Q16F876 \
+  -ol.obj -Mdist/default/production/mplab_files.X.production.map -E1 \
+  -ACONST=00h-0FFhx32 -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh \
+  -AENTRY=00h-0FFhx32 -ASTRING=00h-0FFhx32 -ABANK0=020h-06Fh \
+  -ABANK1=0A0h-0EFh -ABANK2=0110h-016Fh -ABANK3=0190h-01EFh \
   -ARAM=020h-06Fh,0A0h-0EFh,0110h-016Fh,0190h-01EFh \
   -AABS1=020h-07Fh,0A0h-0EFh,0110h-016Fh,0190h-01EFh -ACOMMON=070h-07Fh \
   -ASFR0=00h-01Fh -ASFR1=080h-09Fh -ASFR2=0100h-010Fh -ASFR3=0180h-018Fh \
@@ -16,8 +16,8 @@ Linker command line:
   -ACONFIG=02007h-02007h -pconfig=CONFIG -DCONFIG=2 -AIDLOC=02000h-02003h \
   -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA \
   -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\Lorenzo\AppData\Local\Temp\s24s.obj \
-  dist/default/debug\mplab_files.X.debug.obj 
+  C:\Users\Lorenzo\AppData\Local\Temp\s31o.obj \
+  dist/default/production\mplab_files.X.production.obj 
 
 Object code version is 3.10
 
@@ -26,9 +26,9 @@ Machine type is 16F876
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Lorenzo\AppData\Local\Temp\s24s.obj
+C:\Users\Lorenzo\AppData\Local\Temp\s31o.obj
                 end_init                              0        0        3        0       0
-dist/default/debug\mplab_files.X.debug.obj
+dist/default/production\mplab_files.X.production.obj
                 config                             2007     2007        1     400E       0
                 text101                             797      797       16      F2E       0
                 text100                             7D3      7D3       2D      FA6       0

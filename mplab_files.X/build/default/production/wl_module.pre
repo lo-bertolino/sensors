@@ -1,5 +1,5 @@
 
-# 1 "main.c"
+# 1 "wl_module.c"
 
 # 82 "C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\pic16f876.h"
 volatile unsigned char INDF @ 0x000;
@@ -929,37 +929,50 @@ extern void memcpyee(eeprom unsigned char *to, const unsigned char *from, unsign
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
+# 36 "wl_module.h"
+extern volatile unsigned char PTX;
+
+# 63
+extern void wl_module_init(void);
+extern void wl_module_config(void);
+extern void wl_module_send(unsigned char * value, unsigned char len);
+extern void wl_module_set_RADDR(unsigned char * adr);
+extern void wl_module_set_TADDR(unsigned char * adr);
+extern unsigned char wl_module_data_ready(void);
+
+extern unsigned char wl_module_get_data(unsigned char * data);
+
+
+
+extern unsigned char wl_module_get_status(void);
+extern unsigned char wl_module_get_rx_pipe_reading_status(void);
+extern unsigned char wl_module_get_one_byte(unsigned char command);
+extern void wl_module_set_rx_pw(unsigned char payloadwidth, unsigned char rxpipenum);
+extern unsigned char wl_module_get_rx_pw(unsigned char rxpipenum);
+extern void wl_module_set_tx_addr(unsigned char * address, unsigned char len);
+extern void wl_module_set_rx_addr(unsigned char * address, unsigned char len, unsigned char rxpipenum);
+extern void wl_module_tx_config(unsigned char tx_nr);
+extern void wl_module_rx_config(void);
+extern void wl_module_get_rx_addr(unsigned char * data, unsigned char rxpipenum, unsigned char len);
+extern unsigned char wl_module_get_rx_pipe(void);
+extern unsigned char wl_module_get_rx_pipe_from_status(unsigned char status);
+extern unsigned char wl_module_fifo_tx_empty(void);
+extern unsigned char wl_module_fifo_rx_empty(void);
+extern unsigned char wl_module_get_rf_ch(void);
+extern unsigned char wl_module_get_rf_setup(void);
+extern unsigned char wl_module_get_plos_cnt(void);
+extern unsigned char wl_module_get_arc_cnt(void);
+extern void wl_module_set_as_tx(void);
+extern void wl_module_power_down(void);
+
+
+extern void wl_module_config_register(unsigned char reg, unsigned char value);
+extern void wl_module_read_register(unsigned char reg, unsigned char * value, unsigned char len);
+extern void wl_module_write_register(unsigned char reg, unsigned char * value, unsigned char len);
+
 # 11 "spi.h"
 extern void spi_init(void);
 extern void spi_transfer_sync(unsigned char* dataout, unsigned char* datain, unsigned int length);
 extern void spi_transmit_sync(unsigned char* data, unsigned int length);
 extern unsigned char spi_fast_shift(unsigned char data);
-
-# 16 "main.c"
-asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFD & 0xFFFB & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF");
-
-
-
-
-void Init(){
-
-TRISA = 0;
-TRISB = 0;
-TRISC = 0;
-
-spi_init();
-
-# 38
-}
-
-# 91
-void main (){
-Init();
-char *tmp;
-*tmp = "Hello world";
-while(1){
-spi_transfer_sync(tmp, tmp, 12);
-_delay((unsigned long)((1000)*(4000000/4000.0)));
-}
-}
 

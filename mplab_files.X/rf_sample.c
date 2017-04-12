@@ -5,7 +5,10 @@
  *      This work is licensed under the Creative Commons Attribution 3.0 Unported License.
  *      To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
  */
-#define _XTAL_FREQ 16000000UL
+#define TEST_SPI
+
+#ifndef TEST_SPI
+
 #include <htc.h>
 #include <stdlib.h>
 #include "spi.h"
@@ -28,9 +31,7 @@ int main(void){
     unsigned char k;
 
     // status pin to indicate when master
-    // sends a message only for debugging 
-    TRISDbits.TRISD4 = 0;
-    LATDbits.LATD4 = 1;
+    // sends a message only for debugging
 
     wl_module_init();	//initialise nRF24L01+ Module
     __delay_ms(50);	//wait for nRF24L01+ Module
@@ -41,7 +42,6 @@ int main(void){
     wl_module_tx_config(wl_module_TX_NR_0); //Config Module
 
     while(1){
-        LATDbits.LATD4 = 0; // turn indicator LED on
         for (k=0; k<=wl_module_PAYLOAD-1; k++){
             payload[k] = k;
 	}
@@ -50,17 +50,8 @@ int main(void){
 	payload[1] = maincounter+1;
 
 	wl_module_send(payload,wl_module_PAYLOAD);
-
-	maincounter++;
-	if (maincounter > 0x0F){
-            maincounter = 0;
-        }
-        __delay_ms(500);
-        LATDbits.LATD4 = 1; // turn indicator LED off
-        __delay_ms(500);
-    }
-
-    return 0;
+	}
+	return 0;
 }
 
 void interrupt ISR(void){
@@ -92,8 +83,7 @@ void interrupt ISR(void){
 		wl_module_CSN_hi; // Pull up chip select
 	}
         // reset INT2 flag
-        INTCON3bits.INT2IF = 0;
+		INTCON3bits.INT2IF = 0;
     }
 }
-
-
+#endif
