@@ -1,96 +1,93 @@
-/* File:   newmain.c
+/* File:   main.c
  * Author: Lorenzo Bertolino
  * Created on 20 december 2016, 9:31
  */
 
-#include <xc.h>
+#include <htc.h>
+#include <pic16f876.h>
 #include "spi.h"
 #include "nRF24L01.h"
 #include "wl_module.h"
 
-__CONFIG(FOSC_XT & WDTE_OFF & PWRTE_OFF & CP_OFF & BOREN_ON & LVP_ON & CPD_OFF & WRT_ON);
+__CONFIG (FOSC_XT & WDTE_OFF & PWRTE_OFF & CP_OFF & BOREN_ON & LVP_ON & CPD_OFF & WRT_ON);
 #define _XTAL_FREQ 4000000
 
+#define TEST_SPI
 //inizializza uC
 void Init(){
 	//Port Configuration
-	TRISA=0b11111111;
-	TRISB=0;
-    TRISC=0;
-    OPTION_REG|=0b10000000;
-	//Convertitore on, Fosc/32
-	ADCON0=0b10000001;
-	//allineamento a sinistra e solo RA0 analogico, con Vref interna
-	ADCON1=0b00001110;//*/
-    wl_module_init();	//initialise nRF24L01+ Module
-    _delay_10ms(5);	//wait for nRF24L01+ Module
-    
+	TRISA = 0;
+	TRISB = 0;
+	TRISC = 0;
+
+	spi_init();
+
+	wl_module_init();//initialise nRF24L01+ Module
+    __delay_ms(50);	//wait for nRF24L01+ Module
+
     INTCONbits.PEIE = 1; // peripheral interrupts enabled
     INTCONbits.GIE = 1;  // global interrupt enable
-    
+
     wl_module_tx_config( wl_module_TX_NR_0 ); //Config Module
-    spi_init();
 }
 
-//leggi da AN0
-unsigned int AN0Read(){
-	/* per prova
-	return 256;//*/
-	//* impostazioni reali
-	__delay_ms(1);
-	GO_DONE=1;//convertitore on su canale 0
-	while(GO_DONE);
-	return ADRESH;//*/
-}
+bit dht_get(int * temp, int * RH ){
+    char dati[5];
 
-unsigned int SevenSeg(unsigned int value){
-    switch(value){
-        case 0:
-            return 0b00111111;
-        case 1:
-            return 0b00000110;
-        case 2:
-            return 0b01011011;
-        case 3:
-            return 0b01001111;
-        case 4:
-            return 0b01100110;
-        case 5:
-            return 0b01101101;
-        case 6:
-            return 0b01111100;
-        case 7:
-            return 0b00000111;
-        case 8:
-            return 0b01111111;
-        case 9:
-            return 0b01100111;
+    //request data to dht22 ^ as datasheet advices
+	TRISCbits.TRISC1 = 0; //conf out
+	PORTCbits.RC1 = 0; //out 0
+	__delay_ms(1); //wait  1 ms
+	PORTCbits.RC1 = 1; //out 1
+	__delay_us(30); //wait 30 us
+	TRISCbits.TRISC1 = 1; //conf in
+
+    //chack answer from dht22
+    __delay_us(40);
+	if(PORTCbits.RC1) return 0;
+    __delay_us(120);
+
+	for(char i = 0;i/5;i++){
+		dati[i] = 0;
+		for(char j = 0;j/8;j++){
+            while (!PORTCbits.RC1);
+            __delay_us(30);
+            if(PORTCbits.RC1){
+				dati [i] |= 1<<(7-j);
+				while(PORTCbits.RC1);
+            }
+        }
+	}
+	if(dati[4]!=(dati[1]+dati[0]+dati[3]+dati[2] & 0xFF)){
+        return 0;
     }
+    &temp = (dati[2]<<8)|dati[3];
+	&RH = (dati[0]<<8)|dati[1];
+    return 1;
 }
 
 
-int main() {
-    unsigned char payload[wl_module_PAYLOAD]; //Array for Payload
-    unsigned char maincounter =0;
-    unsigned char k;
-    
-    Init();
-    
+#ifndef TEST_SPI
+
+void main (){
+	Init();
+	char payload[7]; //Array for Payload
+
     while(1){
-        unsigned int decVal=(AN0Read()*80)/256;
-        unsigned int unita=decVal%10;
-        unsigned int decine=(decVal/10)%10;
-        
-        //on-device output
-        PORTC=SevenSeg (unita);
-        if(decine)
-            PORTB=SevenSeg (decine);
-        else
-            PORTB=0;
+		int temp, umid;
+
         //nRF transmission
-        
-        
-        
-        __delay_ms(500);
+
     }
 }
+#else
+
+void main (){
+	Init();
+	char tmp = 'a';
+	while(1){
+		spi_transmit_sync(tmp, 1);
+		__delay_ms(1000);
+	}
+}
+#endif
