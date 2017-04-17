@@ -739,11 +739,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _EECON1bits `VS86  1 e@396 ]
 "1006 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\pic16f876.h
 [v _EECON2 `Vuc  1 e@397 ]
-"16 spi.h
-[v _spi_init `(v  0 ef ]
 [p mainexit ]
-"17 spi.h
-[v _spi_transfer_sync `(v  0 ef3`*uc`*uc`ui ]
+"11 dht.h
+[v _dht_get `(uc  0 ef2`*i`*i ]
 "154 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\pic.h
 [v __delay `(v  0 ef1`ul ]
 [p i __delay ]
@@ -1447,77 +1445,113 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eeprom_routines.h: 43: extern void eecpymem(volatile unsigned char *to, eeprom unsigned char *from, unsigned char size);
 [; ;eeprom_routines.h: 44: extern void memcpyee(eeprom unsigned char *to, const unsigned char *from, unsigned char size);
 [; ;pic.h: 154: extern void _delay(unsigned long);
-[; ;spi.h: 16: extern void spi_init(void);
-[; ;spi.h: 17: extern void spi_transfer_sync(unsigned char* dataout, unsigned char* datain, unsigned int length);
-[; ;spi.h: 18: extern void spi_transmit_sync(unsigned char* data, unsigned int length);
-[; ;spi.h: 19: extern unsigned char spi_fast_shift(unsigned char data);
-"16 main.c
-[; ;main.c: 16: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFD & 0xFFFB & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF");
+[; ;dht.h: 11: unsigned char dht_get(int * temp, int * RH);
+"21 main.c
+[; ;main.c: 21: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFD & 0xFFFB & 0xFFFF & 0xFFFF & 0xFFFF & 0xFF7F & 0xFFFF & 0xFFFF");
 [; 	psect config,class=CONFIG,delta=2 ;#
-[; 	dw 0xFFFD & 0xFFFB & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF ;#
-"21
+[; 	dw 0xFFFD & 0xFFFB & 0xFFFF & 0xFFFF & 0xFFFF & 0xFF7F & 0xFFFF & 0xFFFF ;#
+"26
 [v _Init `(v  1 ef ]
 {
-[; ;main.c: 21: void Init(){
+[; ;main.c: 26: void Init(){
 [e :U _Init ]
 [f ]
-[; ;main.c: 23: TRISA = 0;
-"23
-[e = _TRISA -> -> 0 `i `uc ]
-[; ;main.c: 24: TRISB = 0;
-"24
+[; ;main.c: 28: TRISA = 4;
+"28
+[e = _TRISA -> -> 4 `i `uc ]
+[; ;main.c: 29: TRISB = 0;
+"29
 [e = _TRISB -> -> 0 `i `uc ]
-[; ;main.c: 25: TRISC = 0;
-"25
+[; ;main.c: 30: TRISC = 0;
+"30
 [e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 27: spi_init();
-"27
-[e ( _spi_init ..  ]
-[; ;main.c: 38: }
-"38
+[; ;main.c: 45: }
+"45
 [e :UE 88 ]
 }
-"91
+"73
 [v _main `(v  1 ef ]
 {
-[; ;main.c: 91: void main (){
+[; ;main.c: 73: void main (){
 [e :U _main ]
 [f ]
-[; ;main.c: 92: Init();
-"92
+[; ;main.c: 74: Init();
+"74
 [e ( _Init ..  ]
-"93
-[v _tmp `*uc  1 a ]
-[; ;main.c: 93: char *tmp;
-[; ;main.c: 94: *tmp = "Hello world\n";
-"94
-[e = *U _tmp -> :s 1C `uc ]
-[; ;main.c: 95: while(1){
-"95
+"75
+[v F919 `uc  -> 0 `x s ]
+[i F919
+:U ..
+-> -> 191 `i `uc
+-> -> 6 `i `uc
+-> -> 219 `i `uc
+-> -> 207 `i `uc
+"76
+-> -> 102 `i `uc
+-> -> 237 `i `uc
+-> -> 252 `i `uc
+-> -> 7 `i `uc
+"77
+-> -> 255 `i `uc
+-> -> 103 `i `uc
+..
+]
+[v _SevenSeg `uc  10  a ]
+[; ;main.c: 75: unsigned char SevenSeg[] = {0b10111111, 0b00000110, 0b11011011, 0b11001111,
+[; ;main.c: 76: 0b01100110, 0b11101101, 0b11111100, 0b00000111,
+[; ;main.c: 77: 0b11111111, 0b01100111};
+[e = _SevenSeg F919 ]
+"78
+[v _temp `i  1 a ]
+[; ;main.c: 78: int temp = 0, umid = 0;
+[e = _temp -> 0 `i ]
+[v _umid `i  1 a ]
+[e = _umid -> 0 `i ]
+[; ;main.c: 79: while(1){
+"79
 [e :U 91 ]
 {
-[; ;main.c: 96: PORTCbits.RC0=0;
-"96
-[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 97: spi_transfer_sync(tmp, tmp, 13);
-"97
-[e ( _spi_transfer_sync (3 , , _tmp _tmp -> -> 13 `i `ui ]
-[; ;main.c: 98: PORTCbits.RC0=0;
-"98
-[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 99: _delay((unsigned long)((1000)*(4000000/4000.0)));
-"99
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"100
+[; ;main.c: 81: if(dht_get(&temp, &umid)==1){
+"81
+[e $ ! == -> ( _dht_get (2 , &U _temp &U _umid `i -> 1 `i 93  ]
+{
+"84
+[v _unita `ui  1 a ]
+[; ;main.c: 84: unsigned int unita = temp%10;
+[e = _unita -> % _temp -> 10 `i `ui ]
+"85
+[v _decine `ui  1 a ]
+[; ;main.c: 85: unsigned int decine = (temp/10)%10;
+[e = _decine -> % / _temp -> 10 `i -> 10 `i `ui ]
+[; ;main.c: 86: PORTAbits.RA2 = 1;
+"86
+[e = . . _PORTAbits 0 2 -> -> 1 `i `uc ]
+[; ;main.c: 88: PORTC = SevenSeg[unita];
+"88
+[e = _PORTC *U + &U _SevenSeg * -> _unita `ux -> -> # *U &U _SevenSeg `ui `ux ]
+[; ;main.c: 89: PORTB = decine?SevenSeg[decine]:0;
+"89
+[e = _PORTB -> ? != _decine -> -> 0 `i `ui : -> *U + &U _SevenSeg * -> _decine `ux -> -> # *U &U _SevenSeg `ui `ux `i -> 0 `i `uc ]
+"90
+}
+[; ;main.c: 90: }
+[e $U 94  ]
+"91
+[e :U 93 ]
+[; ;main.c: 91: else PORTAbits.RA2 = 0;
+[e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
+[e :U 94 ]
+[; ;main.c: 92: _delay((unsigned long)((2300)*(4000000/4000.0)));
+"92
+[e ( __delay (1 -> * -> -> 2300 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"93
 }
 [e :U 90 ]
-"95
+"79
 [e $U 91  ]
 [e :U 92 ]
-[; ;main.c: 100: }
-[; ;main.c: 101: }
-"101
+[; ;main.c: 93: }
+[; ;main.c: 94: }
+"94
 [e :UE 89 ]
 }
-[a 1C 72 101 108 108 111 32 119 111 114 108 100 10 0 ]
-

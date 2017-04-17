@@ -7,6 +7,7 @@
       <itemPath>nRF24L01.h</itemPath>
       <itemPath>spi.h</itemPath>
       <itemPath>wl_module.h</itemPath>
+      <itemPath>dht.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -19,6 +20,7 @@
       <itemPath>rf_sample.c</itemPath>
       <itemPath>wl_module.c</itemPath>
       <itemPath>spi.c</itemPath>
+      <itemPath>dht.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -70,7 +72,7 @@
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
       <HI-TECH-COMP>
-        <property key="define-macros" value=""/>
+        <property key="define-macros" value="__PICCPRO__"/>
         <property key="extra-include-directories" value=""/>
         <property key="identifier-length" value="255"/>
         <property key="operation-mode" value="free"/>

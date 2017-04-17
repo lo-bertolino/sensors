@@ -929,39 +929,45 @@ extern void memcpyee(eeprom unsigned char *to, const unsigned char *from, unsign
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
-# 16 "spi.h"
-extern void spi_init(void);
-extern void spi_transfer_sync(unsigned char* dataout, unsigned char* datain, unsigned int length);
-extern void spi_transmit_sync(unsigned char* data, unsigned int length);
-extern unsigned char spi_fast_shift(unsigned char data);
+# 11 "dht.h"
+unsigned char dht_get(int * temp, int * RH);
 
-# 16 "main.c"
-asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFD & 0xFFFB & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF");
+# 21 "main.c"
+asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFD & 0xFFFB & 0xFFFF & 0xFFFF & 0xFFFF & 0xFF7F & 0xFFFF & 0xFFFF");
 
 
 
 
 void Init(){
 
-TRISA = 0;
+TRISA = 4;
 TRISB = 0;
 TRISC = 0;
 
-spi_init();
-
-# 38
+# 45
 }
 
-# 91
+# 73
 void main (){
 Init();
-char *tmp;
-*tmp = "Hello world\n";
+unsigned char SevenSeg[] = {0b10111111, 0b00000110, 0b11011011, 0b11001111,
+0b01100110, 0b11101101, 0b11111100, 0b00000111,
+0b11111111, 0b01100111};
+int temp = 0, umid = 0;
 while(1){
-PORTCbits.RC0=0;
-spi_transfer_sync(tmp, tmp, 13);
-PORTCbits.RC0=0;
-_delay((unsigned long)((1000)*(4000000/4000.0)));
+
+if(dht_get(&temp, &umid)==1){
+
+
+unsigned int unita = temp%10;
+unsigned int decine = (temp/10)%10;
+PORTAbits.RA2 = 1;
+
+PORTC = SevenSeg[unita];
+PORTB = decine?SevenSeg[decine]:0;
+}
+else PORTAbits.RA2 = 0;
+_delay((unsigned long)((2300)*(4000000/4000.0)));
 }
 }
 

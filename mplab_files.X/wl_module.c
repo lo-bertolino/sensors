@@ -28,7 +28,7 @@
 
 
  */
-#include <htc.h>
+/*#include <htc.h>
 #include "wl_module.h"
 #include "nRF24L01.h"
 #include "spi.h"
@@ -47,38 +47,38 @@ volatile unsigned char PTX;
 // Should be called in the early initializing phase at startup.
 void wl_module_init(void){
 
-    // set up INT2
+	// set up INT2
 	ANSELBbits.ANSB2 = 0; // digital input buffer enabled
-    TRISBbits.TRISB2 = 1; // RB2 as input
-    INTCON2bits.INTEDG2 = 0; // trigger interrupt on falling edge
-    INTCON3bits.INT2IE = 1; // enable INT2 interrupt
+	TRISBbits.TRISB2 = 1; // RB2 as input
+	INTCON2bits.INTEDG2 = 0; // trigger interrupt on falling edge
+	INTCON3bits.INT2IE = 1; // enable INT2 interrupt
 
-    // Initialize spi module
-    spi_init();
+	// Initialize spi module
+	spi_init();
 }
 
 // Sets the important registers in the wl-module and powers the module
 // in receiving mode
 void wl_module_config(void){
-    // Set RF channel
-    wl_module_config_register(RF_CH,wl_module_CH);
+	// Set RF channel
+	wl_module_config_register(RF_CH,wl_module_CH);
 	// Set data speed & Output Power configured in wl_module.h
 	wl_module_config_register(RF_SETUP,wl_module_RF_SETUP);
 	// Set length of incoming payload
-    wl_module_config_register(RX_PW_P0, wl_module_PAYLOAD);
+	wl_module_config_register(RX_PW_P0, wl_module_PAYLOAD);
 
-    // Start receiver
-    PTX = 0;        // Start in receiving mode
-    RX_POWERUP;     // Power up in receiving mode
-    wl_module_CE_hi;     // Listening for pakets
+	// Start receiver
+	PTX = 0;        // Start in receiving mode
+	RX_POWERUP;     // Power up in receiving mode
+	wl_module_CE_hi;     // Listening for pakets
 }
 
 // Sets the important registers in the wl-module and powers the module
 // in receiving mode
 extern void wl_module_rx_config(void){
 	unsigned char data[5];
-    // Set RF channel
-    wl_module_config_register(RF_CH,wl_module_CH);
+	// Set RF channel
+	wl_module_config_register(RF_CH,wl_module_CH);
 	// Set data speed & Output Power configured in wl_module.h
 	wl_module_config_register(RF_SETUP,wl_module_RF_SETUP);
 	//Enable all RX Data-Pipes
@@ -98,8 +98,8 @@ extern void wl_module_rx_config(void){
 	wl_module_set_rx_addr(data, 1, 4);
 	data[0]=RX_ADDR_P5_DEFAULT_VAL;
 	wl_module_set_rx_addr(data, 1, 5);
-    // Set length of incoming payload
-    wl_module_config_register(RX_PW_P0, wl_module_PAYLOAD);
+	// Set length of incoming payload
+	wl_module_config_register(RX_PW_P0, wl_module_PAYLOAD);
 	wl_module_config_register(RX_PW_P1, wl_module_PAYLOAD);
 	wl_module_config_register(RX_PW_P2, wl_module_PAYLOAD);
 	wl_module_config_register(RX_PW_P3, wl_module_PAYLOAD);
@@ -107,10 +107,10 @@ extern void wl_module_rx_config(void){
 	wl_module_config_register(RX_PW_P5, wl_module_PAYLOAD);
 
 
-    // Start receiver
-    PTX = 0;        // Start in receiving mode
-    RX_POWERUP;     // Power up in receiving mode
-    wl_module_CE_hi;     // Listening for pakets
+	// Start receiver
+	PTX = 0;        // Start in receiving mode
+	RX_POWERUP;     // Power up in receiving mode
+	wl_module_CE_hi;     // Listening for pakets
 }
 
 // Sets the wl-module as one of the six sender. Define for every sender a unique Number (wl_module_TX_NR_x)
@@ -120,14 +120,14 @@ extern void wl_module_rx_config(void){
 extern void wl_module_tx_config(unsigned char tx_nr){
 	unsigned char tx_addr[5];
 
-    // Set RF channel
-    wl_module_config_register(RF_CH,wl_module_CH);
+	// Set RF channel
+	wl_module_config_register(RF_CH,wl_module_CH);
 	// Set data speed & Output Power configured in wl_module.h
 	wl_module_config_register(RF_SETUP,wl_module_RF_SETUP);
 	//Config the CONFIG Register (Mask IRQ, CRC, etc)
 	wl_module_config_register(CONFIG0, wl_module_CONFIG);
-    // Set length of incoming payload
-    //wl_module_config_register(RX_PW_P0, wl_module_PAYLOAD);
+	// Set length of incoming payload
+	//wl_module_config_register(RX_PW_P0, wl_module_PAYLOAD);
 
 	wl_module_config_register(SETUP_RETR,(SETUP_RETR_ARD_750 | SETUP_RETR_ARC_15));
 
@@ -173,11 +173,11 @@ extern void wl_module_tx_config(unsigned char tx_nr){
 	PTX =0;
 	TX_POWERUP;
 	/*
-    // Start receiver
-    PTX = 0;        // Start in receiving mode
-    RX_POWERUP;     // Power up in receiving mode
-    wl_module_CE_hi;     // Listening for pakets
-	*/
+	// Start receiver
+	PTX = 0;        // Start in receiving mode
+	RX_POWERUP;     // Power up in receiving mode
+	wl_module_CE_hi     // Listening for pakets
+	//endcomment
 }
 
 //sets the TX address in the TX_ADDR register
@@ -281,25 +281,25 @@ extern unsigned char wl_module_get_rx_pipe_from_status(unsigned char status){
 
 // Sets the receiving address
 void wl_module_set_RADDR(unsigned char * adr){
-    wl_module_CE_lo;
-    wl_module_write_register(RX_ADDR_P0,adr,5);
-    wl_module_CE_hi;
+	wl_module_CE_lo;
+	wl_module_write_register(RX_ADDR_P0,adr,5);
+	wl_module_CE_hi;
 }
 
 // Sets the transmitting address
 void wl_module_set_TADDR(unsigned char * adr){
-    wl_module_write_register(TX_ADDR, adr,5);
+	wl_module_write_register(TX_ADDR, adr,5);
 }
 
 // Checks if data is available for reading
 extern unsigned char wl_module_data_ready(void){
-    if (PTX) return 0;
-    unsigned char status;
+	if (PTX) return 0;
+	unsigned char status;
 			// Read wl_module status
-    wl_module_CSN_lo;                                // Pull down chip select
-    status = spi_fast_shift(NOOP);               // Read status register
-    wl_module_CSN_hi;                                // Pull up chip select
-    return status & (1<<RX_DR);
+	wl_module_CSN_lo;                                // Pull down chip select
+	status = spi_fast_shift(NOOP);               // Read status register
+	wl_module_CSN_hi;                                // Pull up chip select
+	return status & (1<<RX_DR);
 }
 
 //returns true if TX_EMPTY bit in FIFO_STATUS register is set, false otherwise
@@ -366,60 +366,61 @@ return status;
 // Reads wl_module_PAYLOAD bytes into data array
 extern unsigned char wl_module_get_data(unsigned char * data){
 	unsigned char status;
-    wl_module_CSN_lo;                               // Pull down chip select
-    status = spi_fast_shift( R_RX_PAYLOAD );            // Send cmd to read rx payload
-    spi_transfer_sync(data,data,wl_module_PAYLOAD); // Read payload
-    wl_module_CSN_hi;                               // Pull up chip select
-    wl_module_config_register(STATUS,(1<<RX_DR));   // Reset status register
+	wl_module_CSN_lo;                               // Pull down chip select
+	status = spi_fast_shift( R_RX_PAYLOAD );            // Send cmd to read rx payload
+	spi_transfer_sync(data,data,wl_module_PAYLOAD); // Read payload
+	wl_module_CSN_hi;                               // Pull up chip select
+	wl_module_config_register(STATUS,(1<<RX_DR));   // Reset status register
 	return status;
 }
 
 // Clocks only one byte into the given wl-module register
 void wl_module_config_register(unsigned char reg, unsigned char value){
-    wl_module_CSN_lo;
-    spi_fast_shift(W_REGISTER | (REGISTER_MASK & reg));
-    spi_fast_shift(value);
-    wl_module_CSN_hi;
+	wl_module_CSN_lo;
+	spi_fast_shift(W_REGISTER | (REGISTER_MASK & reg));
+	spi_fast_shift(value);
+	wl_module_CSN_hi;
 }
 
 // Reads an array of bytes from the given start position in the wl-module registers.
 void wl_module_read_register(unsigned char reg, unsigned char * value, unsigned char len){
-    wl_module_CSN_lo;
-    spi_fast_shift(R_REGISTER | (REGISTER_MASK & reg));
-    spi_transfer_sync(value,value,len);
-    wl_module_CSN_hi;
+	wl_module_CSN_lo;
+	spi_fast_shift(R_REGISTER | (REGISTER_MASK & reg));
+	spi_transfer_sync(value,value,len);
+	wl_module_CSN_hi;
 }
 
 
 // Writes an array of bytes into inte the wl-module registers.
 void wl_module_write_register(unsigned char reg, unsigned char * value, unsigned char len){
-    wl_module_CSN_lo;
-    spi_fast_shift(W_REGISTER | (REGISTER_MASK & reg));
-    spi_transmit_sync(value,len);
-    wl_module_CSN_hi;
+	wl_module_CSN_lo;
+	spi_fast_shift(W_REGISTER | (REGISTER_MASK & reg));
+	spi_transmit_sync(value,len);
+	wl_module_CSN_hi;
 }
 
 
 // Sends a data package to the default address. Be sure to send the correct
 // amount of bytes as configured as payload on the receiver.
 void wl_module_send(unsigned char * value, unsigned char len){
-    while (PTX) {}                  // Wait until last paket is send
+	while (PTX) {}                  // Wait until last paket is send
 	wl_module_CE_lo;
 
-    PTX = 1;                        // Set to transmitter mode
-    TX_POWERUP;                     // Power up
+	PTX = 1;                        // Set to transmitter mode
+	TX_POWERUP;                     // Power up
 
-    wl_module_CSN_lo;                    // Pull down chip select
-    spi_fast_shift( FLUSH_TX );     // Write cmd to flush tx fifo
-    wl_module_CSN_hi;                    // Pull up chip select
+	wl_module_CSN_lo;                    // Pull down chip select
+	spi_fast_shift( FLUSH_TX );     // Write cmd to flush tx fifo
+	wl_module_CSN_hi;                    // Pull up chip select
 
-    wl_module_CSN_lo;                    // Pull down chip select
-    spi_fast_shift( W_TX_PAYLOAD ); // Write cmd to write payload
-    spi_transmit_sync(value,len);   // Write payload
-    wl_module_CSN_hi;                    // Pull up chip select
+	wl_module_CSN_lo;                    // Pull down chip select
+	spi_fast_shift( W_TX_PAYLOAD ); // Write cmd to write payload
+	spi_transmit_sync(value,len);   // Write payload
+	wl_module_CSN_hi;                    // Pull up chip select
 
-    wl_module_CE_hi;                     // Start transmission
-    __delay_us(10);						// Grünes Modul funktioniert nicht mit 10µs delay
-    wl_module_CE_lo;
+	wl_module_CE_hi;                     // Start transmission
+	__delay_us(10);						// Grünes Modul funktioniert nicht mit 10µs delay
+	wl_module_CE_lo;
 }
 #endif //TEST_SPI
+ */
