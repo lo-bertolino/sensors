@@ -934,11 +934,58 @@ unsigned char dht_get(int * temp, int * RH);
 
 # 5 "dht.c"
 unsigned char dht_get (int * tmp, int * RH){
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+char dati[5], i, j;
+
+
+
+TIO = 0;
+
+IO = 1;
+_delay((unsigned long)((10)*(4000000/4000.0)));
+IO = 0;
+_delay((unsigned long)((1)*(4000000/4000.0)));
+IO = 1;
+_delay((unsigned long)((30)*(4000000/4000000.0)));
+
+TIO = 1;
+
+
+_delay((unsigned long)((40)*(4000000/4000000.0)));
+if(IO) return 2;
+_delay((unsigned long)((80)*(4000000/4000000.0)));
+if(IO = 0) return 3;
+_delay((unsigned long)((40)*(4000000/4000000.0)));
+
+for(i = 0; i<5; i++){
+dati[i] = 0;
+for(j = 0; j<8; j++){
+while(!IO);
+_delay((unsigned long)((10)*(4000000/4000000.0)));
+if(IO) return 4;
+_delay((unsigned long)((20)*(4000000/4000000.0)));
+if(IO){
+_delay((unsigned long)((30)*(4000000/4000000.0)));
+if(!IO)return 4;
+dati[i] |= 1<<(7-j);
+while(IO);
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 char dati[5];
 
 
 TRISAbits.TRISA1 = 0;
 PORTAbits.RA1 = 0;
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 _delay((unsigned long)((800)*(4000000/4000000.0)));
 PORTAbits.RA1 = 1;
 TRISAbits.TRISA1 = 1;
@@ -947,6 +994,25 @@ TRISAbits.TRISA1 = 1;
 _delay((unsigned long)((60)*(4000000/4000000.0)));
 if(PORTAbits.RA1) return 0;
 _delay((unsigned long)((120)*(4000000/4000000.0)));
+=======
+=======
+>>>>>>> Stashed changes
+_delay((unsigned long)((1)*(4000000/4000.0)));
+PORTAbits.RA1 = 1;
+_delay((unsigned long)((30)*(4000000/4000000.0)));
+PORTAbits.RA1 = 0;
+TRISAbits.TRISA1 = 1;
+
+
+_delay((unsigned long)((40)*(4000000/4000000.0)));
+if(PORTAbits.RA1==1) return 1;
+_delay((unsigned long)((80)*(4000000/4000000.0)));
+if(PORTAbits.RA1==0) return 2;
+_delay((unsigned long)((40)*(4000000/4000000.0)));
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
 for(char i = 0; i/5; i++){
 dati[i] = 0;
@@ -956,13 +1022,44 @@ _delay((unsigned long)((45)*(4000000/4000000.0)));
 if(PORTAbits.RA1){
 dati [i] |= 1<<(7-j);
 while(PORTAbits.RA1);
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 }
 }
 }
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 if(dati[4]!=(dati[1]+dati[0]+dati[3]+dati[2])){
 return 0;
 }
 *tmp = (int) ((dati[2]<<8)|dati[3]);
 *RH = (int) ((dati[0]<<8)|dati[1]);
 return 1;
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+if(dati[4]!=(dati[1]+dati[0]+dati[3]+dati[2])){
+return 1;
+}
+*tmp = (int) ((dati[2]<<8)|dati[3]);
+*RH = (int) ((dati[0]<<8)|dati[1]);
+return 0;
+=======
+if(dati[4]!=(dati[1]+dati[0]+dati[3]+dati[2])){
+return 4;
+}
+*tmp = (int) ((dati[2]<<8)|dati[3]);
+*RH = (int) ((dati[0]<<8)|dati[1]);
+return 0;
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 }

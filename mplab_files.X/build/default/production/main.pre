@@ -955,18 +955,52 @@ unsigned char SevenSeg[] = {0b10111111, 0b00000110, 0b11011011, 0b11001111,
 0b11111111, 0b01100111};
 int temp = 0, umid = 0;
 while(1){
+<<<<<<< Updated upstream
 
 if(dht_get(&temp, &umid)==1){
+=======
+int res = dht_get(&temp, &umid);
+if(res==0){
+<<<<<<< Updated upstream
+
+
+temp /= 10;
+unsigned int unita = temp%10;
+unsigned int decine = (temp/10)%10;
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
 
 unsigned int unita = temp%10;
 unsigned int decine = (temp/10)%10;
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 PORTAbits.RA2 = 1;
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 PORTC = SevenSeg[unita];
 PORTB = decine?SevenSeg[decine]:0;
 }
+<<<<<<< Updated upstream
 else PORTAbits.RA2 = 0;
+=======
+else{
+<<<<<<< Updated upstream
+PORTB = SevenSeg[10];
+PORTC = SevenSeg [res];
+=======
+PORTB = SevenSeg[10];
+PORTC = SevenSeg[res];
+>>>>>>> Stashed changes
+}
+>>>>>>> Stashed changes
 _delay((unsigned long)((2300)*(4000000/4000.0)));
 }
 }

@@ -28,12 +28,12 @@
 
 
  */
-/*#include <htc.h>
+#include <htc.h>
 #include "wl_module.h"
 #include "nRF24L01.h"
 #include "spi.h"
 
-#define TEST_SPI
+//#define TEST_SPI
 #ifndef TEST_SPI
 // Defines for setting the wl_module registers for transmitting or receiving mode
 #    define TX_POWERUP wl_module_config_register(CONFIG0, wl_module_CONFIG | ( (1<<PWR_UP) | (0<<PRIM_RX) ) )
@@ -50,7 +50,7 @@ void wl_module_init(void){
 	// set up INT2
 	ANSELBbits.ANSB2 = 0; // digital input buffer enabled
 	TRISBbits.TRISB2 = 1; // RB2 as input
-	INTCON2bits.INTEDG2 = 0; // trigger interrupt on falling edge
+	INTCONbits.INTEDG = 0; // trigger interrupt on falling edge
 	INTCON3bits.INT2IE = 1; // enable INT2 interrupt
 
 	// Initialize spi module
@@ -177,7 +177,7 @@ extern void wl_module_tx_config(unsigned char tx_nr){
 	PTX = 0;        // Start in receiving mode
 	RX_POWERUP;     // Power up in receiving mode
 	wl_module_CE_hi     // Listening for pakets
-	//endcomment
+	 *///endcomment
 }
 
 //sets the TX address in the TX_ADDR register
@@ -423,4 +423,4 @@ void wl_module_send(unsigned char * value, unsigned char len){
 	wl_module_CE_lo;
 }
 #endif //TEST_SPI
- */
+//*/

@@ -77,18 +77,21 @@ void main (){
 								0b11111111, 0b01100111};
 	int temp = 0, umid = 0;
 	while(1){
-
-		if(dht_get(&temp, &umid)==1){
-		//temp++;
-		//if(temp>=100)temp = 0;
-		unsigned int unita = temp%10;
-		unsigned int decine = (temp/10)%10;
-			PORTAbits.RA2 = 1;
+		int res = dht_get(&temp, &umid);
+		if(res==0){
+			//temp++;
+			//if(temp>=100)temp = 0;
+			temp /= 10; //il risultato di dht_get e' 10 volte la temperatura reale (ha una cifra decimale)
+			unsigned int unita = temp%10;
+			unsigned int decine = (temp/10)%10;
 		//on-device output
 		PORTC = SevenSeg[unita];
 			PORTB = decine?SevenSeg[decine]:0;
 		}
-		else PORTAbits.RA2 = 0;
+		else{
+			PORTB = SevenSeg[10]; //err
+			PORTC = SevenSeg [res]; //0
+		}
 		__delay_ms(2300);
 	}
 }
