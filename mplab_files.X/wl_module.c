@@ -27,7 +27,7 @@
 	DEALINGS IN THE SOFTWARE.
 
 
- */
+
 #include <htc.h>
 #include "wl_module.h"
 #include "nRF24L01.h"
@@ -177,7 +177,7 @@ extern void wl_module_tx_config(unsigned char tx_nr){
 	PTX = 0;        // Start in receiving mode
 	RX_POWERUP;     // Power up in receiving mode
 	wl_module_CE_hi     // Listening for pakets
-	 *///endcomment
+	//endcomment
 }
 
 //sets the TX address in the TX_ADDR register
