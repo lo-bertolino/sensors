@@ -1,7 +1,7 @@
 
 #include <htc.h>
 #include "dht.h"
-#define _XTAL_FREQ 4000000
+#define _XTAL_FREQ 16000000
 
 unsigned char dht_get (int * tmp, int * RH){
 	char dati[5], i, j;

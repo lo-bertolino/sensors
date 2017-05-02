@@ -19,7 +19,7 @@
 #endif //SPI
 
 __CONFIG (FOSC_XT & WDTE_OFF & PWRTE_OFF & CP_OFF & BOREN_ON & LVP_OFF & CPD_OFF & WRT_ON);
-#define _XTAL_FREQ 4000000
+#define _XTAL_FREQ 16000000
 
 
 //inizializza uC
