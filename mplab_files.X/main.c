@@ -7,8 +7,8 @@
 #define TEST_DHT 1
 
 #include <htc.h>
-#include <pic16f876.h>
 //#include "spi.h"
+//#include <wl_module.h>
 #include "dht.h"
 
 #ifndef TEST_SPI
