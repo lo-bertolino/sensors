@@ -29,10 +29,10 @@
 
 */
 #define _XTAL_FREQ 16000000
-#include <xc.h>
-#include "wl_module.h"
-#include "nRF24L01.h"
-#include "spi.h"
+#include <htc.h>
+#include <wl_module.h>
+#include <nRF24L01.h>
+#include <spi.h>
 
 // Defines for setting the wl_module registers for transmitting or receiving mode
 #define TX_POWERUP wl_module_config_register(CONFIG, wl_module_CONFIG | ( (1<<PWR_UP) | (0<<PRIM_RX) ) )
