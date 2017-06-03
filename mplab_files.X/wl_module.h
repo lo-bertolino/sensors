@@ -1,38 +1,38 @@
 /*
-        Modifications by Elia Ritterbusch
-        http://eliaselectronics.com
+		Modifications by Elia Ritterbusch
+		http://eliaselectronics.com
 
-        Copyright (c) 2011 by Ernst Buchmann
+		Copyright (c) 2011 by Ernst Buchmann
 
 	Code based on the work of Stefan Engelke and Brennan Ball
 
-    Permission is hereby granted, free of charge, to any person
-    obtaining a copy of this software and associated documentation
-    files (the "Software"), to deal in the Software without
-    restriction, including without limitation the rights to use, copy,
-    modify, merge, publish, distribute, sublicense, and/or sell copies
-    of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
+	Permission is hereby granted, free of charge, to any person
+	obtaining a copy of this software and associated documentation
+	files (the "Software"), to deal in the Software without
+	restriction, including without limitation the rights to use, copy,
+	modify, merge, publish, distribute, sublicense, and/or sell copies
+	of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
 
-    The above copyright notice and this permission notice shall be
-    included in all copies or substantial portions of the Software.
+	The above copyright notice and this permission notice shall be
+	included in all copies or substantial portions of the Software.
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-    WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-    DEALINGS IN THE SOFTWARE.
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+	NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+	HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+	DEALINGS IN THE SOFTWARE.
 
 
-*/
+ */
 
 #ifndef _WL_MODULE_H_
 #define _WL_MODULE_H_
 
-#include <xc.h>
+#include <htc.h>
 #include "spi.h"
 
 //Externe Variable deklarieren
@@ -73,7 +73,7 @@ extern void wl_module_set_RADDR(unsigned char * adr);
 extern void wl_module_set_TADDR(unsigned char * adr);
 extern unsigned char wl_module_data_ready(void);
 //extern void wl_module_get_data(unsigned char * data);
-extern unsigned char wl_module_get_data(unsigned char * data);			//Gibt die Werte des STATUS-Registers zurück
+extern unsigned char wl_module_get_data(unsigned char * data); //Gibt die Werte des STATUS-Registers zurück
 
 //Public functions
 
@@ -89,14 +89,14 @@ extern void wl_module_rx_config(void);
 extern void wl_module_get_rx_addr(unsigned char * data, unsigned char rxpipenum, unsigned char len);
 extern unsigned char wl_module_get_rx_pipe(void);
 extern unsigned char wl_module_get_rx_pipe_from_status(unsigned char status);
-extern unsigned char wl_module_fifo_tx_empty(void);	//returns true if TX_EMPTY bit in FIFO_STATUS register is set, false otherwise
+extern unsigned char wl_module_fifo_tx_empty(void); //returns true if TX_EMPTY bit in FIFO_STATUS register is set, false otherwise
 extern unsigned char wl_module_fifo_rx_empty(void);
 extern unsigned char wl_module_get_rf_ch(void);
 extern unsigned char wl_module_get_rf_setup(void);
 extern unsigned char wl_module_get_plos_cnt(void);
 extern unsigned char wl_module_get_arc_cnt(void);
-extern void wl_module_set_as_tx(void);			//activate module with existing config
-extern void wl_module_power_down(void);			//powers down the module with existing config
+extern void wl_module_set_as_tx(void); //activate module with existing config
+extern void wl_module_power_down(void); //powers down the module with existing config
 
 // Public extended functions
 extern void wl_module_config_register(unsigned char reg, unsigned char value);

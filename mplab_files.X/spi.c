@@ -6,7 +6,7 @@
  *      To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
  */
 #include <htc.h>
-#include <spi.h>
+#include "spi.h"
 
 void spi_init(void){
     // disable MSSP
