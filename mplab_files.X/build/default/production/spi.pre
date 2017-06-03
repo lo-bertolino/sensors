@@ -4743,35 +4743,35 @@ extern void spi_transfer_sync(unsigned char* dataout, unsigned char* datain, uns
 extern void spi_transmit_sync(unsigned char* data, unsigned int length);
 extern unsigned char spi_fast_shift(unsigned char data);
 
-# 11 "spi.c"
+# 12 "spi.c"
 void spi_init(void){
 
-SSP1CON1bits.SSPEN = 0;
+SSPCON1bits.SSPEN = 0;
 
-TRISCbits.TRISC4 = 1;
-ANSELCbits.ANSC4 = 0;
+TRISBbits.TRISB0 = 1;
+
 
 TRISAbits.TRISA5 = 1;
 
 
-TRISCbits.TRISC5 = 0;
-TRISCbits.TRISC3 = 0;
+TRISCbits.TRISC7 = 0;
+TRISBbits.TRISB1 = 0;
 
 
-SSP1CON1bits.CKP = 0;
-SSP1STATbits.CKE = 1;
-SSP1STATbits.SMP = 1;
-SSP1CON1bits.SSPM = 0;
-SSP1CON1bits.SSPEN = 1;
+SSPCON1bits.CKP = 0;
+SSPSTATbits.CKE = 1;
+SSPSTATbits.SMP = 1;
+SSPCON1bits.SSPM = 0;
+SSPCON1bits.SSPEN = 1;
 }
 
 void spi_transmit_sync(unsigned char * data, unsigned int length){
 unsigned char tmp;
 while(length){
-SSP1BUF = *data;
-while( !PIR1bits.SSP1IF );
-PIR1bits.SSP1IF = 0;
-tmp = SSP1BUF;
+SSPBUF = *data;
+while( !PIR1bits.SSPIF );
+PIR1bits.SSPIF = 0;
+tmp = SSPBUF;
 length--;
 data++;
 }
@@ -4779,10 +4779,10 @@ data++;
 
 void spi_transfer_sync(unsigned char * dataout, unsigned char * datain, unsigned int length){
 while(length){
-SSP1BUF = *dataout;
-while( !PIR1bits.SSP1IF );
-PIR1bits.SSP1IF = 0;
-*datain = SSP1BUF;
+SSPBUF = *dataout;
+while(!PIR1bits.SSPIF);
+PIR1bits.SSPIF = 0;
+*datain = SSPBUF;
 length--;
 dataout++;
 datain++;
@@ -4790,8 +4790,8 @@ datain++;
 }
 
 unsigned char spi_fast_shift(unsigned char data){
-SSP1BUF = data;
-while( !PIR1bits.SSP1IF );
-PIR1bits.SSP1IF = 0;
-return SSP1BUF;
+SSPBUF = data;
+while(!PIR1bits.SSPIF);
+PIR1bits.SSPIF = 0;
+return SSPBUF;
 }

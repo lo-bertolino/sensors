@@ -5,9 +5,7 @@
  *      This work is licensed under the Creative Commons Attribution 3.0 Unported License.
  *      To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
  */
-/*
-#define _XTAL_FREQ 16000000UL
-#include <htc.h>
+/*#include <htc.h>
 #include <stdlib.h>
 #include "spi.h"
 #include "nRF24L01.h"
@@ -23,6 +21,7 @@
 #pragma config PWRTEN=ON        // Power up timer enabled
 #pragma config WDTEN=OFF        // WDT off
 #pragma config MCLRE=EXTMCLR    // external MCLR pin enabled
+#define _XTAL_FREQ 16000000
 
 #define MAX_STRLEN 14
 char received_string[MAX_STRLEN+1];
@@ -107,6 +106,4 @@ void interrupt ISR(void){
 		INTCON3bits.INT2IF = 0;
 	}
 }
-
-
  */

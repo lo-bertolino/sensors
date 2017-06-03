@@ -53,7 +53,7 @@ void wl_module_init(void)
     wl_module_CSN_hi;
 
     // set up INT2
-    ANSELBbits.ANSB2 = 0; // digital input buffer enabled
+	//    ANSELBbits.ANSB2 = 0; // digital input buffer enabled //come per spi.c
     TRISBbits.TRISB2 = 1; // RB2 as input
     INTCON2bits.INTEDG2 = 0; // trigger interrupt on falling edge
     INTCON3bits.INT2IE = 1; // enable INT2 interrupt

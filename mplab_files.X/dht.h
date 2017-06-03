@@ -1,8 +1,8 @@
 #ifndef DHT22
 #define DHT22
 
-void startSignal();
-char checkResponse();
+char beginDHT();
 char readDHT();
-char DHTHandler(short* RH, short* Temp);
+char DHTHandler(unsigned short* RH, short* Temp);
+
 #endif
