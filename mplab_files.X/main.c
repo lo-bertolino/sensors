@@ -15,19 +15,21 @@
 #pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF
 #pragma config EBTRB = OFF
 
-// #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
-
 #include <htc.h>
+#include <stdlib.h>
+#include "spi.h"
+#include "nRF24L01.h"
+#include "wl_module.h"
 #define _XTAL_FREQ 16000000
 #define DHTPin PORTCbits.RC0
 #define DHTPinDir TRISCbits.TRISC0
 
 unsigned char humid, res, time_out;
 char temp;
+unsigned char payload[wl_module_PAYLOAD];
 
 //dht
-
 char readDHT (){
 	unsigned char i, k, dat = 0; // k is used to count 1 bit reading duration
 	if(!time_out) return 0;
@@ -100,8 +102,11 @@ void DHTHandler (){
 }
 
 //inizializza uC
-void Init(){
+
+void Init (){
+	//debug
 	TRISB = 0;
+	//nRF setup
 	wl_module_init();
 	wl_module_tx_config(0); //wl_module_TX_NR_0
 	//interrupts
@@ -111,7 +116,8 @@ void Init(){
 
 int main(){
 	Init();
-    while(1){
+	while(1){
+		wl_module_send(payload, wl_module_PAYLOAD);
 		DHTHandler();
 		if(res=='s') PORTB = temp;
 		else if(res=='r') PORTB = 0xf1;
