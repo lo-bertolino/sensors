@@ -432,7 +432,7 @@ extern unsigned char wl_module_get_data(unsigned char * data)
     status = spi_fast_shift( R_RX_PAYLOAD );            // Send cmd to read rx payload
     spi_transfer_sync(data,data,wl_module_PAYLOAD); // Read payload
     wl_module_CSN_hi;                               // Pull up chip select
-    wl_module_config_register(STATUS,(1<<RX_DR));   // Reset status register
+    wl_module_config_register(STAT,(1<<RX_DR));   // Reset status register
 	return status;
 }
 

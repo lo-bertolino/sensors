@@ -3,53 +3,30 @@
 
 #define _XTAL_FREQ 16000000
 // Connection pin between PIC18F4550 and DHT22 sensor
-#define Data_Pin = PORTBbits.RB0                       // Pin mapped to PORTB.0
-#define Data_Pin_Direction = TRISBbits.TRISB0             // Pin direction mapped to TRISB.0
-
-char message1[] = "Temp = 00.0 C";
-char message2[] = "RH   = 00.0 %";
-
-short Time_out;
-
-char beginDHT (){
-	TRISBbits.TRISB0 = 0; // Configure connection pin as output
-	PORTBbits.RB0 = 0; // Connection pin output low
-	__delay_ms(25);
-	PORTBbits.RB0 = 1; // Connection pin output high
-	__delay_us(30);
-	TRISBbits.TRISB0 = 1; // Configure connection pin as input
-	__delay_us(40);
-	if(!PORTBbits.RB0){ // Read and test if connection pin is low
-		__delay_us(80);
-		if(PORTBbits.RB0){ // Read and test if connection pin is high
-			__delay_us(50);
-			return 1;
-		}
-	}
-	return 0;
-}
+#define DPin PORTCbits.RC0            // Pin mapped to PORTB.0
+#define DPinDir TRISCbits.TRISC0      // Pin direction mapped to TRISB.0
 
 char readDHT (){
 	unsigned char i, k, dat = 0; // k is used to count 1 bit reading duration
-	if(!Time_out) return 0;
+	if(!time_out) return 0;
 	for(i = 0; i<8; i++){
 		k=0;
-		while(!PORTBbits.RB0){ // Wait until pin goes high
+		while(!DPin){ // Wait until pin goes high
 			k++;
 			if(k>100){
-				Time_out = 0;
+				time_out = 0;
 				return 0;
 			}
 			__delay_us(1);
 		}
 		__delay_us(30);
-		if(!PORTBbits.RB0) dat &= 0<<(7-i); // Clear bit (7 - i)
+		if(!DPin) dat &= 0<<(7-i); // Clear bit (7 - i)
 		else{
 			dat |= 1<<(7-i); // Set bit (7 - i)
-			while(PORTBbits.RB0){ // Wait until pin goes low
+			while(DPin){ // Wait until pin goes low
 				k++;
 				if(k>100){
-					Time_out = 0;
+					time_out = 0;
 					return 0;
 				}
 				__delay_us(1);
@@ -59,26 +36,43 @@ char readDHT (){
 	return dat;
 }
 
-char DHTHandler (unsigned short* RH, short* Tempf){
-	unsigned short Temp;
-	char t_byte1, t_byte2, rh_byte1, rh_byte2, checkSum;
-	Time_out = 1;
-	if(!beginDHT()) return 'r'; // If there is response from sensor
-	rh_byte1 = readDHT(); // read RH byte1
-	rh_byte2 = readDHT(); // read RH byte2
-	t_byte1 = readDHT(); // read T byte1
-	t_byte2 = readDHT(); // read T byte2
-	checkSum = readDHT(); // read checksum
-	if(Time_out) return 't';
-	if(checkSum!=((rh_byte1+rh_byte2+t_byte1+t_byte2) & 0xFF)) return 'c';
-	*RH = rh_byte1;
-	*RH = (*RH<<8)|rh_byte2;
-	Temp = t_byte1;
-	Temp = (Temp<<8)|t_byte2;
-
-	if(Temp>0X8000){
-		*Tempf = -(Temp&0X7FFF);
-		//make negative
+char beginDHT (){
+	DPinDir = 0; // Configure connection pin as output
+	DPin &= 0; // Connection pin output low
+	__delay_ms(25);
+	DPin = 1; // Connection pin output high
+	__delay_us(30);
+	DPinDir = 1; // Configure connection pin as input
+	__delay_us(40);
+	if(!DPin){ // Read and test if connection pin is low
+		__delay_us(80);
+		if(DPin){ // Read and test if connection pin is high
+			__delay_us(50);
+			return 1;
+		}
 	}
-	return 's';
+	return 0;
+}
+
+void DHTHandler (){
+	unsigned char t_byte1, t_byte2, rh_byte1, rh_byte2, checkSum;
+	time_out = 1;
+	if(!beginDHT())
+		res = 'r'; // errore risposta assente
+	rh_byte1 = readDHT();
+	rh_byte2 = readDHT();
+	t_byte1 = readDHT();
+	t_byte2 = readDHT();
+	checkSum = readDHT();
+	if(time_out)
+		res = 't'; //errore di timeout
+	if(checkSum!=((rh_byte1+rh_byte2+t_byte1+t_byte2) & 0xFF))
+		res = 'c'; //errore di checksum
+	humid = rh_byte1;
+	humid = (humid<<8)|rh_byte2;
+	temp = t_byte1;
+	temp = (temp<<8)|t_byte2;
+	if(temp>0X80)
+		temp -= temp&0X7F; //rendi  negativo
+	res = 's'; //successo
 }
