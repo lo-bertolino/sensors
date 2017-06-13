@@ -5,7 +5,9 @@
  *      This work is licensed under the Creative Commons Attribution 3.0 Unported License.
  *      To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
  */
-/*#include <htc.h>
+
+//*
+#include <htc.h>
 #include <stdlib.h>
 #include "spi.h"
 #include "nRF24L01.h"
@@ -105,5 +107,4 @@ void interrupt ISR(void){
 		// reset INT2 flag
 		INTCON3bits.INT2IF = 0;
 	}
-}
- */
+}//*/

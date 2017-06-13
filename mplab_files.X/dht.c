@@ -1,4 +1,4 @@
-#include <htc.h>
+/*#include <htc.h>
 #include "dht.h"
 
 #define _XTAL_FREQ 16000000
@@ -75,4 +75,27 @@ void DHTHandler (){
 	if(temp>0X80)
 		temp -= temp&0X7F; //rendi  negativo
 	res = 's'; //successo
+}*/
+
+
+byte addresses[][6] = {"1Node", "2Node"}; // Radio pipe addresses for the 2 nodes to communicate.
+
+radio.begin ();
+radio.enableAckPayload (); // Allow optional ack payloads
+radio.enableDynamicPayloads (); // Ack payloads are dynamic payloads
+radio.openWritingPipe (addresses[0]);
+radio.openReadingPipe (1, addresses[1]);
+radio.startListening (); // Start listening
+
+//loop
+
+byte pipeNo;
+while(radio.available(&pipeNo)){ // Read all available payloads
+	byte gotByte;
+	radio.read(&gotByte, 1);
+	temperature[0] = dht.getTemperature();
+	temperature[1] = dht.getHumidity();
+	radio.writeAckPayload(pipeNo, temperature, sizeof (temperature));
 }
+dht.readSensor ();
+delay (2000);

@@ -1,103 +1,81 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"3425 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f4550.h
-[v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
-"3623
-[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"3845
-[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
-"6664
-[v _ADCON0 `Vuc ~T0 @X0 0 e@4034 ]
-"6579
-[v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
-[p mainexit ]
-"6 dht.h
-[v _DHTHandler `(v ~T0 @X0 0 ef ]
-"2451 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f4550.h
-[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
+"3634 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f4550.h
+[s S143 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S143 . TRISB0 TRISB1 TRISB2 TRISB3 TRISB4 TRISB5 TRISB6 TRISB7 ]
+"3644
+[s S144 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S144 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"3633
+[u S142 `S143 1 `S144 1 ]
+[n S142 . . . ]
+"3655
+[v _TRISBbits `VS142 ~T0 @X0 0 e@3987 ]
+"3077
+[s S125 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S125 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
+"3087
+[s S126 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S126 . LB0 LB1 LB2 LB3 LB4 LB5 LB6 LB7 ]
+"3076
+[u S124 `S125 1 `S126 1 ]
+[n S124 . . . ]
+"3098
+[v _LATBbits `VS124 ~T0 @X0 0 e@3978 ]
+"8509
+[s S351 :7 `uc 1 :1 `uc 1 ]
+[n S351 . . NOT_RBPU ]
+"8513
+[s S352 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S352 . RBIP . TMR0IP . INTEDG2 INTEDG1 INTEDG0 nRBPU ]
+"8523
+[s S353 :2 `uc 1 :1 `uc 1 :4 `uc 1 :1 `uc 1 ]
+[n S353 . . T0IP . RBPU ]
+"8508
+[u S350 `S351 1 `S352 1 `S353 1 ]
+[n S350 . . . . ]
+"8530
+[v _INTCON2bits `VS350 ~T0 @X0 0 e@4081 ]
+"8417
+[s S348 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S348 . INT1IF INT2IF . INT1IE INT2IE . INT1IP INT2IP ]
+"8427
+[s S349 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S349 . INT1F INT2F . INT1E INT2E . INT1P INT2P ]
+"8416
+[u S347 `S348 1 `S349 1 ]
+[n S347 . . . ]
+"8438
+[v _INTCON3bits `VS347 ~T0 @X0 0 e@4080 ]
+"11 spi.h
+[v _spi_init `(v ~T0 @X0 0 ef ]
+"102 wl_module.h
+[v _wl_module_config_register `(v ~T0 @X0 0 ef2`uc`uc ]
+"86
+[v _wl_module_set_rx_addr `(v ~T0 @X0 0 ef3`*uc`uc`uc ]
+"73
+[v _wl_module_set_TADDR `(v ~T0 @X0 0 ef1`*uc ]
+"72
+[v _wl_module_set_RADDR `(v ~T0 @X0 0 ef1`*uc ]
+"104
+[v _wl_module_write_register `(v ~T0 @X0 0 ef3`uc`*uc`uc ]
+"103
+[v _wl_module_read_register `(v ~T0 @X0 0 ef3`uc`*uc`uc ]
+"91
+[v _wl_module_get_rx_pipe_from_status `(uc ~T0 @X0 0 ef1`uc ]
+"80
+[v _wl_module_get_status `(uc ~T0 @X0 0 ef ]
+"14 spi.h
+[v _spi_fast_shift `(uc ~T0 @X0 0 ef1`uc ]
+"82 wl_module.h
+[v _wl_module_get_one_byte `(uc ~T0 @X0 0 ef1`uc ]
+"12 spi.h
+[v _spi_transfer_sync `(v ~T0 @X0 0 ef3`*uc`*uc`ui ]
+"13
+[v _spi_transmit_sync `(v ~T0 @X0 0 ef2`*uc`ui ]
 [v F3783 `(v ~T0 @X0 1 tf1`ul ]
 "164 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18.h
 [v __delay `JF3783 ~T0 @X0 0 e ]
 [p i __delay ]
-"2567 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f4550.h
-[s S106 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S106 . RC0 RC1 RC2 . RC4 RC5 RC6 RC7 ]
-"2577
-[s S107 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S107 . T1OSO T1OSI CCP1 . TX RX ]
-"2585
-[s S108 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S108 . T13CKI . P1A . CK DT ]
-"2593
-[s S109 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S109 . . CCP2 PA1 ]
-"2598
-[s S110 :1 `uc 1 :1 `uc 1 ]
-[n S110 . . PA2 ]
-"2566
-[u S105 `S106 1 `S107 1 `S108 1 `S109 1 `S110 1 ]
-[n S105 . . . . . . ]
-"2603
-[v _PORTCbits `VS105 ~T0 @X0 0 e@3970 ]
-"3856
-[s S149 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S149 . TRISC0 TRISC1 TRISC2 . TRISC6 TRISC7 ]
-"3864
-[s S150 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S150 . RC0 RC1 RC2 . RC6 RC7 ]
-"3855
-[u S148 `S149 1 `S150 1 ]
-[n S148 . . . ]
-"3873
-[v _TRISCbits `VS148 ~T0 @X0 0 e@3988 ]
-"6 main.c
-[p x PLLDIV=4 ]
-[p x CPUDIV=OSC1_PLL2 ]
-[p x USBDIV=1 ]
-[p x FOSC=HS ]
-[p x FCMEN=OFF ]
-[p x IESO=OFF ]
-[p x PWRT=OFF ]
-"7
-[p x BOR=ON ]
-[p x BORV=3 ]
-[p x VREGEN=OFF ]
-"8
-[p x WDT=OFF ]
-[p x WDTPS=32768 ]
-"9
-[p x CCP2MX=ON ]
-[p x PBADEN=OFF ]
-[p x LPT1OSC=OFF ]
-[p x MCLRE=ON ]
-"10
-[p x STVREN=ON ]
-[p x LVP=ON ]
-[p x ICPRT=OFF ]
-[p x XINST=OFF ]
-"11
-[p x CP0=OFF ]
-[p x CP1=OFF ]
-[p x CP2=OFF ]
-[p x CP3=OFF ]
-"12
-[p x CPB=OFF ]
-[p x CPD=OFF ]
-"13
-[p x WRT0=OFF ]
-[p x WRT1=OFF ]
-[p x WRT2=OFF ]
-[p x WRT3=OFF ]
-"14
-[p x WRTC=OFF ]
-[p x WRTB=OFF ]
-[p x WRTD=OFF ]
-"15
-[p x EBTR0=OFF ]
-[p x EBTR1=OFF ]
-[p x EBTR2=OFF ]
-[p x EBTR3=OFF ]
-"16
-[p x EBTRB=OFF ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3608,366 +3586,1052 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;dht.h: 4: char beginDHT();
-[; ;dht.h: 5: char readDHT();
-[; ;dht.h: 6: void DHTHandler();
-"26 main.c
-[v _humid `uc ~T0 @X0 1 e ]
-[v _res `uc ~T0 @X0 1 e ]
-[v _time_out `uc ~T0 @X0 1 e ]
-[; ;main.c: 26: unsigned char humid, res, time_out;
-"27
-[v _temp `uc ~T0 @X0 1 e ]
-[; ;main.c: 27: char temp;
-"29
-[v _Init `(v ~T0 @X0 1 ef ]
+[; ;spi.h: 11: extern void spi_init(void);
+[; ;spi.h: 12: extern void spi_transfer_sync(unsigned char* dataout, unsigned char* datain, unsigned int length);
+[; ;spi.h: 13: extern void spi_transmit_sync(unsigned char* data, unsigned int length);
+[; ;spi.h: 14: extern unsigned char spi_fast_shift(unsigned char data);
+[; ;wl_module.h: 39: extern volatile unsigned char PTX;
+[; ;wl_module.h: 69: extern void wl_module_init(void);
+[; ;wl_module.h: 70: extern void wl_module_config(void);
+[; ;wl_module.h: 71: extern void wl_module_send(unsigned char * value, unsigned char len);
+[; ;wl_module.h: 72: extern void wl_module_set_RADDR(unsigned char * adr);
+[; ;wl_module.h: 73: extern void wl_module_set_TADDR(unsigned char * adr);
+[; ;wl_module.h: 74: extern unsigned char wl_module_data_ready(void);
+[; ;wl_module.h: 76: extern unsigned char wl_module_get_data(unsigned char * data);
+[; ;wl_module.h: 80: extern unsigned char wl_module_get_status(void);
+[; ;wl_module.h: 81: extern unsigned char wl_module_get_rx_pipe_reading_status(void);
+[; ;wl_module.h: 82: extern unsigned char wl_module_get_one_byte(unsigned char command);
+[; ;wl_module.h: 83: extern void wl_module_set_rx_pw(unsigned char payloadwidth, unsigned char rxpipenum);
+[; ;wl_module.h: 84: extern unsigned char wl_module_get_rx_pw(unsigned char rxpipenum);
+[; ;wl_module.h: 85: extern void wl_module_set_tx_addr(unsigned char * address, unsigned char len);
+[; ;wl_module.h: 86: extern void wl_module_set_rx_addr(unsigned char * address, unsigned char len, unsigned char rxpipenum);
+[; ;wl_module.h: 87: extern void wl_module_tx_config(unsigned char tx_nr);
+[; ;wl_module.h: 88: extern void wl_module_rx_config(void);
+[; ;wl_module.h: 89: extern void wl_module_get_rx_addr(unsigned char * data, unsigned char rxpipenum, unsigned char len);
+[; ;wl_module.h: 90: extern unsigned char wl_module_get_rx_pipe(void);
+[; ;wl_module.h: 91: extern unsigned char wl_module_get_rx_pipe_from_status(unsigned char status);
+[; ;wl_module.h: 92: extern unsigned char wl_module_fifo_tx_empty(void);
+[; ;wl_module.h: 93: extern unsigned char wl_module_fifo_rx_empty(void);
+[; ;wl_module.h: 94: extern unsigned char wl_module_get_rf_ch(void);
+[; ;wl_module.h: 95: extern unsigned char wl_module_get_rf_setup(void);
+[; ;wl_module.h: 96: extern unsigned char wl_module_get_plos_cnt(void);
+[; ;wl_module.h: 97: extern unsigned char wl_module_get_arc_cnt(void);
+[; ;wl_module.h: 98: extern void wl_module_set_as_tx(void);
+[; ;wl_module.h: 99: extern void wl_module_power_down(void);
+[; ;wl_module.h: 102: extern void wl_module_config_register(unsigned char reg, unsigned char value);
+[; ;wl_module.h: 103: extern void wl_module_read_register(unsigned char reg, unsigned char * value, unsigned char len);
+[; ;wl_module.h: 104: extern void wl_module_write_register(unsigned char reg, unsigned char * value, unsigned char len);
+"43 wl_module.c
+[v _PTX `Vuc ~T0 @X0 1 e ]
+[; ;wl_module.c: 43: volatile unsigned char PTX;
+"45
+[v _wl_module_init `(v ~T0 @X0 1 ef ]
+"48
 {
-[; ;main.c: 29: void Init(){
-[e :U _Init ]
+[; ;wl_module.c: 45: void wl_module_init(void)
+[; ;wl_module.c: 48: {
+[e :U _wl_module_init ]
 [f ]
-[; ;main.c: 31: TRISA=0b11111111;
-"31
-[e = _TRISA -> -> 255 `i `uc ]
-[; ;main.c: 32: TRISB=0;
-"32
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;main.c: 33: TRISC=0;
-"33
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 36: ADCON0=0b10000001;
-"36
-[e = _ADCON0 -> -> 129 `i `uc ]
-[; ;main.c: 38: ADCON1=0b00001110;
-"38
-[e = _ADCON1 -> -> 14 `i `uc ]
-[; ;main.c: 39: }
-"39
+[; ;wl_module.c: 50: TRISBbits.TRISB4 = 0;
+"50
+[e = . . _TRISBbits 0 4 -> -> 0 `i `uc ]
+[; ;wl_module.c: 51: TRISBbits.TRISB3 = 0;
+"51
+[e = . . _TRISBbits 0 3 -> -> 0 `i `uc ]
+[; ;wl_module.c: 52: LATBbits.LATB3 = 0;;
+"52
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;wl_module.c: 53: LATBbits.LATB4 = 1;;
+"53
+[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
+[; ;wl_module.c: 57: TRISBbits.TRISB2 = 1;
+"57
+[e = . . _TRISBbits 0 2 -> -> 1 `i `uc ]
+[; ;wl_module.c: 58: INTCON2bits.INTEDG2 = 0;
+"58
+[e = . . _INTCON2bits 1 4 -> -> 0 `i `uc ]
+[; ;wl_module.c: 59: INTCON3bits.INT2IE = 1;
+"59
+[e = . . _INTCON3bits 0 4 -> -> 1 `i `uc ]
+[; ;wl_module.c: 62: spi_init();
+"62
+[e ( _spi_init ..  ]
+[; ;wl_module.c: 63: }
+"63
 [e :UE 362 ]
 }
-[v $root$_main `(v ~T0 @X0 0 e ]
-"41
-[v _main `(i ~T0 @X0 1 ef ]
+"66
+[v _wl_module_config `(v ~T0 @X0 1 ef ]
+"69
 {
-[; ;main.c: 41: int main(){
-[e :U _main ]
+[; ;wl_module.c: 66: void wl_module_config(void)
+[; ;wl_module.c: 69: {
+[e :U _wl_module_config ]
 [f ]
-[; ;main.c: 42: Init();
-"42
-[e ( _Init ..  ]
-[; ;main.c: 44: while(1){
-"44
-[e :U 365 ]
-{
-[; ;main.c: 45: DHTHandler();
-"45
-[e ( _DHTHandler ..  ]
-[; ;main.c: 46: if(res=='s') PORTB = temp;
-"46
-[e $ ! == -> _res `ui -> 115 `ui 367  ]
-[e = _PORTB _temp ]
-[e $U 368  ]
-"47
-[e :U 367 ]
-[; ;main.c: 47: else if(res=='r') PORTB = 0xf1;
-[e $ ! == -> _res `ui -> 114 `ui 369  ]
-[e = _PORTB -> -> 241 `i `uc ]
-[e $U 370  ]
-"48
-[e :U 369 ]
-[; ;main.c: 48: else if(res=='t') PORTB = 0xf2;
-[e $ ! == -> _res `ui -> 116 `ui 371  ]
-[e = _PORTB -> -> 242 `i `uc ]
-[e $U 372  ]
-"49
-[e :U 371 ]
-[; ;main.c: 49: else if(res=='c') PORTB = 0xf3;
-[e $ ! == -> _res `ui -> 99 `ui 373  ]
-[e = _PORTB -> -> 243 `i `uc ]
-[e :U 373 ]
-"51
-[e :U 372 ]
-[e :U 370 ]
-[e :U 368 ]
-[; ;main.c: 51: _delay((unsigned long)((2000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"52
-}
-[e :U 364 ]
-"44
-[e $U 365  ]
-[e :U 366 ]
-[; ;main.c: 52: }
-[; ;main.c: 53: }
-"53
+[; ;wl_module.c: 71: wl_module_config_register(0x05,2);
+"71
+[e ( _wl_module_config_register (2 , -> -> 5 `i `uc -> -> 2 `i `uc ]
+[; ;wl_module.c: 73: wl_module_config_register(0x06,(0x06 | 0x20));
+"73
+[e ( _wl_module_config_register (2 , -> -> 6 `i `uc -> | -> 6 `i -> 32 `i `uc ]
+[; ;wl_module.c: 75: wl_module_config_register(0x11, 16);
+"75
+[e ( _wl_module_config_register (2 , -> -> 17 `i `uc -> -> 16 `i `uc ]
+[; ;wl_module.c: 78: PTX = 0;
+"78
+[e = _PTX -> -> 0 `i `uc ]
+[; ;wl_module.c: 79: wl_module_config_register(0x00, ( (1<<6) | (1<<3) | (1<<2) ) | ( (1<<1) | (1<<0) ) );
+"79
+[e ( _wl_module_config_register (2 , -> -> 0 `i `uc -> | | | << -> 1 `i -> 6 `i << -> 1 `i -> 3 `i << -> 1 `i -> 2 `i | << -> 1 `i -> 1 `i << -> 1 `i -> 0 `i `uc ]
+[; ;wl_module.c: 80: LATBbits.LATB3 = 1;;
+"80
+[e = . . _LATBbits 0 3 -> -> 1 `i `uc ]
+[; ;wl_module.c: 81: }
+"81
 [e :UE 363 ]
 }
-"62
-[v _readDHT `(uc ~T0 @X0 1 ef ]
-{
-[; ;main.c: 62: char readDHT (){
-[e :U _readDHT ]
-[f ]
-"63
-[v _i `uc ~T0 @X0 1 a ]
-[v _k `uc ~T0 @X0 1 a ]
-[v _dat `uc ~T0 @X0 1 a ]
-[; ;main.c: 63: unsigned char i, k, dat = 0;
-[e = _dat -> -> 0 `i `uc ]
-[; ;main.c: 64: if(!time_out) return 0;
-"64
-[e $ ! ! != -> _time_out `i -> -> -> 0 `i `uc `i 375  ]
-[e ) -> -> 0 `i `uc ]
-[e $UE 374  ]
-[e :U 375 ]
-[; ;main.c: 65: for(i = 0; i<8; i++){
-"65
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 376  ]
-[e $U 377  ]
-[e :U 376 ]
-{
-[; ;main.c: 66: k = 0;
-"66
-[e = _k -> -> 0 `i `uc ]
-[; ;main.c: 67: while(!PORTCbits.RC0){
-"67
-[e $U 379  ]
-[e :U 380 ]
-{
-[; ;main.c: 68: k++;
-"68
-[e ++ _k -> -> 1 `i `uc ]
-[; ;main.c: 69: if(k>100){
-"69
-[e $ ! > -> _k `i -> 100 `i 382  ]
-{
-[; ;main.c: 70: time_out = 0;
-"70
-[e = _time_out -> -> 0 `i `uc ]
-[; ;main.c: 71: return 0;
-"71
-[e ) -> -> 0 `i `uc ]
-[e $UE 374  ]
-"72
-}
-[e :U 382 ]
-[; ;main.c: 72: }
-[; ;main.c: 73: _delay((unsigned long)((1)*(16000000/4000000.0)));
-"73
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-"74
-}
-[e :U 379 ]
-"67
-[e $ ! != -> . . _PORTCbits 0 0 `i -> -> -> 0 `i `Vuc `i 380  ]
-[e :U 381 ]
-[; ;main.c: 74: }
-[; ;main.c: 75: _delay((unsigned long)((30)*(16000000/4000000.0)));
-"75
-[e ( __delay (1 -> * -> -> 30 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 76: if(!PORTCbits.RC0) dat &= 0<<(7-i);
-"76
-[e $ ! ! != -> . . _PORTCbits 0 0 `i -> -> -> 0 `i `Vuc `i 383  ]
-[e =& _dat -> << -> 0 `i - -> 7 `i -> _i `i `uc ]
-[e $U 384  ]
-"77
-[e :U 383 ]
-[; ;main.c: 77: else{
-{
-[; ;main.c: 78: dat |= 1<<(7-i);
-"78
-[e =| _dat -> << -> 1 `i - -> 7 `i -> _i `i `uc ]
-[; ;main.c: 79: while(PORTCbits.RC0){
-"79
-[e $U 385  ]
-[e :U 386 ]
-{
-[; ;main.c: 80: k++;
-"80
-[e ++ _k -> -> 1 `i `uc ]
-[; ;main.c: 81: if(k>100){
-"81
-[e $ ! > -> _k `i -> 100 `i 388  ]
-{
-[; ;main.c: 82: time_out = 0;
-"82
-[e = _time_out -> -> 0 `i `uc ]
-[; ;main.c: 83: return 0;
 "83
-[e ) -> -> 0 `i `uc ]
-[e $UE 374  ]
-"84
-}
-[e :U 388 ]
-[; ;main.c: 84: }
-[; ;main.c: 85: _delay((unsigned long)((1)*(16000000/4000000.0)));
-"85
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+[v _wl_module_rx_config `(v ~T0 @X0 1 ef ]
 "86
-}
-[e :U 385 ]
-"79
-[e $ != -> . . _PORTCbits 0 0 `i -> -> -> 0 `i `Vuc `i 386  ]
-[e :U 387 ]
+{
+[; ;wl_module.c: 83: extern void wl_module_rx_config(void)
+[; ;wl_module.c: 86: {
+[e :U _wl_module_rx_config ]
+[f ]
 "87
-}
-[e :U 384 ]
-"88
-}
-"65
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 376  ]
-[e :U 377 ]
-"88
-}
-[; ;main.c: 86: }
-[; ;main.c: 87: }
-[; ;main.c: 88: }
-[; ;main.c: 89: return dat;
+[v _data `uc ~T0 @X0 -> 5 `i a ]
+[; ;wl_module.c: 87: unsigned char data[5];
+[; ;wl_module.c: 89: wl_module_config_register(0x05,2);
 "89
-[e ) _dat ]
-[e $UE 374  ]
-[; ;main.c: 90: }
-"90
+[e ( _wl_module_config_register (2 , -> -> 5 `i `uc -> -> 2 `i `uc ]
+[; ;wl_module.c: 91: wl_module_config_register(0x06,(0x06 | 0x20));
+"91
+[e ( _wl_module_config_register (2 , -> -> 6 `i `uc -> | -> 6 `i -> 32 `i `uc ]
+[; ;wl_module.c: 93: wl_module_config_register(0x02, 0x3F);
+"93
+[e ( _wl_module_config_register (2 , -> -> 2 `i `uc -> -> 63 `i `uc ]
+[; ;wl_module.c: 95: data[0]= data[1]= data[2]= data[3]= data[4]= 0xE7;
+"95
+[e = *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux = *U + &U _data * -> -> -> 1 `i `ui `ux -> -> # *U &U _data `ui `ux = *U + &U _data * -> -> -> 2 `i `ui `ux -> -> # *U &U _data `ui `ux = *U + &U _data * -> -> -> 3 `i `ui `ux -> -> # *U &U _data `ui `ux = *U + &U _data * -> -> -> 4 `i `ui `ux -> -> # *U &U _data `ui `ux -> -> 231 `i `uc ]
+[; ;wl_module.c: 96: wl_module_set_rx_addr(data, 5, 0);
+"96
+[e ( _wl_module_set_rx_addr (3 , , &U _data -> -> 5 `i `uc -> -> 0 `i `uc ]
+[; ;wl_module.c: 98: data[0]= data[1]= data[2]= data[3]= data[4]= 0xC2;
+"98
+[e = *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux = *U + &U _data * -> -> -> 1 `i `ui `ux -> -> # *U &U _data `ui `ux = *U + &U _data * -> -> -> 2 `i `ui `ux -> -> # *U &U _data `ui `ux = *U + &U _data * -> -> -> 3 `i `ui `ux -> -> # *U &U _data `ui `ux = *U + &U _data * -> -> -> 4 `i `ui `ux -> -> # *U &U _data `ui `ux -> -> 194 `i `uc ]
+[; ;wl_module.c: 99: wl_module_set_rx_addr(data, 5, 1);
+"99
+[e ( _wl_module_set_rx_addr (3 , , &U _data -> -> 5 `i `uc -> -> 1 `i `uc ]
+[; ;wl_module.c: 101: data[0]=0xC3;
+"101
+[e = *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux -> -> 195 `i `uc ]
+[; ;wl_module.c: 102: wl_module_set_rx_addr(data, 1, 2);
+"102
+[e ( _wl_module_set_rx_addr (3 , , &U _data -> -> 1 `i `uc -> -> 2 `i `uc ]
+[; ;wl_module.c: 103: data[0]=0xC4;
+"103
+[e = *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux -> -> 196 `i `uc ]
+[; ;wl_module.c: 104: wl_module_set_rx_addr(data, 1, 3);
+"104
+[e ( _wl_module_set_rx_addr (3 , , &U _data -> -> 1 `i `uc -> -> 3 `i `uc ]
+[; ;wl_module.c: 105: data[0]=0xC5;
+"105
+[e = *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux -> -> 197 `i `uc ]
+[; ;wl_module.c: 106: wl_module_set_rx_addr(data, 1, 4);
+"106
+[e ( _wl_module_set_rx_addr (3 , , &U _data -> -> 1 `i `uc -> -> 4 `i `uc ]
+[; ;wl_module.c: 107: data[0]=0xC6;
+"107
+[e = *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux -> -> 198 `i `uc ]
+[; ;wl_module.c: 108: wl_module_set_rx_addr(data, 1, 5);
+"108
+[e ( _wl_module_set_rx_addr (3 , , &U _data -> -> 1 `i `uc -> -> 5 `i `uc ]
+[; ;wl_module.c: 110: wl_module_config_register(0x11, 16);
+"110
+[e ( _wl_module_config_register (2 , -> -> 17 `i `uc -> -> 16 `i `uc ]
+[; ;wl_module.c: 111: wl_module_config_register(0x12, 16);
+"111
+[e ( _wl_module_config_register (2 , -> -> 18 `i `uc -> -> 16 `i `uc ]
+[; ;wl_module.c: 112: wl_module_config_register(0x13, 16);
+"112
+[e ( _wl_module_config_register (2 , -> -> 19 `i `uc -> -> 16 `i `uc ]
+[; ;wl_module.c: 113: wl_module_config_register(0x14, 16);
+"113
+[e ( _wl_module_config_register (2 , -> -> 20 `i `uc -> -> 16 `i `uc ]
+[; ;wl_module.c: 114: wl_module_config_register(0x15, 16);
+"114
+[e ( _wl_module_config_register (2 , -> -> 21 `i `uc -> -> 16 `i `uc ]
+[; ;wl_module.c: 115: wl_module_config_register(0x16, 16);
+"115
+[e ( _wl_module_config_register (2 , -> -> 22 `i `uc -> -> 16 `i `uc ]
+[; ;wl_module.c: 119: PTX = 0;
+"119
+[e = _PTX -> -> 0 `i `uc ]
+[; ;wl_module.c: 120: wl_module_config_register(0x00, ( (1<<6) | (1<<3) | (1<<2) ) | ( (1<<1) | (1<<0) ) );
+"120
+[e ( _wl_module_config_register (2 , -> -> 0 `i `uc -> | | | << -> 1 `i -> 6 `i << -> 1 `i -> 3 `i << -> 1 `i -> 2 `i | << -> 1 `i -> 1 `i << -> 1 `i -> 0 `i `uc ]
+[; ;wl_module.c: 121: LATBbits.LATB3 = 1;;
+"121
+[e = . . _LATBbits 0 3 -> -> 1 `i `uc ]
+[; ;wl_module.c: 122: }
+"122
+[e :UE 364 ]
+}
+"128
+[v _wl_module_tx_config `(v ~T0 @X0 1 ef1`uc ]
+"129
+{
+[; ;wl_module.c: 128: extern void wl_module_tx_config(unsigned char tx_nr)
+[; ;wl_module.c: 129: {
+[e :U _wl_module_tx_config ]
+"128
+[v _tx_nr `uc ~T0 @X0 1 r1 ]
+"129
+[f ]
+"130
+[v _tx_addr `uc ~T0 @X0 -> 5 `i a ]
+[; ;wl_module.c: 130: unsigned char tx_addr[5];
+[; ;wl_module.c: 133: wl_module_config_register(0x05,2);
+"133
+[e ( _wl_module_config_register (2 , -> -> 5 `i `uc -> -> 2 `i `uc ]
+[; ;wl_module.c: 135: wl_module_config_register(0x06,(0x06 | 0x20));
+"135
+[e ( _wl_module_config_register (2 , -> -> 6 `i `uc -> | -> 6 `i -> 32 `i `uc ]
+[; ;wl_module.c: 137: wl_module_config_register(0x00, ( (1<<6) | (1<<3) | (1<<2) ));
+"137
+[e ( _wl_module_config_register (2 , -> -> 0 `i `uc -> | | << -> 1 `i -> 6 `i << -> 1 `i -> 3 `i << -> 1 `i -> 2 `i `uc ]
+[; ;wl_module.c: 141: wl_module_config_register(0x04,(0x20 | 0x0F));
+"141
+[e ( _wl_module_config_register (2 , -> -> 4 `i `uc -> | -> 32 `i -> 15 `i `uc ]
+[; ;wl_module.c: 144: switch(tx_nr)
+"144
+[e $U 367  ]
+[; ;wl_module.c: 145: {
+"145
+{
+[; ;wl_module.c: 146: case 0:
+"146
+[e :U 368 ]
+[; ;wl_module.c: 147: tx_addr[0] = tx_addr[1] = tx_addr[2] = tx_addr[3] = tx_addr[4] = 0xE7;
+"147
+[e = *U + &U _tx_addr * -> -> -> 0 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 1 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 2 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 3 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 4 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux -> -> 231 `i `uc ]
+[; ;wl_module.c: 148: wl_module_set_TADDR(tx_addr);
+"148
+[e ( _wl_module_set_TADDR (1 &U _tx_addr ]
+[; ;wl_module.c: 149: wl_module_set_RADDR(tx_addr);
+"149
+[e ( _wl_module_set_RADDR (1 &U _tx_addr ]
+[; ;wl_module.c: 150: break;
+"150
+[e $U 366  ]
+[; ;wl_module.c: 151: case 1:
+"151
+[e :U 369 ]
+[; ;wl_module.c: 152: tx_addr[0] = tx_addr[1] = tx_addr[2] = tx_addr[3] = tx_addr[4] = 0xC2;
+"152
+[e = *U + &U _tx_addr * -> -> -> 0 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 1 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 2 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 3 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 4 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux -> -> 194 `i `uc ]
+[; ;wl_module.c: 153: wl_module_set_TADDR(tx_addr);
+"153
+[e ( _wl_module_set_TADDR (1 &U _tx_addr ]
+[; ;wl_module.c: 154: wl_module_set_RADDR(tx_addr);
+"154
+[e ( _wl_module_set_RADDR (1 &U _tx_addr ]
+[; ;wl_module.c: 155: break;
+"155
+[e $U 366  ]
+[; ;wl_module.c: 156: case 2:
+"156
+[e :U 370 ]
+[; ;wl_module.c: 157: tx_addr[1] = tx_addr[2] = tx_addr[3] = tx_addr[4] = 0xC2;
+"157
+[e = *U + &U _tx_addr * -> -> -> 1 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 2 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 3 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 4 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux -> -> 194 `i `uc ]
+[; ;wl_module.c: 158: tx_addr[0] = 0xC3;
+"158
+[e = *U + &U _tx_addr * -> -> -> 0 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux -> -> 195 `i `uc ]
+[; ;wl_module.c: 159: wl_module_set_TADDR(tx_addr);
+"159
+[e ( _wl_module_set_TADDR (1 &U _tx_addr ]
+[; ;wl_module.c: 160: wl_module_set_RADDR(tx_addr);
+"160
+[e ( _wl_module_set_RADDR (1 &U _tx_addr ]
+[; ;wl_module.c: 161: break;
+"161
+[e $U 366  ]
+[; ;wl_module.c: 162: case 3:
+"162
+[e :U 371 ]
+[; ;wl_module.c: 163: tx_addr[1] = tx_addr[2] = tx_addr[3] = tx_addr[4] = 0xC2;
+"163
+[e = *U + &U _tx_addr * -> -> -> 1 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 2 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 3 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 4 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux -> -> 194 `i `uc ]
+[; ;wl_module.c: 164: tx_addr[0] = 0xC4;
+"164
+[e = *U + &U _tx_addr * -> -> -> 0 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux -> -> 196 `i `uc ]
+[; ;wl_module.c: 165: wl_module_set_TADDR(tx_addr);
+"165
+[e ( _wl_module_set_TADDR (1 &U _tx_addr ]
+[; ;wl_module.c: 166: wl_module_set_RADDR(tx_addr);
+"166
+[e ( _wl_module_set_RADDR (1 &U _tx_addr ]
+[; ;wl_module.c: 167: break;
+"167
+[e $U 366  ]
+[; ;wl_module.c: 168: case 4:
+"168
+[e :U 372 ]
+[; ;wl_module.c: 169: tx_addr[1] = tx_addr[2] = tx_addr[3] = tx_addr[4] = 0xC2;
+"169
+[e = *U + &U _tx_addr * -> -> -> 1 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 2 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 3 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 4 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux -> -> 194 `i `uc ]
+[; ;wl_module.c: 170: tx_addr[0] = 0xC5;
+"170
+[e = *U + &U _tx_addr * -> -> -> 0 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux -> -> 197 `i `uc ]
+[; ;wl_module.c: 171: wl_module_set_TADDR(tx_addr);
+"171
+[e ( _wl_module_set_TADDR (1 &U _tx_addr ]
+[; ;wl_module.c: 172: wl_module_set_RADDR(tx_addr);
+"172
+[e ( _wl_module_set_RADDR (1 &U _tx_addr ]
+[; ;wl_module.c: 173: break;
+"173
+[e $U 366  ]
+[; ;wl_module.c: 174: case 5:
+"174
+[e :U 373 ]
+[; ;wl_module.c: 175: tx_addr[1] = tx_addr[2] = tx_addr[3] = tx_addr[4] = 0xC2;
+"175
+[e = *U + &U _tx_addr * -> -> -> 1 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 2 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 3 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux = *U + &U _tx_addr * -> -> -> 4 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux -> -> 194 `i `uc ]
+[; ;wl_module.c: 176: tx_addr[0] = 0xC6;
+"176
+[e = *U + &U _tx_addr * -> -> -> 0 `i `ui `ux -> -> # *U &U _tx_addr `ui `ux -> -> 198 `i `uc ]
+[; ;wl_module.c: 177: wl_module_set_TADDR(tx_addr);
+"177
+[e ( _wl_module_set_TADDR (1 &U _tx_addr ]
+[; ;wl_module.c: 178: wl_module_set_RADDR(tx_addr);
+"178
+[e ( _wl_module_set_RADDR (1 &U _tx_addr ]
+[; ;wl_module.c: 179: break;
+"179
+[e $U 366  ]
+"180
+}
+[; ;wl_module.c: 180: }
+[e $U 366  ]
+"144
+[e :U 367 ]
+[e [\ _tx_nr , $ -> -> 0 `i `uc 368
+ , $ -> -> 1 `i `uc 369
+ , $ -> -> 2 `i `uc 370
+ , $ -> -> 3 `i `uc 371
+ , $ -> -> 4 `i `uc 372
+ , $ -> -> 5 `i `uc 373
+ 366 ]
+"180
+[e :U 366 ]
+[; ;wl_module.c: 182: PTX =0;
+"182
+[e = _PTX -> -> 0 `i `uc ]
+[; ;wl_module.c: 183: wl_module_config_register(0x00, ( (1<<6) | (1<<3) | (1<<2) ) | ( (1<<1) | (0<<0) ) );
+"183
+[e ( _wl_module_config_register (2 , -> -> 0 `i `uc -> | | | << -> 1 `i -> 6 `i << -> 1 `i -> 3 `i << -> 1 `i -> 2 `i | << -> 1 `i -> 1 `i << -> 0 `i -> 0 `i `uc ]
+[; ;wl_module.c: 190: }
+"190
+[e :UE 365 ]
+}
+"197
+[v _wl_module_set_tx_addr `(v ~T0 @X0 1 ef2`*uc`uc ]
+"198
+{
+[; ;wl_module.c: 197: extern void wl_module_set_tx_addr(unsigned char * address, unsigned char len)
+[; ;wl_module.c: 198: {
+[e :U _wl_module_set_tx_addr ]
+"197
+[v _address `*uc ~T0 @X0 1 r1 ]
+[v _len `uc ~T0 @X0 1 r2 ]
+"198
+[f ]
+[; ;wl_module.c: 199: wl_module_write_register(0x10, address, len);
+"199
+[e ( _wl_module_write_register (3 , , -> -> 16 `i `uc _address _len ]
+[; ;wl_module.c: 200: }
+"200
 [e :UE 374 ]
 }
-"92
-[v _beginDHT `(uc ~T0 @X0 1 ef ]
+"207
+[v _wl_module_set_as_tx `(v ~T0 @X0 1 ef ]
+"208
 {
-[; ;main.c: 92: char beginDHT (){
-[e :U _beginDHT ]
+[; ;wl_module.c: 207: extern void wl_module_set_as_tx(void)
+[; ;wl_module.c: 208: {
+[e :U _wl_module_set_as_tx ]
 [f ]
-[; ;main.c: 93: TRISCbits.TRISC0 = 0;
-"93
-[e = . . _TRISCbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 94: PORTCbits.RC0 &= 0;
-"94
-[e =& . . _PORTCbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 95: _delay((unsigned long)((25)*(16000000/4000.0)));
-"95
-[e ( __delay (1 -> * -> -> 25 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-[; ;main.c: 96: PORTCbits.RC0 = 1;
-"96
-[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 97: _delay((unsigned long)((30)*(16000000/4000000.0)));
-"97
-[e ( __delay (1 -> * -> -> 30 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 98: TRISCbits.TRISC0 = 1;
-"98
-[e = . . _TRISCbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 99: _delay((unsigned long)((40)*(16000000/4000000.0)));
-"99
-[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 100: if(!PORTCbits.RC0){
-"100
-[e $ ! ! != -> . . _PORTCbits 0 0 `i -> -> -> 0 `i `Vuc `i 390  ]
-{
-[; ;main.c: 101: _delay((unsigned long)((80)*(16000000/4000000.0)));
-"101
-[e ( __delay (1 -> * -> -> 80 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 102: if(PORTCbits.RC0){
-"102
-[e $ ! != -> . . _PORTCbits 0 0 `i -> -> -> 0 `i `Vuc `i 391  ]
-{
-[; ;main.c: 103: _delay((unsigned long)((50)*(16000000/4000000.0)));
-"103
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 104: return 1;
-"104
-[e ) -> -> 1 `i `uc ]
-[e $UE 389  ]
-"105
+"209
+[v _config `uc ~T0 @X0 1 a ]
+[; ;wl_module.c: 209: unsigned char config;
+[; ;wl_module.c: 211: wl_module_read_register(0x00, &config, 1);
+"211
+[e ( _wl_module_read_register (3 , , -> -> 0 `i `uc &U _config -> -> 1 `i `uc ]
+[; ;wl_module.c: 213: if((config & 0x01) == 0)
+"213
+[e $ ! == & -> _config `i -> 1 `i -> 0 `i 376  ]
+[; ;wl_module.c: 214: return;
+"214
+[e $UE 375  ]
+[e :U 376 ]
+[; ;wl_module.c: 216: config &= (~0x01);
+"216
+[e =& _config -> ~ -> 1 `i `uc ]
+[; ;wl_module.c: 218: wl_module_write_register(0x00, &config, 1);
+"218
+[e ( _wl_module_write_register (3 , , -> -> 0 `i `uc &U _config -> -> 1 `i `uc ]
+[; ;wl_module.c: 220: LATBbits.LATB3 = 0;;
+"220
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;wl_module.c: 221: }
+"221
+[e :UE 375 ]
 }
-[e :U 391 ]
-"106
+"228
+[v _wl_module_power_down `(v ~T0 @X0 1 ef ]
+"229
+{
+[; ;wl_module.c: 228: extern void wl_module_power_down(void)
+[; ;wl_module.c: 229: {
+[e :U _wl_module_power_down ]
+[f ]
+"230
+[v _config `uc ~T0 @X0 1 a ]
+[; ;wl_module.c: 230: unsigned char config;
+[; ;wl_module.c: 232: wl_module_read_register(0x00, &config, 1);
+"232
+[e ( _wl_module_read_register (3 , , -> -> 0 `i `uc &U _config -> -> 1 `i `uc ]
+[; ;wl_module.c: 234: if((config & 0x02) == 0)
+"234
+[e $ ! == & -> _config `i -> 2 `i -> 0 `i 378  ]
+[; ;wl_module.c: 235: return;
+"235
+[e $UE 377  ]
+[e :U 378 ]
+[; ;wl_module.c: 237: config &= (~0x02);
+"237
+[e =& _config -> ~ -> 2 `i `uc ]
+[; ;wl_module.c: 239: wl_module_write_register(0x00, &config, 1);
+"239
+[e ( _wl_module_write_register (3 , , -> -> 0 `i `uc &U _config -> -> 1 `i `uc ]
+[; ;wl_module.c: 241: LATBbits.LATB3 = 0;;
+"241
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;wl_module.c: 242: }
+"242
+[e :UE 377 ]
 }
-[e :U 390 ]
-[; ;main.c: 105: }
-[; ;main.c: 106: }
-[; ;main.c: 107: return 0;
-"107
+"252
+[v _wl_module_set_rx_addr `(v ~T0 @X0 1 ef3`*uc`uc`uc ]
+"253
+{
+[; ;wl_module.c: 252: extern void wl_module_set_rx_addr(unsigned char * address, unsigned char len, unsigned char rxpipenum)
+[; ;wl_module.c: 253: {
+[e :U _wl_module_set_rx_addr ]
+"252
+[v _address `*uc ~T0 @X0 1 r1 ]
+[v _len `uc ~T0 @X0 1 r2 ]
+[v _rxpipenum `uc ~T0 @X0 1 r3 ]
+"253
+[f ]
+[; ;wl_module.c: 254: if(rxpipenum > 5)
+"254
+[e $ ! > -> _rxpipenum `i -> 5 `i 380  ]
+[; ;wl_module.c: 255: return;
+"255
+[e $UE 379  ]
+[e :U 380 ]
+[; ;wl_module.c: 257: wl_module_write_register(0x0A + rxpipenum, address, len);
+"257
+[e ( _wl_module_write_register (3 , , -> + -> 10 `i -> _rxpipenum `i `uc _address _len ]
+[; ;wl_module.c: 258: }
+"258
+[e :UE 379 ]
+}
+"260
+[v _wl_module_get_rx_addr `(v ~T0 @X0 1 ef3`*uc`uc`uc ]
+"261
+{
+[; ;wl_module.c: 260: extern void wl_module_get_rx_addr(unsigned char *data, unsigned char rxpipenum, unsigned char len)
+[; ;wl_module.c: 261: {
+[e :U _wl_module_get_rx_addr ]
+"260
+[v _data `*uc ~T0 @X0 1 r1 ]
+[v _rxpipenum `uc ~T0 @X0 1 r2 ]
+[v _len `uc ~T0 @X0 1 r3 ]
+"261
+[f ]
+[; ;wl_module.c: 263: if((rxpipenum > 5))
+"263
+[e $ ! > -> _rxpipenum `i -> 5 `i 382  ]
+[; ;wl_module.c: 264: return;
+"264
+[e $UE 381  ]
+[e :U 382 ]
+[; ;wl_module.c: 266: wl_module_read_register(0x0A + rxpipenum, data, len);
+"266
+[e ( _wl_module_read_register (3 , , -> + -> 10 `i -> _rxpipenum `i `uc _data _len ]
+[; ;wl_module.c: 269: }
+"269
+[e :UE 381 ]
+}
+"278
+[v _wl_module_set_rx_pw `(v ~T0 @X0 1 ef2`uc`uc ]
+"279
+{
+[; ;wl_module.c: 278: extern void wl_module_set_rx_pw(unsigned char payloadwidth, unsigned char rxpipenum)
+[; ;wl_module.c: 279: {
+[e :U _wl_module_set_rx_pw ]
+"278
+[v _payloadwidth `uc ~T0 @X0 1 r1 ]
+[v _rxpipenum `uc ~T0 @X0 1 r2 ]
+"279
+[f ]
+[; ;wl_module.c: 280: if((rxpipenum > 5) || (payloadwidth > 32))
+"280
+[e $ ! || > -> _rxpipenum `i -> 5 `i > -> _payloadwidth `i -> 32 `i 384  ]
+[; ;wl_module.c: 281: return;
+"281
+[e $UE 383  ]
+[e :U 384 ]
+[; ;wl_module.c: 283: wl_module_write_register(0x11 + rxpipenum, &payloadwidth, 1);
+"283
+[e ( _wl_module_write_register (3 , , -> + -> 17 `i -> _rxpipenum `i `uc &U _payloadwidth -> -> 1 `i `uc ]
+[; ;wl_module.c: 284: }
+"284
+[e :UE 383 ]
+}
+"290
+[v _wl_module_get_rx_pw `(uc ~T0 @X0 1 ef1`uc ]
+"291
+{
+[; ;wl_module.c: 290: extern unsigned char wl_module_get_rx_pw(unsigned char rxpipenum)
+[; ;wl_module.c: 291: {
+[e :U _wl_module_get_rx_pw ]
+"290
+[v _rxpipenum `uc ~T0 @X0 1 r1 ]
+"291
+[f ]
+"292
+[v _data `uc ~T0 @X0 1 a ]
+[; ;wl_module.c: 292: unsigned char data;
+[; ;wl_module.c: 294: if((rxpipenum > 5))
+"294
+[e $ ! > -> _rxpipenum `i -> 5 `i 386  ]
+[; ;wl_module.c: 295: return 0;
+"295
 [e ) -> -> 0 `i `uc ]
-[e $UE 389  ]
-[; ;main.c: 108: }
-"108
+[e $UE 385  ]
+[e :U 386 ]
+[; ;wl_module.c: 297: wl_module_read_register(0x11 + rxpipenum, &data, 1);
+"297
+[e ( _wl_module_read_register (3 , , -> + -> 17 `i -> _rxpipenum `i `uc &U _data -> -> 1 `i `uc ]
+[; ;wl_module.c: 299: return data;
+"299
+[e ) _data ]
+[e $UE 385  ]
+[; ;wl_module.c: 300: }
+"300
+[e :UE 385 ]
+}
+"303
+[v _wl_module_get_rx_pipe `(uc ~T0 @X0 1 ef ]
+"304
+{
+[; ;wl_module.c: 303: extern unsigned char wl_module_get_rx_pipe(void)
+[; ;wl_module.c: 304: {
+[e :U _wl_module_get_rx_pipe ]
+[f ]
+[; ;wl_module.c: 305: return wl_module_get_rx_pipe_from_status(wl_module_get_status());
+"305
+[e ) ( _wl_module_get_rx_pipe_from_status (1 ( _wl_module_get_status ..  ]
+[e $UE 387  ]
+[; ;wl_module.c: 306: }
+"306
+[e :UE 387 ]
+}
+"308
+[v _wl_module_get_rx_pipe_from_status `(uc ~T0 @X0 1 ef1`uc ]
+"309
+{
+[; ;wl_module.c: 308: extern unsigned char wl_module_get_rx_pipe_from_status(unsigned char status)
+[; ;wl_module.c: 309: {
+[e :U _wl_module_get_rx_pipe_from_status ]
+"308
+[v _status `uc ~T0 @X0 1 r1 ]
+"309
+[f ]
+[; ;wl_module.c: 310: return ((status & 0xE) >> 1);
+"310
+[e ) -> >> & -> _status `i -> 14 `i -> 1 `i `uc ]
+[e $UE 388  ]
+[; ;wl_module.c: 311: }
+"311
+[e :UE 388 ]
+}
+"313
+[v _wl_module_set_RADDR `(v ~T0 @X0 1 ef1`*uc ]
+"315
+{
+[; ;wl_module.c: 313: void wl_module_set_RADDR(unsigned char * adr)
+[; ;wl_module.c: 315: {
+[e :U _wl_module_set_RADDR ]
+"313
+[v _adr `*uc ~T0 @X0 1 r1 ]
+"315
+[f ]
+[; ;wl_module.c: 316: LATBbits.LATB3 = 0;;
+"316
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;wl_module.c: 317: wl_module_write_register(0x0A,adr,5);
+"317
+[e ( _wl_module_write_register (3 , , -> -> 10 `i `uc _adr -> -> 5 `i `uc ]
+[; ;wl_module.c: 318: LATBbits.LATB3 = 1;;
+"318
+[e = . . _LATBbits 0 3 -> -> 1 `i `uc ]
+[; ;wl_module.c: 319: }
+"319
 [e :UE 389 ]
 }
-"110
-[v _DHTHandler `(v ~T0 @X0 1 ef ]
+"321
+[v _wl_module_set_TADDR `(v ~T0 @X0 1 ef1`*uc ]
+"323
 {
-[; ;main.c: 110: void DHTHandler (){
-[e :U _DHTHandler ]
+[; ;wl_module.c: 321: void wl_module_set_TADDR(unsigned char * adr)
+[; ;wl_module.c: 323: {
+[e :U _wl_module_set_TADDR ]
+"321
+[v _adr `*uc ~T0 @X0 1 r1 ]
+"323
 [f ]
-"111
-[v _t_byte1 `uc ~T0 @X0 1 a ]
-[v _t_byte2 `uc ~T0 @X0 1 a ]
-[v _rh_byte1 `uc ~T0 @X0 1 a ]
-[v _rh_byte2 `uc ~T0 @X0 1 a ]
-[v _checkSum `uc ~T0 @X0 1 a ]
-[; ;main.c: 111: unsigned char t_byte1, t_byte2, rh_byte1, rh_byte2, checkSum;
-[; ;main.c: 112: time_out = 1;
-"112
-[e = _time_out -> -> 1 `i `uc ]
-[; ;main.c: 113: if(!beginDHT())
-"113
-[e $ ! ! != -> ( _beginDHT ..  `i -> -> -> 0 `i `uc `i 393  ]
-[; ;main.c: 114: res = 'r';
-"114
-[e = _res -> -> 114 `ui `uc ]
-[e :U 393 ]
-[; ;main.c: 115: rh_byte1 = readDHT();
-"115
-[e = _rh_byte1 ( _readDHT ..  ]
-[; ;main.c: 116: rh_byte2 = readDHT();
-"116
-[e = _rh_byte2 ( _readDHT ..  ]
-[; ;main.c: 117: t_byte1 = readDHT();
-"117
-[e = _t_byte1 ( _readDHT ..  ]
-[; ;main.c: 118: t_byte2 = readDHT();
-"118
-[e = _t_byte2 ( _readDHT ..  ]
-[; ;main.c: 119: checkSum = readDHT();
-"119
-[e = _checkSum ( _readDHT ..  ]
-[; ;main.c: 120: if(time_out)
-"120
-[e $ ! != -> _time_out `i -> -> -> 0 `i `uc `i 394  ]
-[; ;main.c: 121: res = 't';
-"121
-[e = _res -> -> 116 `ui `uc ]
-[e :U 394 ]
-[; ;main.c: 122: if(checkSum!=((rh_byte1+rh_byte2+t_byte1+t_byte2) & 0xFF))
-"122
-[e $ ! != -> _checkSum `i & + + + -> _rh_byte1 `i -> _rh_byte2 `i -> _t_byte1 `i -> _t_byte2 `i -> 255 `i 395  ]
-[; ;main.c: 123: res = 'c';
-"123
-[e = _res -> -> 99 `ui `uc ]
-[e :U 395 ]
-[; ;main.c: 124: humid = rh_byte1;
-"124
-[e = _humid _rh_byte1 ]
-[; ;main.c: 125: humid = (humid<<8)|rh_byte2;
-"125
-[e = _humid -> | << -> _humid `i -> 8 `i -> _rh_byte2 `i `uc ]
-[; ;main.c: 126: temp = t_byte1;
-"126
-[e = _temp _t_byte1 ]
-[; ;main.c: 127: temp = (temp<<8)|t_byte2;
-"127
-[e = _temp -> | << -> _temp `i -> 8 `i -> _t_byte2 `i `uc ]
-[; ;main.c: 128: if(temp>0X80)
-"128
-[e $ ! > -> _temp `i -> 128 `i 396  ]
-[; ;main.c: 129: temp -= temp&0X7F;
-"129
-[e =- _temp -> & -> _temp `i -> 127 `i `uc ]
-[e :U 396 ]
-[; ;main.c: 130: res = 's';
-"130
-[e = _res -> -> 115 `ui `uc ]
-[; ;main.c: 131: }
-"131
-[e :UE 392 ]
+[; ;wl_module.c: 324: wl_module_write_register(0x10, adr,5);
+"324
+[e ( _wl_module_write_register (3 , , -> -> 16 `i `uc _adr -> -> 5 `i `uc ]
+[; ;wl_module.c: 325: }
+"325
+[e :UE 390 ]
+}
+"329
+[v _wl_module_data_ready `(uc ~T0 @X0 1 ef ]
+"331
+{
+[; ;wl_module.c: 329: extern unsigned char wl_module_data_ready(void)
+[; ;wl_module.c: 331: {
+[e :U _wl_module_data_ready ]
+[f ]
+[; ;wl_module.c: 332: if (PTX) return 0;
+"332
+[e $ ! != -> _PTX `i -> -> -> 0 `i `Vuc `i 392  ]
+[e ) -> -> 0 `i `uc ]
+[e $UE 391  ]
+[e :U 392 ]
+"333
+[v _status `uc ~T0 @X0 1 a ]
+[; ;wl_module.c: 333: unsigned char status;
+[; ;wl_module.c: 335: LATBbits.LATB4 = 0;;
+"335
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;wl_module.c: 336: status = spi_fast_shift(0xFF);
+"336
+[e = _status ( _spi_fast_shift (1 -> -> 255 `i `uc ]
+[; ;wl_module.c: 337: LATBbits.LATB4 = 1;;
+"337
+[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
+[; ;wl_module.c: 338: return status & (1<<6);
+"338
+[e ) -> & -> _status `i << -> 1 `i -> 6 `i `uc ]
+[e $UE 391  ]
+[; ;wl_module.c: 339: }
+"339
+[e :UE 391 ]
+}
+"342
+[v _wl_module_fifo_tx_empty `(uc ~T0 @X0 1 ef ]
+"343
+{
+[; ;wl_module.c: 342: extern unsigned char wl_module_fifo_tx_empty(void)
+[; ;wl_module.c: 343: {
+[e :U _wl_module_fifo_tx_empty ]
+[f ]
+"344
+[v _data `uc ~T0 @X0 1 a ]
+[; ;wl_module.c: 344: unsigned char data;
+[; ;wl_module.c: 346: wl_module_read_register(0x17, &data, 1);
+"346
+[e ( _wl_module_read_register (3 , , -> -> 23 `i `uc &U _data -> -> 1 `i `uc ]
+[; ;wl_module.c: 349: return (data & 0x10);
+"349
+[e ) -> & -> _data `i -> 16 `i `uc ]
+[e $UE 393  ]
+[; ;wl_module.c: 350: }
+"350
+[e :UE 393 ]
+}
+"353
+[v _wl_module_fifo_rx_empty `(uc ~T0 @X0 1 ef ]
+"354
+{
+[; ;wl_module.c: 353: extern unsigned char wl_module_fifo_rx_empty(void)
+[; ;wl_module.c: 354: {
+[e :U _wl_module_fifo_rx_empty ]
+[f ]
+"355
+[v _data `uc ~T0 @X0 1 a ]
+[; ;wl_module.c: 355: unsigned char data;
+[; ;wl_module.c: 357: wl_module_read_register(0x17, &data, 1);
+"357
+[e ( _wl_module_read_register (3 , , -> -> 23 `i `uc &U _data -> -> 1 `i `uc ]
+[; ;wl_module.c: 359: return (data & 0x01);
+"359
+[e ) -> & -> _data `i -> 1 `i `uc ]
+[e $UE 394  ]
+[; ;wl_module.c: 360: }
+"360
+[e :UE 394 ]
+}
+"363
+[v _wl_module_get_rf_ch `(uc ~T0 @X0 1 ef ]
+"364
+{
+[; ;wl_module.c: 363: extern unsigned char wl_module_get_rf_ch(void)
+[; ;wl_module.c: 364: {
+[e :U _wl_module_get_rf_ch ]
+[f ]
+"365
+[v _data `uc ~T0 @X0 1 a ]
+[; ;wl_module.c: 365: unsigned char data;
+[; ;wl_module.c: 367: wl_module_read_register(0x05, &data, 1);
+"367
+[e ( _wl_module_read_register (3 , , -> -> 5 `i `uc &U _data -> -> 1 `i `uc ]
+[; ;wl_module.c: 369: return data;
+"369
+[e ) _data ]
+[e $UE 395  ]
+[; ;wl_module.c: 370: }
+"370
+[e :UE 395 ]
+}
+"373
+[v _wl_module_get_rf_setup `(uc ~T0 @X0 1 ef ]
+"374
+{
+[; ;wl_module.c: 373: extern unsigned char wl_module_get_rf_setup(void)
+[; ;wl_module.c: 374: {
+[e :U _wl_module_get_rf_setup ]
+[f ]
+"375
+[v _data `uc ~T0 @X0 1 a ]
+[; ;wl_module.c: 375: unsigned char data;
+[; ;wl_module.c: 377: wl_module_read_register(0x06, &data, 1);
+"377
+[e ( _wl_module_read_register (3 , , -> -> 6 `i `uc &U _data -> -> 1 `i `uc ]
+[; ;wl_module.c: 379: return data;
+"379
+[e ) _data ]
+[e $UE 396  ]
+[; ;wl_module.c: 380: }
+"380
+[e :UE 396 ]
+}
+"383
+[v _wl_module_get_plos_cnt `(uc ~T0 @X0 1 ef ]
+"384
+{
+[; ;wl_module.c: 383: extern unsigned char wl_module_get_plos_cnt(void)
+[; ;wl_module.c: 384: {
+[e :U _wl_module_get_plos_cnt ]
+[f ]
+"385
+[v _data `uc ~T0 @X0 1 a ]
+[; ;wl_module.c: 385: unsigned char data;
+[; ;wl_module.c: 387: wl_module_read_register(0x08, &data, 1);
+"387
+[e ( _wl_module_read_register (3 , , -> -> 8 `i `uc &U _data -> -> 1 `i `uc ]
+[; ;wl_module.c: 389: return ((data & 0xF0) >> 4);
+"389
+[e ) -> >> & -> _data `i -> 240 `i -> 4 `i `uc ]
+[e $UE 397  ]
+[; ;wl_module.c: 390: }
+"390
+[e :UE 397 ]
+}
+"393
+[v _wl_module_get_arc_cnt `(uc ~T0 @X0 1 ef ]
+"394
+{
+[; ;wl_module.c: 393: extern unsigned char wl_module_get_arc_cnt(void)
+[; ;wl_module.c: 394: {
+[e :U _wl_module_get_arc_cnt ]
+[f ]
+"395
+[v _data `uc ~T0 @X0 1 a ]
+[; ;wl_module.c: 395: unsigned char data;
+[; ;wl_module.c: 397: wl_module_read_register(0x08, &data, 1);
+"397
+[e ( _wl_module_read_register (3 , , -> -> 8 `i `uc &U _data -> -> 1 `i `uc ]
+[; ;wl_module.c: 399: return (data & 0x0F);
+"399
+[e ) -> & -> _data `i -> 15 `i `uc ]
+[e $UE 398  ]
+[; ;wl_module.c: 400: }
+"400
+[e :UE 398 ]
+}
+"403
+[v _wl_module_get_status `(uc ~T0 @X0 1 ef ]
+"404
+{
+[; ;wl_module.c: 403: extern unsigned char wl_module_get_status(void)
+[; ;wl_module.c: 404: {
+[e :U _wl_module_get_status ]
+[f ]
+[; ;wl_module.c: 405: return wl_module_get_one_byte(0xFF);
+"405
+[e ) ( _wl_module_get_one_byte (1 -> -> 255 `i `uc ]
+[e $UE 399  ]
+[; ;wl_module.c: 406: }
+"406
+[e :UE 399 ]
+}
+"408
+[v _wl_module_get_rx_pipe_reading_status `(uc ~T0 @X0 1 ef ]
+"409
+{
+[; ;wl_module.c: 408: extern unsigned char wl_module_get_rx_pipe_reading_status(void)
+[; ;wl_module.c: 409: {
+[e :U _wl_module_get_rx_pipe_reading_status ]
+[f ]
+"410
+[v _pipe `uc ~T0 @X0 1 a ]
+[; ;wl_module.c: 410: unsigned char pipe;
+[; ;wl_module.c: 411: pipe = wl_module_get_one_byte(0xFF);
+"411
+[e = _pipe ( _wl_module_get_one_byte (1 -> -> 255 `i `uc ]
+[; ;wl_module.c: 412: return ((pipe & 0x0E) >> 1);
+"412
+[e ) -> >> & -> _pipe `i -> 14 `i -> 1 `i `uc ]
+[e $UE 400  ]
+[; ;wl_module.c: 413: }
+"413
+[e :UE 400 ]
+}
+"415
+[v _wl_module_get_one_byte `(uc ~T0 @X0 1 ef1`uc ]
+"416
+{
+[; ;wl_module.c: 415: extern unsigned char wl_module_get_one_byte(unsigned char command)
+[; ;wl_module.c: 416: {
+[e :U _wl_module_get_one_byte ]
+"415
+[v _command `uc ~T0 @X0 1 r1 ]
+"416
+[f ]
+"417
+[v _status `uc ~T0 @X0 1 a ]
+[; ;wl_module.c: 417: unsigned char status;
+[; ;wl_module.c: 419: LATBbits.LATB4 = 0;;
+"419
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;wl_module.c: 420: status = spi_fast_shift(command);
+"420
+[e = _status ( _spi_fast_shift (1 _command ]
+[; ;wl_module.c: 421: LATBbits.LATB4 = 1;;
+"421
+[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
+[; ;wl_module.c: 423: return status;
+"423
+[e ) _status ]
+[e $UE 401  ]
+[; ;wl_module.c: 425: }
+"425
+[e :UE 401 ]
+}
+"427
+[v _wl_module_get_data `(uc ~T0 @X0 1 ef1`*uc ]
+"429
+{
+[; ;wl_module.c: 427: extern unsigned char wl_module_get_data(unsigned char * data)
+[; ;wl_module.c: 429: {
+[e :U _wl_module_get_data ]
+"427
+[v _data `*uc ~T0 @X0 1 r1 ]
+"429
+[f ]
+"430
+[v _status `uc ~T0 @X0 1 a ]
+[; ;wl_module.c: 430: unsigned char status;
+[; ;wl_module.c: 431: LATBbits.LATB4 = 0;;
+"431
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;wl_module.c: 432: status = spi_fast_shift( 0x61 );
+"432
+[e = _status ( _spi_fast_shift (1 -> -> 97 `i `uc ]
+[; ;wl_module.c: 433: spi_transfer_sync(data,data,16);
+"433
+[e ( _spi_transfer_sync (3 , , _data _data -> -> 16 `i `ui ]
+[; ;wl_module.c: 434: LATBbits.LATB4 = 1;;
+"434
+[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
+[; ;wl_module.c: 435: wl_module_config_register(0x07,(1<<6));
+"435
+[e ( _wl_module_config_register (2 , -> -> 7 `i `uc -> << -> 1 `i -> 6 `i `uc ]
+[; ;wl_module.c: 436: return status;
+"436
+[e ) _status ]
+[e $UE 402  ]
+[; ;wl_module.c: 437: }
+"437
+[e :UE 402 ]
+}
+"439
+[v _wl_module_config_register `(v ~T0 @X0 1 ef2`uc`uc ]
+"441
+{
+[; ;wl_module.c: 439: void wl_module_config_register(unsigned char reg, unsigned char value)
+[; ;wl_module.c: 441: {
+[e :U _wl_module_config_register ]
+"439
+[v _reg `uc ~T0 @X0 1 r1 ]
+[v _value `uc ~T0 @X0 1 r2 ]
+"441
+[f ]
+[; ;wl_module.c: 442: LATBbits.LATB4 = 0;;
+"442
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;wl_module.c: 443: spi_fast_shift(0x20 | (0x1F & reg));
+"443
+[e ( _spi_fast_shift (1 -> | -> 32 `i & -> 31 `i -> _reg `i `uc ]
+[; ;wl_module.c: 444: spi_fast_shift(value);
+"444
+[e ( _spi_fast_shift (1 _value ]
+[; ;wl_module.c: 445: LATBbits.LATB4 = 1;;
+"445
+[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
+[; ;wl_module.c: 446: }
+"446
+[e :UE 403 ]
+}
+"448
+[v _wl_module_read_register `(v ~T0 @X0 1 ef3`uc`*uc`uc ]
+"450
+{
+[; ;wl_module.c: 448: void wl_module_read_register(unsigned char reg, unsigned char * value, unsigned char len)
+[; ;wl_module.c: 450: {
+[e :U _wl_module_read_register ]
+"448
+[v _reg `uc ~T0 @X0 1 r1 ]
+[v _value `*uc ~T0 @X0 1 r2 ]
+[v _len `uc ~T0 @X0 1 r3 ]
+"450
+[f ]
+[; ;wl_module.c: 451: LATBbits.LATB4 = 0;;
+"451
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;wl_module.c: 452: spi_fast_shift(0x00 | (0x1F & reg));
+"452
+[e ( _spi_fast_shift (1 -> | -> 0 `i & -> 31 `i -> _reg `i `uc ]
+[; ;wl_module.c: 453: spi_transfer_sync(value,value,len);
+"453
+[e ( _spi_transfer_sync (3 , , _value _value -> _len `ui ]
+[; ;wl_module.c: 454: LATBbits.LATB4 = 1;;
+"454
+[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
+[; ;wl_module.c: 455: }
+"455
+[e :UE 404 ]
+}
+"457
+[v _wl_module_write_register `(v ~T0 @X0 1 ef3`uc`*uc`uc ]
+"459
+{
+[; ;wl_module.c: 457: void wl_module_write_register(unsigned char reg, unsigned char * value, unsigned char len)
+[; ;wl_module.c: 459: {
+[e :U _wl_module_write_register ]
+"457
+[v _reg `uc ~T0 @X0 1 r1 ]
+[v _value `*uc ~T0 @X0 1 r2 ]
+[v _len `uc ~T0 @X0 1 r3 ]
+"459
+[f ]
+[; ;wl_module.c: 460: LATBbits.LATB4 = 0;;
+"460
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;wl_module.c: 461: spi_fast_shift(0x20 | (0x1F & reg));
+"461
+[e ( _spi_fast_shift (1 -> | -> 32 `i & -> 31 `i -> _reg `i `uc ]
+[; ;wl_module.c: 462: spi_transmit_sync(value,len);
+"462
+[e ( _spi_transmit_sync (2 , _value -> _len `ui ]
+[; ;wl_module.c: 463: LATBbits.LATB4 = 1;;
+"463
+[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
+[; ;wl_module.c: 464: }
+"464
+[e :UE 405 ]
+}
+"467
+[v _wl_module_send `(v ~T0 @X0 1 ef2`*uc`uc ]
+"470
+{
+[; ;wl_module.c: 467: void wl_module_send(unsigned char * value, unsigned char len)
+[; ;wl_module.c: 470: {
+[e :U _wl_module_send ]
+"467
+[v _value `*uc ~T0 @X0 1 r1 ]
+[v _len `uc ~T0 @X0 1 r2 ]
+"470
+[f ]
+[; ;wl_module.c: 471: while (PTX) {}
+"471
+[e $U 407  ]
+[e :U 408 ]
+{
+}
+[e :U 407 ]
+[e $ != -> _PTX `i -> -> -> 0 `i `Vuc `i 408  ]
+[e :U 409 ]
+[; ;wl_module.c: 473: LATBbits.LATB3 = 0;;
+"473
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;wl_module.c: 475: PTX = 1;
+"475
+[e = _PTX -> -> 1 `i `uc ]
+[; ;wl_module.c: 476: wl_module_config_register(0x00, ( (1<<6) | (1<<3) | (1<<2) ) | ( (1<<1) | (0<<0) ) );
+"476
+[e ( _wl_module_config_register (2 , -> -> 0 `i `uc -> | | | << -> 1 `i -> 6 `i << -> 1 `i -> 3 `i << -> 1 `i -> 2 `i | << -> 1 `i -> 1 `i << -> 0 `i -> 0 `i `uc ]
+[; ;wl_module.c: 478: LATBbits.LATB4 = 0;;
+"478
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;wl_module.c: 479: spi_fast_shift( 0xE1 );
+"479
+[e ( _spi_fast_shift (1 -> -> 225 `i `uc ]
+[; ;wl_module.c: 480: LATBbits.LATB4 = 1;;
+"480
+[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
+[; ;wl_module.c: 482: LATBbits.LATB4 = 0;;
+"482
+[e = . . _LATBbits 0 4 -> -> 0 `i `uc ]
+[; ;wl_module.c: 483: spi_fast_shift( 0xA0 );
+"483
+[e ( _spi_fast_shift (1 -> -> 160 `i `uc ]
+[; ;wl_module.c: 484: spi_transmit_sync(value,len);
+"484
+[e ( _spi_transmit_sync (2 , _value -> _len `ui ]
+[; ;wl_module.c: 485: LATBbits.LATB4 = 1;;
+"485
+[e = . . _LATBbits 0 4 -> -> 1 `i `uc ]
+[; ;wl_module.c: 487: LATBbits.LATB3 = 1;;
+"487
+[e = . . _LATBbits 0 3 -> -> 1 `i `uc ]
+[; ;wl_module.c: 488: _delay((unsigned long)((10)*(16000000/4000000.0)));
+"488
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000000.0 `ul ]
+[; ;wl_module.c: 489: LATBbits.LATB3 = 0;;
+"489
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;wl_module.c: 490: }
+"490
+[e :UE 406 ]
 }

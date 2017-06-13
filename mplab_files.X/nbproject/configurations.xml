@@ -7,7 +7,6 @@
       <itemPath>nRF24L01.h</itemPath>
       <itemPath>spi.h</itemPath>
       <itemPath>wl_module.h</itemPath>
-      <itemPath>dht.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -20,7 +19,7 @@
       <itemPath>rf_sample.c</itemPath>
       <itemPath>spi.c</itemPath>
       <itemPath>wl_module.c</itemPath>
-      <itemPath>dht.c</itemPath>
+      <itemPath>note&amp;pezzi.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -144,6 +143,7 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
@@ -518,7 +518,7 @@
         <property key="stack-size-main" value="auto"/>
         <property key="stack-type" value="compiled"/>
       </XC8-config-global>
-      <item path="dht.c" ex="true" overriding="false">
+      <item path="nRF24L01.h" ex="false" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -526,21 +526,7 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
-      <item path="dht.h" ex="true" overriding="false">
-        <HI-TECH-COMP>
-        </HI-TECH-COMP>
-        <HI-TECH-LINK>
-        </HI-TECH-LINK>
-        <XC8-config-global>
-        </XC8-config-global>
-      </item>
-      <item path="nRF24L01.h" ex="true" overriding="false">
-        <HI-TECH-COMP>
-        </HI-TECH-COMP>
-        <HI-TECH-LINK>
-        </HI-TECH-LINK>
-        <XC8-config-global>
-        </XC8-config-global>
+      <item path="note&amp;pezzi.c" ex="true" overriding="false">
       </item>
       <item path="rf_sample.c" ex="true" overriding="false">
         <HI-TECH-COMP>
@@ -550,7 +536,7 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
-      <item path="spi.c" ex="true" overriding="false">
+      <item path="spi.c" ex="false" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -558,7 +544,7 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
-      <item path="spi.h" ex="true" overriding="false">
+      <item path="spi.h" ex="false" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -566,7 +552,7 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
-      <item path="wl_module.c" ex="true" overriding="false">
+      <item path="wl_module.c" ex="false" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -574,7 +560,7 @@
         <XC8-config-global>
         </XC8-config-global>
       </item>
-      <item path="wl_module.h" ex="true" overriding="false">
+      <item path="wl_module.h" ex="false" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
