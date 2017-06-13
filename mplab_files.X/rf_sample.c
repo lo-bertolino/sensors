@@ -6,23 +6,13 @@
  *      To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
  */
 
-//*
+/*
 #include <htc.h>
 #include <stdlib.h>
 #include "spi.h"
 #include "nRF24L01.h"
 #include "wl_module.h"
 
-#pragma config IESO=OFF         // Oscillator Switchover mode disabled
-#pragma config FOSC=HSMP        // external medium power oscillator
-#pragma config PRICLKEN=OFF     // Primary clock can be disabled by software
-#pragma config FCMEN=ON         // Fail-Safe Clock Monitor enabled
-#pragma config PLLCFG=OFF       // disable 4xPLL
-#pragma config BOREN=SBORDIS    // disable software BOR
-#pragma config BORV=190         // Brown-out voltage 1.9V
-#pragma config PWRTEN=ON        // Power up timer enabled
-#pragma config WDTEN=OFF        // WDT off
-#pragma config MCLRE=EXTMCLR    // external MCLR pin enabled
 #define _XTAL_FREQ 16000000
 
 #define MAX_STRLEN 14
@@ -40,21 +30,16 @@ int main(void){
 	unsigned char maincounter =0;
 	unsigned char k;
 
-	// status pin to indicate when master
-	// sends a message only for debugging
-	TRISDbits.TRISD4 = 0;
-	LATDbits.LATD4 = 1;
-
 	wl_module_init();	//initialise nRF24L01+ Module
-	_delay_10ms(5);	//wait for nRF24L01+ Module
+	_delay_ms(50);
 
-	INTCONbits.PEIE = 1; // peripheral interrupts enabled
-	INTCONbits.GIE = 1;  // global interrupt enable
+	//interrupts
+	INTCONbits.PEIE = 1;
+	INTCONbits.GIE = 1;
 
-	wl_module_tx_config(wl_module_TX_NR_0); //Config Module
+	wl_module_tx_config(wl_module_TX_NR_0);
 
 	while(1){
-		LATDbits.LATD4 = 0; // turn indicator LED on
 		for (k=0; k<=wl_module_PAYLOAD-1; k++){
 			payload[k] = k;
 	}
@@ -68,11 +53,8 @@ int main(void){
 	if (maincounter > 0x0F){
 			maincounter = 0;
 		}
-		_delay_10ms(50);
-		LATDbits.LATD4 = 1; // turn indicator LED off
-		_delay_10ms(50);
+		_delay_10ms(55);
 	}
-
 	return 0;
 }
 
@@ -85,7 +67,6 @@ void interrupt ISR(void){
 		wl_module_CSN_lo; // Pull down chip select
 		status = spi_fast_shift(NOOP); // Read status register
 		wl_module_CSN_hi; // Pull up chip select
-
 
 		if (status & (1<<TX_DS)){ // IRQ: Package has been sent
 					wl_module_config_register(STATUS, (1<<TX_DS)); //Clear Interrupt Bit

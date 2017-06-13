@@ -527,6 +527,12 @@
         </XC8-config-global>
       </item>
       <item path="note&amp;pezzi.c" ex="true" overriding="false">
+        <HI-TECH-COMP>
+        </HI-TECH-COMP>
+        <HI-TECH-LINK>
+        </HI-TECH-LINK>
+        <XC8-config-global>
+        </XC8-config-global>
       </item>
       <item path="rf_sample.c" ex="true" overriding="false">
         <HI-TECH-COMP>

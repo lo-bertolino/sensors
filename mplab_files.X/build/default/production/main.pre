@@ -4819,28 +4819,131 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 24 "main.c"
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\__size_t.h"
+typedef unsigned size_t;
+
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdlib.h"
+typedef unsigned short wchar_t;
+
+# 15
+typedef struct {
+int rem;
+int quot;
+} div_t;
+typedef struct {
+unsigned rem;
+unsigned quot;
+} udiv_t;
+typedef struct {
+long quot;
+long rem;
+} ldiv_t;
+typedef struct {
+unsigned long quot;
+unsigned long rem;
+} uldiv_t;
+
+# 53
+extern double atof(const char *);
+extern double strtod(const char *, const char **);
+extern int atoi(const char *);
+extern unsigned xtoi(const char *);
+extern long atol(const char *);
+extern long strtol(const char *, char **, int);
+
+extern int rand(void);
+extern void srand(unsigned int);
+extern void * calloc(size_t, size_t);
+extern div_t div(int numer, int denom);
+extern udiv_t udiv(unsigned numer, unsigned denom);
+extern ldiv_t ldiv(long numer, long denom);
+extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
+extern unsigned long _lrotl(unsigned long value, unsigned int shift);
+extern unsigned long _lrotr(unsigned long value, unsigned int shift);
+extern unsigned int _rotl(unsigned int value, unsigned int shift);
+extern unsigned int _rotr(unsigned int value, unsigned int shift);
+
+
+
+
+extern void * malloc(size_t);
+extern void free(void *);
+extern void * realloc(void *, size_t);
+
+# 86
+extern int atexit(void (*)(void));
+extern char * getenv(const char *);
+extern char ** environ;
+extern int system(char *);
+extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
+extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
+extern int abs(int);
+extern long labs(long);
+
+extern char * itoa(char * buf, int val, int base);
+extern char * utoa(char * buf, unsigned val, int base);
+
+
+
+
+extern char * ltoa(char * buf, long val, int base);
+extern char * ultoa(char * buf, unsigned long val, int base);
+
+extern char * ftoa(float f, int * status);
+
+# 11 "spi.h"
+extern void spi_init(void);
+extern void spi_transfer_sync(unsigned char* dataout, unsigned char* datain, unsigned int length);
+extern void spi_transmit_sync(unsigned char* data, unsigned int length);
+extern unsigned char spi_fast_shift(unsigned char data);
+
+# 39 "wl_module.h"
+extern volatile unsigned char PTX;
+
+# 69
+extern void wl_module_init(void);
+extern void wl_module_config(void);
+extern void wl_module_send(unsigned char * value, unsigned char len);
+extern void wl_module_set_RADDR(unsigned char * adr);
+extern void wl_module_set_TADDR(unsigned char * adr);
+extern unsigned char wl_module_data_ready(void);
+
+extern unsigned char wl_module_get_data(unsigned char * data);
+
+
+
+extern unsigned char wl_module_get_status(void);
+extern unsigned char wl_module_get_rx_pipe_reading_status(void);
+extern unsigned char wl_module_get_one_byte(unsigned char command);
+extern void wl_module_set_rx_pw(unsigned char payloadwidth, unsigned char rxpipenum);
+extern unsigned char wl_module_get_rx_pw(unsigned char rxpipenum);
+extern void wl_module_set_tx_addr(unsigned char * address, unsigned char len);
+extern void wl_module_set_rx_addr(unsigned char * address, unsigned char len, unsigned char rxpipenum);
+extern void wl_module_tx_config(unsigned char tx_nr);
+extern void wl_module_rx_config(void);
+extern void wl_module_get_rx_addr(unsigned char * data, unsigned char rxpipenum, unsigned char len);
+extern unsigned char wl_module_get_rx_pipe(void);
+extern unsigned char wl_module_get_rx_pipe_from_status(unsigned char status);
+extern unsigned char wl_module_fifo_tx_empty(void);
+extern unsigned char wl_module_fifo_rx_empty(void);
+extern unsigned char wl_module_get_rf_ch(void);
+extern unsigned char wl_module_get_rf_setup(void);
+extern unsigned char wl_module_get_plos_cnt(void);
+extern unsigned char wl_module_get_arc_cnt(void);
+extern void wl_module_set_as_tx(void);
+extern void wl_module_power_down(void);
+
+
+extern void wl_module_config_register(unsigned char reg, unsigned char value);
+extern void wl_module_read_register(unsigned char reg, unsigned char * value, unsigned char len);
+extern void wl_module_write_register(unsigned char reg, unsigned char * value, unsigned char len);
+
+# 28 "main.c"
 unsigned char humid, res, time_out;
 char temp;
+unsigned char payload[16];
 
-void Init(){
-TRISB = 0;
 
-}
-
-int main(){
-Init();
-while(1){
-DHTHandler();
-if(res=='s') PORTB = temp;
-else if(res=='r') PORTB = 0xf1;
-else if(res=='t') PORTB = 0xf2;
-else if(res=='c') PORTB = 0xf3;
-_delay((unsigned long)((2000)*(16000000/4000.0)));
-}
-}
-
-# 51
 char readDHT (){
 unsigned char i, k, dat = 0;
 if(!time_out) return 0;
@@ -4911,3 +5014,30 @@ if(temp>0X80)
 temp -= temp&0X7F;
 res = 's';
 }
+
+
+
+void Init (){
+
+TRISB = 0;
+
+wl_module_init();
+wl_module_tx_config(0);
+
+INTCONbits.PEIE = 1;
+INTCONbits.GIE = 1;
+}
+
+int main(){
+Init();
+while(1){
+wl_module_send(payload, 16);
+DHTHandler();
+if(res=='s') PORTB = temp;
+else if(res=='r') PORTB = 0xf1;
+else if(res=='t') PORTB = 0xf2;
+else if(res=='c') PORTB = 0xf3;
+_delay((unsigned long)((2000)*(16000000/4000.0)));
+}
+}
+

@@ -5,7 +5,8 @@
         <group>
             <file>file:/C:/Users/Lorenzo/Documents/sensors/mplab_files.X/wl_module.h</file>
             <file>file:/C:/Users/Lorenzo/Documents/sensors/mplab_files.X/main.c</file>
-            <file>file:/C:/Users/Lorenzo/Documents/sensors/mplab_files.X/dht.h</file>
+            <file>file:/C:/Users/Lorenzo/Documents/sensors/mplab_files.X/dht.c</file>
+            <file>file:/C:/Users/Lorenzo/Documents/sensors/mplab_files.X/rf_sample.c</file>
         </group>
     </open-files>
 </project-private>

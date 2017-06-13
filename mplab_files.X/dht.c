@@ -77,12 +77,12 @@ void DHTHandler (){
 	res = 's'; //successo
 }*/
 
-
-byte addresses[][6] = {"1Node", "2Node"}; // Radio pipe addresses for the 2 nodes to communicate.
+/*
+byte addresses[][6] = {"1Node", "2Node"};
 
 radio.begin ();
-radio.enableAckPayload (); // Allow optional ack payloads
-radio.enableDynamicPayloads (); // Ack payloads are dynamic payloads
+radio.enableAckPayload ();
+radio.enableDynamicPayloads ();
 radio.openWritingPipe (addresses[0]);
 radio.openReadingPipe (1, addresses[1]);
 radio.startListening (); // Start listening
@@ -90,7 +90,7 @@ radio.startListening (); // Start listening
 //loop
 
 byte pipeNo;
-while(radio.available(&pipeNo)){ // Read all available payloads
+while(radio.available(&pipeNo)){
 	byte gotByte;
 	radio.read(&gotByte, 1);
 	temperature[0] = dht.getTemperature();
@@ -99,3 +99,4 @@ while(radio.available(&pipeNo)){ // Read all available payloads
 }
 dht.readSensor ();
 delay (2000);
+//*/

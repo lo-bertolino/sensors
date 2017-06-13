@@ -3,7 +3,7 @@
  * Created on 20 december 2016, 9:31
  */
 
-#pragma config PLLDIV = 4, CPUDIV = OSC1_PLL2, USBDIV = 1, FOSC = HS, FCMEN = OFF, IESO = OFF, PWRT = OFF
+#pragma config PLLDIV = 1, CPUDIV = OSC1_PLL2, USBDIV = 1, FOSC = HS, FCMEN = OFF, IESO = OFF, PWRT = ON
 #pragma config BOR = ON, BORV = 3, VREGEN = OFF
 #pragma config WDT = OFF, WDTPS = 32768
 #pragma config CCP2MX = ON, PBADEN = OFF, LPT1OSC = OFF, MCLRE = ON
