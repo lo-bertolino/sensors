@@ -11,8 +11,7 @@
 #pragma config WRT2 = OFF, WRT3 = OFF, WRTB = OFF, WRTC = OFF, WRTD = OFF
 #pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF, EBTRB = OFF
 
-#include <htc.h>
-#include <stdlib.h>
+#include <xc.h>
 #include "spi.h"
 #include "nRF24L01.h"
 #include "wl_module.h"
@@ -22,53 +21,25 @@
 #define DHTPinDir TRISCbits.TRISC0
 #define UID 1 //ID sensore
 
-//nRF
-#define nRF_use
-
-struct {
-	unsigned char ID;
-	char Status;
-	short temp;
-	unsigned short humid;
-	unsigned short counter;
-} dati;
-unsigned char payload[wl_module_PAYLOAD];
-
-//dht
-//#define DHT_use
-char time_out, res;
-unsigned short humid;
-short temp;
-
-char readDHT()
-{
-	unsigned char i, k, dat = 0; // k is used to count 1 bit reading duration
-	if (!time_out) return 0;
-	for (i = 0; i < 8; i++) {
-		k = 0;
-		while (!DHTPin) { // Wait until pin goes high
-			k++;
-			if (k > 100) {
-				time_out = 0;
-				return 0;
-			}
-			__delay_us(1);
-		}
-		__delay_us(30);
-		if (!DHTPin) dat &= 0 << (7 - i); // Clear bit (7 - i)
-		else {
-			dat |= 1 << (7 - i); // Set bit (7 - i)
-			while (DHTPin) { // Wait until pin goes low
-				k++;
-				if (k > 100) {
-					time_out = 0;
-					return 0;
-				}
-				__delay_us(1);
-			}
-		}
-	}
-	return dat;
+//inizializza uC
+void Init(){
+	//Port Configuration
+	TRISA=0b11111111;
+	TRISB=0;
+    TRISC=0;
+    OPTION_REG|=0b10000000;
+	//Convertitore on, Fosc/32
+	ADCON0=0b10000001;
+	//allineamento a sinistra e solo RA0 analogico, con Vref interna
+	ADCON1=0b00001110;//*/
+    wl_module_init();	//initialise nRF24L01+ Module
+    _delay_10ms(5);	//wait for nRF24L01+ Module
+    
+    INTCONbits.PEIE = 1; // peripheral interrupts enabled
+    INTCONbits.GIE = 1;  // global interrupt enable
+    
+    wl_module_tx_config( wl_module_TX_NR_0 ); //Config Module
+    spi_init();
 }
 
 char beginDHT()
@@ -116,19 +87,30 @@ void DHTHandler()
 
 //inizializza uC
 
-void Init()
-{
-	//debug
-	TRISB = 0;
-	//nRF setup
-	wl_module_init();
-	wl_module_tx_config(0); //wl_module_TX_NR_0
-	//interrupts
-	INTCONbits.PEIE = 1;
-	INTCONbits.GIE = 1;
-	//reset dati
-	dati.ID = UID; //id
-	dati.counter = 0;
+int main() {
+    unsigned char payload[wl_module_PAYLOAD]; //Array for Payload
+    unsigned char maincounter =0;
+    unsigned char k;
+    
+    Init();
+    
+    while(1){
+        unsigned int decVal=(AN0Read()*80)/256;
+        unsigned int unita=decVal%10;
+        unsigned int decine=(decVal/10)%10;
+        
+        //on-device output
+        PORTC=SevenSeg (unita);
+        if(decine)
+            PORTB=SevenSeg (decine);
+        else
+            PORTB=0;
+        //nRF transmission
+        
+        
+        
+        __delay_ms(500);
+    }
 }
 
 int main()

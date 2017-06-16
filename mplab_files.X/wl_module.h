@@ -35,7 +35,7 @@
 #include <htc.h>
 #include "spi.h"
 
-//Externe Variable deklarieren
+//Extern Variable declaration
 extern volatile unsigned char PTX;
 
 // WL-Module settings
