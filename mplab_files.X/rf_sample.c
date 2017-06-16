@@ -5,7 +5,10 @@
  *      This work is licensed under the Creative Commons Attribution 3.0 Unported License.
  *      To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
  */
-#define _XTAL_FREQ 16000000UL
+#define TEST_SPI
+
+#ifndef TEST_SPI
+
 #include <htc.h>
 #include <stdlib.h>
 #include "spi.h"
@@ -44,17 +47,8 @@ int main(void){
 	payload[1] = maincounter+1;
 
 	wl_module_send(payload,wl_module_PAYLOAD);
-
-	maincounter++;
-	if (maincounter > 0x0F){
-            maincounter = 0;
-        }
-        __delay_ms(500);
-        LATDbits.LATD4 = 1; // turn indicator LED off
-        __delay_ms(500);
-    }
-
-    return 0;
+	}
+	return 0;
 }
 
 void interrupt ISR(void){

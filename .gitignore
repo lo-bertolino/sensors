@@ -31,3 +31,7 @@
 # Debug files
 *.dSYM/
 *.su
+
+mplab_files\.X/dist/default/debug/
+
+mplab_files\.X/dist/default/production/

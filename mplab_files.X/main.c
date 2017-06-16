@@ -11,35 +11,45 @@
 #pragma config WRT2 = OFF, WRT3 = OFF, WRTB = OFF, WRTC = OFF, WRTD = OFF
 #pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF, EBTRB = OFF
 
-#include <xc.h>
-#include "spi.h"
-#include "nRF24L01.h"
-#include "wl_module.h"
+//#define TEST_SPI 1
+#define TEST_DHT 1
 
 #define _XTAL_FREQ 16000000 //frequenza quarzo, per impostazione del delay
 #define DHTPin PORTCbits.RC0
 #define DHTPinDir TRISCbits.TRISC0
 #define UID 1 //ID sensore
 
+#ifndef TEST_SPI
+#    ifndef TEST_DHT
+#        include "wl_module.h"
+#        include "nRF24L01.h"
+#    endif //DHT
+#endif //SPI
+
+__CONFIG (FOSC_XT & WDTE_OFF & PWRTE_OFF & CP_OFF & BOREN_ON & LVP_OFF & CPD_OFF & WRT_ON);
+#define _XTAL_FREQ 16000000
+
+
 //inizializza uC
 void Init(){
 	//Port Configuration
-	TRISA=0b11111111;
-	TRISB=0;
-    TRISC=0;
-    OPTION_REG|=0b10000000;
-	//Convertitore on, Fosc/32
-	ADCON0=0b10000001;
-	//allineamento a sinistra e solo RA0 analogico, con Vref interna
-	ADCON1=0b00001110;//*/
-    wl_module_init();	//initialise nRF24L01+ Module
-    _delay_10ms(5);	//wait for nRF24L01+ Module
-    
+	TRISA = 4;
+	TRISB = 0;
+	TRISC = 0;
+
+	//spi_init(); //not using spi 4tm
+
+#ifndef TEST_SPI
+#    ifndef TEST_DHT
+	wl_module_init();//initialise nRF24L01+ Module
+    __delay_ms(50);	//wait for nRF24L01+ Module
+
     INTCONbits.PEIE = 1; // peripheral interrupts enabled
     INTCONbits.GIE = 1;  // global interrupt enable
-    
+
     wl_module_tx_config( wl_module_TX_NR_0 ); //Config Module
-    spi_init();
+#    endif //DHT
+#endif //SPI
 }
 
 char beginDHT()
@@ -60,6 +70,8 @@ char beginDHT()
 	}
 	return 0;
 }
+#else
+#    if TEST_SPI
 
 void DHTHandler()
 {
@@ -84,33 +96,16 @@ void DHTHandler()
 		temp -= temp & 0X7F; //rendi  negativo
 	res = 0; //successo
 }
+#    endif
 
 //inizializza uC
 
-int main() {
-    unsigned char payload[wl_module_PAYLOAD]; //Array for Payload
-    unsigned char maincounter =0;
-    unsigned char k;
-    
-    Init();
-    
-    while(1){
-        unsigned int decVal=(AN0Read()*80)/256;
-        unsigned int unita=decVal%10;
-        unsigned int decine=(decVal/10)%10;
-        
-        //on-device output
-        PORTC=SevenSeg (unita);
-        if(decine)
-            PORTB=SevenSeg (decine);
-        else
-            PORTB=0;
-        //nRF transmission
-        
-        
-        
-        __delay_ms(500);
-    }
+	while(1){
+		int temp, umid;
+
+		//nRF transmission
+
+	}
 }
 
 int main()

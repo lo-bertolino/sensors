@@ -30,7 +30,7 @@
 */
 
 //Memory Map - register address defines
-#define CONFIG      0x00
+#define CONFIG0      0x00
 #define EN_AA       0x01
 #define EN_RXADDR   0x02
 #define SETUP_AW    0x03

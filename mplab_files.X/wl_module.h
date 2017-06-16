@@ -32,9 +32,6 @@
 #ifndef _WL_MODULE_H_
 #define _WL_MODULE_H_
 
-#include <htc.h>
-#include "spi.h"
-
 //Extern Variable declaration
 extern volatile unsigned char PTX;
 
@@ -62,8 +59,8 @@ extern volatile unsigned char PTX;
 #define wl_module_CE_lo      CE = 0;
 
 // Defines for setting the wl_module registers for transmitting or receiving mode
-#define TX_POWERUP wl_module_config_register(CONFIG, wl_module_CONFIG | ( (1<<PWR_UP) | (0<<PRIM_RX) ) )
-#define RX_POWERUP wl_module_config_register(CONFIG, wl_module_CONFIG | ( (1<<PWR_UP) | (1<<PRIM_RX) ) )
+#define TX_POWERUP wl_module_config_register(CONFIG0, wl_module_CONFIG | ( (1<<PWR_UP) | (0<<PRIM_RX) ) )
+#define RX_POWERUP wl_module_config_register(CONFIG0, wl_module_CONFIG | ( (1<<PWR_UP) | (1<<PRIM_RX) ) )
 
 // Public standard functions
 extern void wl_module_init(void);
@@ -73,7 +70,7 @@ extern void wl_module_set_RADDR(unsigned char * adr);
 extern void wl_module_set_TADDR(unsigned char * adr);
 extern unsigned char wl_module_data_ready(void);
 //extern void wl_module_get_data(unsigned char * data);
-extern unsigned char wl_module_get_data(unsigned char * data); //Gibt die Werte des STATUS-Registers zurück
+extern unsigned char wl_module_get_data(unsigned char * data); //Gibt die Werte des STATUS-Registers zurï¿½ck
 
 //Public functions
 
