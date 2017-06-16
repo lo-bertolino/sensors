@@ -2,18 +2,14 @@
  * Author: Lorenzo Bertolino
  * Created on 20 december 2016, 9:31
  */
-
-#pragma config PLLDIV = 1, CPUDIV = OSC1_PLL2, USBDIV = 1, FOSC = HS, FCMEN = OFF, IESO = OFF, PWRT = ON
-#pragma config BOR = ON, BORV = 3, VREGEN = OFF
-#pragma config WDT = OFF, WDTPS = 32768
-#pragma config CCP2MX = ON, PBADEN = OFF, LPT1OSC = OFF, MCLRE = ON
-#pragma config STVREN = ON, LVP = ON, ICPRT = OFF, XINST = OFF
-#pragma config CP0 = OFF, CP1 = OFF, CP2 = OFF, CP3 = OFF
-#pragma config CPB = OFF, CPD = OFF
-#pragma config WRT0 = OFF, WRT1 = OFF, WRT2 = OFF, WRT3 = OFF
-#pragma config WRTC = OFF, WRTB = OFF, WRTD = OFF
-#pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF
-#pragma config EBTRB = OFF
+#pragma config PLLDIV = 1, CPUDIV = OSC1_PLL2, USBDIV = 1, FOSC = HS
+#pragma config FCMEN = OFF, IESO = OFF, PWRT = ON, BOR = ON, BORV = 3
+#pragma config VREGEN = OFF, WDT = OFF, WDTPS = 32768, CCP2MX = ON
+#pragma config PBADEN = OFF, LPT1OSC = OFF, MCLRE = ON, STVREN = ON, LVP = ON
+#pragma config ICPRT = OFF, XINST = OFF, CP0 = OFF, CP1 = OFF, CP2 = OFF
+#pragma config CP3 = OFF, CPB = OFF, CPD = OFF, WRT0 = OFF, WRT1 = OFF
+#pragma config WRT2 = OFF, WRT3 = OFF, WRTB = OFF, WRTC = OFF, WRTD = OFF
+#pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF, EBTRB = OFF
 
 #include <htc.h>
 #include <stdlib.h>
@@ -21,21 +17,22 @@
 #include "nRF24L01.h"
 #include "wl_module.h"
 
-#define _XTAL_FREQ 16000000
+#define _XTAL_FREQ 16000000 //frequenza quarzo, per impostazione del delay
 #define DHTPin PORTCbits.RC0
 #define DHTPinDir TRISCbits.TRISC0
 #define UID 1 //ID sensore
 
 //nRF
 #define nRF_use
-unsigned char payload[wl_module_PAYLOAD];
 
 struct {
 	unsigned char ID;
+	char Status;
 	short temp;
 	unsigned short humid;
 	unsigned short counter;
 } dati;
+unsigned char payload[wl_module_PAYLOAD];
 
 //dht
 //#define DHT_use
@@ -114,7 +111,7 @@ void DHTHandler()
 	temp = (temp << 8) | t_byte2;
 	if (temp > 0X80)
 		temp -= temp & 0X7F; //rendi  negativo
-	res = 's'; //successo
+	res = 0; //successo
 }
 
 //inizializza uC
@@ -140,15 +137,16 @@ int main()
 	while (1) {
 #ifdef DHT_use
 		DHTHandler();
-		if (res == 's') PORTB = temp;
-		else if (res == 'r') PORTB = 0xf1;
-		else if (res == 't') PORTB = 0xf2;
-		else if (res == 'c') PORTB = 0xf3;
-#endif
-#ifdef nRF_use
+		dati.Status = res;
+		dati.humid = humid;
+		dati.temp = temp;
+#else
+		dati.Status = 's'; //stato = teSt
 		dati.humid = 80; //solo per test
 		dati.temp = 25; //solo per test
-		dati.counter++; //questo no 
+#endif
+#ifdef nRF_use
+		dati.counter++; //questo no
 		payload = dati;
 		wl_module_send(payload, wl_module_PAYLOAD);
 #endif
