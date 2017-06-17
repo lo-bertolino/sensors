@@ -47,11 +47,11 @@ volatile unsigned char PTX;
 // Should be called in the early initializing phase at startup.
 void wl_module_init(void){
 
-	// set up INT2
-	ANSELBbits.ANSB2 = 0; // digital input buffer enabled
-	TRISBbits.TRISB2 = 1; // RB2 as input
-	INTCONbits.INTEDG = 0; // trigger interrupt on falling edge
-	INTCON3bits.INT2IE = 1; // enable INT2 interrupt
+    // set up INT2
+	//    ANSELBbits.ANSB2 = 0; // digital input buffer enabled //come per spi.c
+    TRISBbits.TRISB2 = 1; // RB2 as input
+    INTCON2bits.INTEDG2 = 0; // trigger interrupt on falling edge
+    INTCON3bits.INT2IE = 1; // enable INT2 interrupt
 
 	// Initialize spi module
 	spi_init();
@@ -366,11 +366,11 @@ return status;
 // Reads wl_module_PAYLOAD bytes into data array
 extern unsigned char wl_module_get_data(unsigned char * data){
 	unsigned char status;
-	wl_module_CSN_lo;                               // Pull down chip select
-	status = spi_fast_shift( R_RX_PAYLOAD );            // Send cmd to read rx payload
-	spi_transfer_sync(data,data,wl_module_PAYLOAD); // Read payload
-	wl_module_CSN_hi;                               // Pull up chip select
-	wl_module_config_register(STATUS,(1<<RX_DR));   // Reset status register
+    wl_module_CSN_lo;                               // Pull down chip select
+    status = spi_fast_shift( R_RX_PAYLOAD );            // Send cmd to read rx payload
+    spi_transfer_sync(data,data,wl_module_PAYLOAD); // Read payload
+    wl_module_CSN_hi;                               // Pull up chip select
+    wl_module_config_register(STAT,(1<<RX_DR));   // Reset status register
 	return status;
 }
 
@@ -419,7 +419,7 @@ void wl_module_send(unsigned char * value, unsigned char len){
 	wl_module_CSN_hi;                    // Pull up chip select
 
 	wl_module_CE_hi;                     // Start transmission
-	__delay_us(10);						// Grünes Modul funktioniert nicht mit 10µs delay
+	__delay_us(10);						// Grï¿½nes Modul funktioniert nicht mit 10ï¿½s delay
 	wl_module_CE_lo;
 }
 #endif //TEST_SPI

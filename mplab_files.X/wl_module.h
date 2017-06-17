@@ -48,6 +48,16 @@ extern volatile unsigned char PTX;
 #define wl_module_TX_NR_4		4
 #define wl_module_TX_NR_5		5
 
+// Pin definitions for chip select and chip enabled of the wl-module
+#define CE LATDbits.LATD2 // RB3
+#define CSN LATDbits.LATD3 // RB4
+
+// Definitions for selecting and enabling wl_module module
+#define wl_module_CSN_hi     CSN = 1;
+#define wl_module_CSN_lo     CSN = 0;
+#define wl_module_CE_hi      CE = 1;
+#define wl_module_CE_lo      CE = 0;
+
 // Defines for setting the wl_module registers for transmitting or receiving mode
 #define TX_POWERUP wl_module_config_register(CONFIG0, wl_module_CONFIG | ( (1<<PWR_UP) | (0<<PRIM_RX) ) )
 #define RX_POWERUP wl_module_config_register(CONFIG0, wl_module_CONFIG | ( (1<<PWR_UP) | (1<<PRIM_RX) ) )
@@ -60,7 +70,7 @@ extern void wl_module_set_RADDR(unsigned char * adr);
 extern void wl_module_set_TADDR(unsigned char * adr);
 extern unsigned char wl_module_data_ready(void);
 //extern void wl_module_get_data(unsigned char * data);
-extern unsigned char wl_module_get_data(unsigned char * data); //Gibt die Werte des STATUS-Registers zurück
+extern unsigned char wl_module_get_data(unsigned char * data); //Gibt die Werte des STATUS-Registers zurï¿½ck
 
 //Public functions
 

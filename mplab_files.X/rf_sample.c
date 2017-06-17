@@ -19,31 +19,28 @@
 char received_string[MAX_STRLEN+1];
 
 void _delay_10ms(int length){
-    while(length){
-        __delay_ms(10);
-        length--;
-    }
+	while(length){
+		__delay_ms(10);
+		length--;
+	}
 }
 
 int main(void){
-    unsigned char payload[wl_module_PAYLOAD]; //Array for Payload
-    unsigned char maincounter =0;
-    unsigned char k;
+	unsigned char payload[wl_module_PAYLOAD]; //Array for Payload
+	unsigned char maincounter =0;
+	unsigned char k;
 
-    // status pin to indicate when master
-    // sends a message only for debugging
+	wl_module_init();	//initialise nRF24L01+ Module
+	_delay_ms(50);
 
     wl_module_init();	//initialise nRF24L01+ Module
     __delay_ms(50);	//wait for nRF24L01+ Module
 
-    INTCONbits.PEIE = 1; // peripheral interrupts enabled
-    INTCONbits.GIE = 1;  // global interrupt enable
+	wl_module_tx_config(wl_module_TX_NR_0);
 
-    wl_module_tx_config(wl_module_TX_NR_0); //Config Module
-
-    while(1){
-        for (k=0; k<=wl_module_PAYLOAD-1; k++){
-            payload[k] = k;
+	while(1){
+		for (k=0; k<=wl_module_PAYLOAD-1; k++){
+			payload[k] = k;
 	}
 
 	payload[0] = maincounter;
@@ -55,20 +52,19 @@ int main(void){
 }
 
 void interrupt ISR(void){
-    // external interrupt IRQ pin of NRF24L01
-    if( INTCON3bits.INT2IF ){
-        unsigned char status;
+	// external interrupt IRQ pin of NRF24L01
+	if( INTCON3bits.INT2IF ){
+		unsigned char status;
 
-        // Read wl_module status
-        wl_module_CSN_lo; // Pull down chip select
-        status = spi_fast_shift(NOOP); // Read status register
-        wl_module_CSN_hi; // Pull up chip select
+		// Read wl_module status
+		wl_module_CSN_lo; // Pull down chip select
+		status = spi_fast_shift(NOOP); // Read status register
+		wl_module_CSN_hi; // Pull up chip select
 
-
-        if (status & (1<<TX_DS)){ // IRQ: Package has been sent
-                    wl_module_config_register(STATUS, (1<<TX_DS)); //Clear Interrupt Bit
-                    PTX=0;
-        }
+		if (status & (1<<TX_DS)){ // IRQ: Package has been sent
+					wl_module_config_register(STATUS, (1<<TX_DS)); //Clear Interrupt Bit
+					PTX=0;
+		}
 
 	if (status & (1<<MAX_RT)){ // IRQ: Package has not been sent, send again
 		wl_module_config_register(STATUS, (1<<MAX_RT));	// Clear Interrupt Bit
@@ -82,8 +78,7 @@ void interrupt ISR(void){
 		spi_fast_shift(FLUSH_TX); // Flush TX-FIFO
 		wl_module_CSN_hi; // Pull up chip select
 	}
-        // reset INT2 flag
+		// reset INT2 flag
 		INTCON3bits.INT2IF = 0;
-    }
-}
-#endif
+	}
+}//*/

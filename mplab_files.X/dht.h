@@ -1,14 +1,8 @@
-/*
- * File:   dht.h
- * Author: Lorenzo
- *
- * Created on April 13, 2017, 2:34 PM
- */
+#ifndef DHT22
+#define DHT22
 
-#ifndef DHT_H
-#define	DHT_H
+char beginDHT();
+char readDHT();
+void DHTHandler();
 
-unsigned char dht_get(int * temp, int * RH);
-
-#endif	/* DHT_H */
-
+#endif

@@ -21,7 +21,7 @@ PATH:=C:/Program Files (x86)/Microchip/MPLABX/v3.55/mplab_ide/platform/../mplab_
 # Path to java used to run MPLAB X when this makefile was created
 MP_JAVA_PATH="C:\Program Files (x86)\Microchip\MPLABX\v3.55\sys\java\jre1.8.0_91/bin/"
 OS_CURRENT="$(shell uname -s)"
-MP_CC="C:\Program Files (x86)\HI-TECH Software\PICC\9.82\bin\picc.exe"
+MP_CC="C:\Program Files (x86)\Microchip\xc8\v1.42\bin\xc8.exe"
 # MP_CPPC is not defined
 # MP_BC is not defined
 MP_AS="C:\Program Files (x86)\HI-TECH Software\PICC\9.82\bin\picc.exe"
@@ -31,7 +31,7 @@ DEP_GEN=${MP_JAVA_PATH}java -jar "C:/Program Files (x86)/Microchip/MPLABX/v3.55/
 MP_CC_DIR="C:\Program Files (x86)\HI-TECH Software\PICC\9.82\bin"
 # MP_CPPC_DIR is not defined
 # MP_BC_DIR is not defined
-MP_AS_DIR="C:\Program Files (x86)\HI-TECH Software\PICC\9.82\bin"
-MP_LD_DIR="C:\Program Files (x86)\HI-TECH Software\PICC\9.82\bin"
-MP_AR_DIR="C:\Program Files (x86)\HI-TECH Software\PICC\9.82\bin"
+MP_AS_DIR="C:\Program Files (x86)\Microchip\xc8\v1.42\bin"
+MP_LD_DIR="C:\Program Files (x86)\Microchip\xc8\v1.42\bin"
+# MP_AR_DIR is not defined
 # MP_BC_DIR is not defined

@@ -7,6 +7,7 @@
  */
 #include <htc.h>
 #include "spi.h"
+#include <pic18f4550.h>
 
 void spi_init(void){
 	// disable MSSP

@@ -2,14 +2,22 @@
  * Author: Lorenzo Bertolino
  * Created on 20 december 2016, 9:31
  */
+#pragma config PLLDIV = 1, CPUDIV = OSC1_PLL2, USBDIV = 1, FOSC = HS
+#pragma config FCMEN = OFF, IESO = OFF, PWRT = ON, BOR = ON, BORV = 3
+#pragma config VREGEN = OFF, WDT = OFF, WDTPS = 32768, CCP2MX = ON
+#pragma config PBADEN = OFF, LPT1OSC = OFF, MCLRE = ON, STVREN = ON, LVP = ON
+#pragma config ICPRT = OFF, XINST = OFF, CP0 = OFF, CP1 = OFF, CP2 = OFF
+#pragma config CP3 = OFF, CPB = OFF, CPD = OFF, WRT0 = OFF, WRT1 = OFF
+#pragma config WRT2 = OFF, WRT3 = OFF, WRTB = OFF, WRTC = OFF, WRTD = OFF
+#pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF, EBTRB = OFF
 
 //#define TEST_SPI 1
 #define TEST_DHT 1
 
-#include <htc.h>
-//#include "spi.h"
-//#include <wl_module.h>
-#include "dht.h"
+#define _XTAL_FREQ 16000000 //frequenza quarzo, per impostazione del delay
+#define DHTPin PORTCbits.RC0
+#define DHTPinDir TRISCbits.TRISC0
+#define UID 1 //ID sensore
 
 #ifndef TEST_SPI
 #    ifndef TEST_DHT
@@ -44,76 +52,53 @@ void Init(){
 #endif //SPI
 }
 
-#if TEST_DHT
-
-/*unsigned char SevenSeg (unsigned int value){
-	if(value==0)
-		value = 0b10111111;
-	else if(value==1)
-		value = 0b00000110;
-	else if(value==2)
-		value = 0b11011011;
-	else if(value==3)
-		value = 0b11001111;
-	else if(value==4)
-		value = 0b01100110;
-	else if(value==5)
-		value = 0b11101101;
-	else if(value==6)
-		value = 0b11111100;
-	else if(value==7)
-		value = 0b00000111;
-	else if(value==8)
-		value = 0b11111111;
-	else if(value==9)
-		value = 0b01100111;
-	return value;
-}*/
-
-void main (){
-	Init();
-	unsigned char SevenSeg[] = {0b10111111, 0b00000110, 0b11011011, 0b11001111,
-								0b01100110, 0b11101101, 0b11111100, 0b00000111,
-								0b11111111, 0b01100111};
-	int temp = 0, umid = 0;
-	while(1){
-		int res = dht_get(&temp, &umid);
-		if(res==0){
-			//temp++;
-			//if(temp>=100)temp = 0;
-			temp /= 10; //il risultato di dht_get e' 10 volte la temperatura reale (ha una cifra decimale)
-			unsigned int unita = temp%10;
-			unsigned int decine = (temp/10)%10;
-		//on-device output
-		PORTC = SevenSeg[unita];
-			PORTB = decine?SevenSeg[decine]:0;
+char beginDHT()
+{
+	DHTPinDir = 0; // Configure connection pin as output
+	DHTPin &= 0; // Connection pin output low
+	__delay_ms(25);
+	DHTPin = 1; // Connection pin output high
+	__delay_us(30);
+	DHTPinDir = 1; // Configure connection pin as input
+	__delay_us(40);
+	if (!DHTPin) { // Read and test if connection pin is low
+		__delay_us(80);
+		if (DHTPin) { // Read and test if connection pin is high
+			__delay_us(50);
+			return 1;
 		}
-		else{
-			PORTB = SevenSeg[10]; //err
-			PORTC = SevenSeg [res]; //0
-		}
-		__delay_ms(2300);
 	}
+	return 0;
 }
 #else
 #    if TEST_SPI
 
-void main (){
-	Init();
-	char *tmp, *waste;
-	*waste = 0;
-	while(1){
-		wl_module_CSN_lo;
-		spi_transfer_sync("Hello world ", waste, 12);
-		wl_module_CSN_lo;
-		__delay_ms(1000);
-	}
+void DHTHandler()
+{
+	unsigned char t_byte1, t_byte2, rh_byte1, rh_byte2, checkSum;
+	time_out = 1;
+	if (!beginDHT())
+		res = 'r'; // errore risposta assente
+	rh_byte1 = readDHT();
+	rh_byte2 = readDHT();
+	t_byte1 = readDHT();
+	t_byte2 = readDHT();
+	checkSum = readDHT();
+	if (time_out)
+		res = 't'; //errore di timeout
+	if (checkSum != ((rh_byte1 + rh_byte2 + t_byte1 + t_byte2) & 0xFF))
+		res = 'c'; //errore di checksum
+	humid = rh_byte1;
+	humid = (humid << 8) | rh_byte2;
+	temp = t_byte1;
+	temp = (temp << 8) | t_byte2;
+	if (temp > 0X80)
+		temp -= temp & 0X7F; //rendi  negativo
+	res = 0; //successo
 }
 #    endif
 
-void main (){
-	Init();
-	char payload[7]; //Array for Payload
+//inizializza uC
 
 	while(1){
 		int temp, umid;
@@ -122,4 +107,30 @@ void main (){
 
 	}
 }
+
+int main()
+{
+	Init();
+	while (1) {
+#ifdef DHT_use
+		DHTHandler();
+		dati.Status = res;
+		dati.humid = humid;
+		dati.temp = temp;
+#else
+		dati.Status = 's'; //stato = teSt
+		dati.humid = 80; //solo per test
+		dati.temp = 25; //solo per test
 #endif
+#ifdef nRF_use
+		dati.counter++; //questo no
+		payload = dati;
+		wl_module_send(payload, wl_module_PAYLOAD);
+#endif
+		__delay_ms(2000);
+	}
+}
+
+
+
+

@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>mplab_files</name>
+            <name>PICtempRaspi</name>
             <creation-uuid>096d536c-5f14-46f1-a8e9-cc5d17bf07cc</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
