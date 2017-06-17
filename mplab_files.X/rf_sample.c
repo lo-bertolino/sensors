@@ -5,15 +5,15 @@
  *      This work is licensed under the Creative Commons Attribution 3.0 Unported License.
  *      To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
  */
+#define TEST_SPI
 
-/*
+#ifndef TEST_SPI
+
 #include <htc.h>
 #include <stdlib.h>
 #include "spi.h"
 #include "nRF24L01.h"
 #include "wl_module.h"
-
-#define _XTAL_FREQ 16000000
 
 #define MAX_STRLEN 14
 char received_string[MAX_STRLEN+1];
@@ -33,9 +33,8 @@ int main(void){
 	wl_module_init();	//initialise nRF24L01+ Module
 	_delay_ms(50);
 
-	//interrupts
-	INTCONbits.PEIE = 1;
-	INTCONbits.GIE = 1;
+    wl_module_init();	//initialise nRF24L01+ Module
+    __delay_ms(50);	//wait for nRF24L01+ Module
 
 	wl_module_tx_config(wl_module_TX_NR_0);
 
@@ -48,12 +47,6 @@ int main(void){
 	payload[1] = maincounter+1;
 
 	wl_module_send(payload,wl_module_PAYLOAD);
-
-	maincounter++;
-	if (maincounter > 0x0F){
-			maincounter = 0;
-		}
-		_delay_10ms(55);
 	}
 	return 0;
 }

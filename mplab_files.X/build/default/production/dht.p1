@@ -739,9 +739,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _EECON1bits `VS86  1 e@396 ]
 "1006 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\pic16f876.h
 [v _EECON2 `Vuc  1 e@397 ]
-[p mainexit ]
-"11 dht.h
-[v _dht_get `(uc  0 ef2`*i`*i ]
 "154 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\pic.h
 [v __delay `(v  0 ef1`ul ]
 [p i __delay ]
@@ -1446,125 +1443,181 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eeprom_routines.h: 44: extern void memcpyee(eeprom unsigned char *to, const unsigned char *from, unsigned char size);
 [; ;pic.h: 154: extern void _delay(unsigned long);
 [; ;dht.h: 11: unsigned char dht_get(int * temp, int * RH);
-"21 main.c
-[; ;main.c: 21: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFD & 0xFFFB & 0xFFFF & 0xFFFF & 0xFFFF & 0xFF7F & 0xFFFF & 0xFFFF");
-[; 	psect config,class=CONFIG,delta=2 ;#
-[; 	dw 0xFFFD & 0xFFFB & 0xFFFF & 0xFFFF & 0xFFFF & 0xFF7F & 0xFFFF & 0xFFFF ;#
+"6 dht.c
+[v _dht_get `(uc  1 ef2`*i`*i ]
+{
+[; ;dht.c: 6: unsigned char dht_get (int * tmp, int * RH){
+[e :U _dht_get ]
+[v _tmp `*i  1 r1 ]
+[v _RH `*i  1 r2 ]
+[f ]
+"7
+[v _dati `uc  -> 5 `i a ]
+[v _i `uc  1 a ]
+[v _j `uc  1 a ]
+[; ;dht.c: 7: char dati[5], i, j;
+[; ;dht.c: 10: TRISAbits.TRISA1 = 0;
+"10
+[e = . . _TRISAbits 0 1 -> -> 0 `i `uc ]
+[; ;dht.c: 11: PORTAbits.RA1 = 1;
+"11
+[e = . . _PORTAbits 0 1 -> -> 1 `i `uc ]
+[; ;dht.c: 12: _delay((unsigned long)((1)*(4000000/4000.0)));
+"12
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;dht.c: 13: PORTAbits.RA1 = 0;
+"13
+[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
+[; ;dht.c: 14: _delay((unsigned long)((1)*(4000000/4000.0)));
+"14
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;dht.c: 15: PORTAbits.RA1 = 1;
+"15
+[e = . . _PORTAbits 0 1 -> -> 1 `i `uc ]
+[; ;dht.c: 16: _delay((unsigned long)((30)*(4000000/4000000.0)));
+"16
+[e ( __delay (1 -> * -> -> 30 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;dht.c: 17: TRISAbits.TRISA1 = 1;
+"17
+[e = . . _TRISAbits 0 1 -> -> 1 `i `uc ]
+[; ;dht.c: 20: _delay((unsigned long)((40)*(4000000/4000000.0)));
+"20
+[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;dht.c: 21: if(PORTAbits.RA1) return 2;
+"21
+[e $ ! != -> . . _PORTAbits 0 1 `i -> -> -> 0 `i `Vuc `i 89  ]
+[e ) -> -> 2 `i `uc ]
+[e $UE 88  ]
+[e :U 89 ]
+[; ;dht.c: 22: _delay((unsigned long)((80)*(4000000/4000000.0)));
+"22
+[e ( __delay (1 -> * -> -> 80 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;dht.c: 23: if(PORTAbits.RA1 = 0) return 3;
+"23
+[e $ ! != -> = . . _PORTAbits 0 1 -> -> 0 `i `uc `i -> -> -> 0 `i `Vuc `i 90  ]
+[e ) -> -> 3 `i `uc ]
+[e $UE 88  ]
+[e :U 90 ]
+[; ;dht.c: 24: _delay((unsigned long)((40)*(4000000/4000000.0)));
+"24
+[e ( __delay (1 -> * -> -> 40 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;dht.c: 26: for(i = 0; i<5; i++){
 "26
-[v _Init `(v  1 ef ]
 {
-[; ;main.c: 26: void Init(){
-[e :U _Init ]
-[f ]
-[; ;main.c: 28: TRISA = 4;
-"28
-[e = _TRISA -> -> 4 `i `uc ]
-[; ;main.c: 29: TRISB = 0;
-"29
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;main.c: 30: TRISC = 0;
-"30
-[e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 45: }
-"45
-[e :UE 88 ]
-}
-"73
-[v _main `(v  1 ef ]
-{
-[; ;main.c: 73: void main (){
-[e :U _main ]
-[f ]
-[; ;main.c: 74: Init();
-"74
-[e ( _Init ..  ]
-"75
-[v F919 `uc  -> 0 `x s ]
-[i F919
-:U ..
--> -> 191 `i `uc
--> -> 6 `i `uc
--> -> 219 `i `uc
--> -> 207 `i `uc
-"76
--> -> 102 `i `uc
--> -> 237 `i `uc
--> -> 252 `i `uc
--> -> 7 `i `uc
-"77
--> -> 255 `i `uc
--> -> 103 `i `uc
-..
-]
-[v _SevenSeg `uc  10  a ]
-[; ;main.c: 75: unsigned char SevenSeg[] = {0b10111111, 0b00000110, 0b11011011, 0b11001111,
-[; ;main.c: 76: 0b01100110, 0b11101101, 0b11111100, 0b00000111,
-[; ;main.c: 77: 0b11111111, 0b01100111};
-[e = _SevenSeg F919 ]
-"78
-[v _temp `i  1 a ]
-[; ;main.c: 78: int temp = 0, umid = 0;
-[e = _temp -> 0 `i ]
-[v _umid `i  1 a ]
-[e = _umid -> 0 `i ]
-[; ;main.c: 79: while(1){
-"79
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 5 `i 91  ]
+[e $U 92  ]
 [e :U 91 ]
 {
-"80
-[v _res `i  1 a ]
-[; ;main.c: 80: int res = dht_get(&temp, &umid);
-[e = _res -> ( _dht_get (2 , &U _temp &U _umid `i ]
-[; ;main.c: 81: if(res==0){
-"81
-[e $ ! == _res -> 0 `i 93  ]
+[; ;dht.c: 27: dati[i] = 0;
+"27
+[e = *U + &U _dati * -> _i `ux -> -> # *U &U _dati `ui `ux -> -> 0 `i `uc ]
+[; ;dht.c: 28: for(j = 0; j<8; j++){
+"28
 {
-[; ;main.c: 84: temp /= 10;
-"84
-[e =/ _temp -> -> 10 `uc `i ]
-"85
-[v _unita `ui  1 a ]
-[; ;main.c: 85: unsigned int unita = temp%10;
-[e = _unita -> % _temp -> 10 `i `ui ]
-"86
-[v _decine `ui  1 a ]
-[; ;main.c: 86: unsigned int decine = (temp/10)%10;
-[e = _decine -> % / _temp -> 10 `i -> 10 `i `ui ]
-[; ;main.c: 88: PORTC = SevenSeg[unita];
-"88
-[e = _PORTC *U + &U _SevenSeg * -> _unita `ux -> -> # *U &U _SevenSeg `ui `ux ]
-[; ;main.c: 89: PORTB = decine?SevenSeg[decine]:0;
-"89
-[e = _PORTB -> ? != _decine -> -> 0 `i `ui : -> *U + &U _SevenSeg * -> _decine `ux -> -> # *U &U _SevenSeg `ui `ux `i -> 0 `i `uc ]
-"90
-}
-[; ;main.c: 90: }
-[e $U 94  ]
-"91
-[e :U 93 ]
-[; ;main.c: 91: else{
-{
-[; ;main.c: 92: PORTB = SevenSeg[10];
-"92
-[e = _PORTB *U + &U _SevenSeg * -> -> -> 10 `i `ui `ux -> -> # *U &U _SevenSeg `ui `ux ]
-[; ;main.c: 93: PORTC = SevenSeg [res];
-"93
-[e = _PORTC *U + &U _SevenSeg * -> -> _res `ui `ux -> -> # *U &U _SevenSeg `ui `ux ]
-"94
-}
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 8 `i 94  ]
+[e $U 95  ]
 [e :U 94 ]
-[; ;main.c: 94: }
-[; ;main.c: 95: _delay((unsigned long)((2300)*(4000000/4000.0)));
-"95
-[e ( __delay (1 -> * -> -> 2300 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"96
+{
+[; ;dht.c: 29: while(!PORTAbits.RA1);
+"29
+[e $U 97  ]
+[e :U 98 ]
+[e :U 97 ]
+[e $ ! != -> . . _PORTAbits 0 1 `i -> -> -> 0 `i `Vuc `i 98  ]
+[e :U 99 ]
+[; ;dht.c: 30: _delay((unsigned long)((10)*(4000000/4000000.0)));
+"30
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;dht.c: 31: if(PORTAbits.RA1) return 4;
+"31
+[e $ ! != -> . . _PORTAbits 0 1 `i -> -> -> 0 `i `Vuc `i 100  ]
+[e ) -> -> 4 `i `uc ]
+[e $UE 88  ]
+[e :U 100 ]
+[; ;dht.c: 32: _delay((unsigned long)((20)*(4000000/4000000.0)));
+"32
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;dht.c: 33: if(PORTAbits.RA1){
+"33
+[e $ ! != -> . . _PORTAbits 0 1 `i -> -> -> 0 `i `Vuc `i 101  ]
+{
+[; ;dht.c: 34: _delay((unsigned long)((30)*(4000000/4000000.0)));
+"34
+[e ( __delay (1 -> * -> -> 30 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;dht.c: 35: if(!PORTAbits.RA1)return 4;
+"35
+[e $ ! ! != -> . . _PORTAbits 0 1 `i -> -> -> 0 `i `Vuc `i 102  ]
+[e ) -> -> 4 `i `uc ]
+[e $UE 88  ]
+[e :U 102 ]
+[; ;dht.c: 36: dati[i] |= 1<<(7-j);
+"36
+[e =| *U + &U _dati * -> _i `ux -> -> # *U &U _dati `ui `ux -> << -> 1 `i - -> 7 `i -> _j `i `uc ]
+[; ;dht.c: 37: while(PORTAbits.RA1);
+"37
+[e $U 103  ]
+[e :U 104 ]
+[e :U 103 ]
+[e $ != -> . . _PORTAbits 0 1 `i -> -> -> 0 `i `Vuc `i 104  ]
+[e :U 105 ]
+"38
 }
-[e :U 90 ]
-"79
-[e $U 91  ]
+[; ;dht.c: 38: }
+[e $U 106  ]
+"39
+[e :U 101 ]
+[; ;dht.c: 39: else{
+{
+[; ;dht.c: 40: dati[i] &= 0<<(7-j);
+"40
+[e =& *U + &U _dati * -> _i `ux -> -> # *U &U _dati `ui `ux -> << -> 0 `i - -> 7 `i -> _j `i `uc ]
+"41
+}
+[e :U 106 ]
+"42
+}
+"28
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 8 `i 94  ]
+[e :U 95 ]
+"42
+}
+"43
+}
+"26
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 5 `i 91  ]
 [e :U 92 ]
-[; ;main.c: 96: }
-[; ;main.c: 97: }
-"97
-[e :UE 89 ]
+"43
+}
+[; ;dht.c: 41: }
+[; ;dht.c: 42: }
+[; ;dht.c: 43: }
+[; ;dht.c: 46: if(dati[4]!=(dati[1]+dati[0]+dati[3]+dati[2])){
+"46
+[e $ ! != -> *U + &U _dati * -> -> -> 4 `i `ui `ux -> -> # *U &U _dati `ui `ux `i + + + -> *U + &U _dati * -> -> -> 1 `i `ui `ux -> -> # *U &U _dati `ui `ux `i -> *U + &U _dati * -> -> -> 0 `i `ui `ux -> -> # *U &U _dati `ui `ux `i -> *U + &U _dati * -> -> -> 3 `i `ui `ux -> -> # *U &U _dati `ui `ux `i -> *U + &U _dati * -> -> -> 2 `i `ui `ux -> -> # *U &U _dati `ui `ux `i 107  ]
+{
+[; ;dht.c: 47: return 1;
+"47
+[e ) -> -> 1 `i `uc ]
+[e $UE 88  ]
+"48
+}
+[e :U 107 ]
+[; ;dht.c: 48: }
+[; ;dht.c: 49: *tmp = (int) ((dati[2]<<8)|dati[3]);
+"49
+[e = *U _tmp | << -> *U + &U _dati * -> -> -> 2 `i `ui `ux -> -> # *U &U _dati `ui `ux `i -> 8 `i -> *U + &U _dati * -> -> -> 3 `i `ui `ux -> -> # *U &U _dati `ui `ux `i ]
+[; ;dht.c: 50: *RH = (int) ((dati[0]<<8)|dati[1]);
+"50
+[e = *U _RH | << -> *U + &U _dati * -> -> -> 0 `i `ui `ux -> -> # *U &U _dati `ui `ux `i -> 8 `i -> *U + &U _dati * -> -> -> 1 `i `ui `ux -> -> # *U &U _dati `ui `ux `i ]
+[; ;dht.c: 51: return 0;
+"51
+[e ) -> -> 0 `i `uc ]
+[e $UE 88  ]
+[; ;dht.c: 52: }
+"52
+[e :UE 88 ]
 }

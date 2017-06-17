@@ -109,7 +109,7 @@ ${OBJECTDIR}/spi.p1: spi.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/spi.d ${OBJECTDIR}/spi.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/spi.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/wl_module.p1: wl_module.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/dht.p1: dht.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/wl_module.p1.d 
 	@${RM} ${OBJECTDIR}/wl_module.p1 
@@ -134,7 +134,7 @@ ${OBJECTDIR}/spi.p1: spi.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/spi.d ${OBJECTDIR}/spi.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/spi.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/wl_module.p1: wl_module.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/dht.p1: dht.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/wl_module.p1.d 
 	@${RM} ${OBJECTDIR}/wl_module.p1 
