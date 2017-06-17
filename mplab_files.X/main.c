@@ -1,96 +1,125 @@
-/* File:   newmain.c
+/* File:   main.c
  * Author: Lorenzo Bertolino
  * Created on 20 december 2016, 9:31
  */
 
-#include <xc.h>
-#include "spi.h"
-#include "nRF24L01.h"
-#include "wl_module.h"
+//#define TEST_SPI 1
+#define TEST_DHT 1
 
-__CONFIG(FOSC_XT & WDTE_OFF & PWRTE_OFF & CP_OFF & BOREN_ON & LVP_ON & CPD_OFF & WRT_ON);
-#define _XTAL_FREQ 4000000
+#include <htc.h>
+//#include "spi.h"
+//#include <wl_module.h>
+#include "dht.h"
+
+#ifndef TEST_SPI
+#    ifndef TEST_DHT
+#        include "wl_module.h"
+#        include "nRF24L01.h"
+#    endif //DHT
+#endif //SPI
+
+__CONFIG (FOSC_XT & WDTE_OFF & PWRTE_OFF & CP_OFF & BOREN_ON & LVP_OFF & CPD_OFF & WRT_ON);
+#define _XTAL_FREQ 16000000
+
 
 //inizializza uC
 void Init(){
 	//Port Configuration
-	TRISA=0b11111111;
-	TRISB=0;
-    TRISC=0;
-    OPTION_REG|=0b10000000;
-	//Convertitore on, Fosc/32
-	ADCON0=0b10000001;
-	//allineamento a sinistra e solo RA0 analogico, con Vref interna
-	ADCON1=0b00001110;//*/
-    wl_module_init();	//initialise nRF24L01+ Module
-    _delay_10ms(5);	//wait for nRF24L01+ Module
-    
+	TRISA = 4;
+	TRISB = 0;
+	TRISC = 0;
+
+	//spi_init(); //not using spi 4tm
+
+#ifndef TEST_SPI
+#    ifndef TEST_DHT
+	wl_module_init();//initialise nRF24L01+ Module
+    __delay_ms(50);	//wait for nRF24L01+ Module
+
     INTCONbits.PEIE = 1; // peripheral interrupts enabled
     INTCONbits.GIE = 1;  // global interrupt enable
-    
+
     wl_module_tx_config( wl_module_TX_NR_0 ); //Config Module
-    spi_init();
+#    endif //DHT
+#endif //SPI
 }
 
-//leggi da AN0
-unsigned int AN0Read(){
-	/* per prova
-	return 256;//*/
-	//* impostazioni reali
-	__delay_ms(1);
-	GO_DONE=1;//convertitore on su canale 0
-	while(GO_DONE);
-	return ADRESH;//*/
-}
+#if TEST_DHT
 
-unsigned int SevenSeg(unsigned int value){
-    switch(value){
-        case 0:
-            return 0b00111111;
-        case 1:
-            return 0b00000110;
-        case 2:
-            return 0b01011011;
-        case 3:
-            return 0b01001111;
-        case 4:
-            return 0b01100110;
-        case 5:
-            return 0b01101101;
-        case 6:
-            return 0b01111100;
-        case 7:
-            return 0b00000111;
-        case 8:
-            return 0b01111111;
-        case 9:
-            return 0b01100111;
-    }
-}
+/*unsigned char SevenSeg (unsigned int value){
+	if(value==0)
+		value = 0b10111111;
+	else if(value==1)
+		value = 0b00000110;
+	else if(value==2)
+		value = 0b11011011;
+	else if(value==3)
+		value = 0b11001111;
+	else if(value==4)
+		value = 0b01100110;
+	else if(value==5)
+		value = 0b11101101;
+	else if(value==6)
+		value = 0b11111100;
+	else if(value==7)
+		value = 0b00000111;
+	else if(value==8)
+		value = 0b11111111;
+	else if(value==9)
+		value = 0b01100111;
+	return value;
+}*/
 
-
-int main() {
-    unsigned char payload[wl_module_PAYLOAD]; //Array for Payload
-    unsigned char maincounter =0;
-    unsigned char k;
-    
-    Init();
-    
-    while(1){
-        unsigned int decVal=(AN0Read()*80)/256;
-        unsigned int unita=decVal%10;
-        unsigned int decine=(decVal/10)%10;
-        
-        //on-device output
-        PORTC=SevenSeg (unita);
-        if(decine)
-            PORTB=SevenSeg (decine);
-        else
-            PORTB=0;
-        //nRF transmission
-        
-        
-        
-        __delay_ms(500);
-    }
+void main (){
+	Init();
+	unsigned char SevenSeg[] = {0b10111111, 0b00000110, 0b11011011, 0b11001111,
+								0b01100110, 0b11101101, 0b11111100, 0b00000111,
+								0b11111111, 0b01100111};
+	int temp = 0, umid = 0;
+	while(1){
+		int res = dht_get(&temp, &umid);
+		if(res==0){
+			//temp++;
+			//if(temp>=100)temp = 0;
+			temp /= 10; //il risultato di dht_get e' 10 volte la temperatura reale (ha una cifra decimale)
+			unsigned int unita = temp%10;
+			unsigned int decine = (temp/10)%10;
+		//on-device output
+		PORTC = SevenSeg[unita];
+			PORTB = decine?SevenSeg[decine]:0;
+		}
+		else{
+			PORTB = SevenSeg[10]; //err
+			PORTC = SevenSeg [res]; //0
+		}
+		__delay_ms(2300);
+	}
 }
+#else
+#    if TEST_SPI
+
+void main (){
+	Init();
+	char *tmp, *waste;
+	*waste = 0;
+	while(1){
+		wl_module_CSN_lo;
+		spi_transfer_sync("Hello world ", waste, 12);
+		wl_module_CSN_lo;
+		__delay_ms(1000);
+	}
+}
+#    endif
+
+void main (){
+	Init();
+	char payload[7]; //Array for Payload
+
+	while(1){
+		int temp, umid;
+
+		//nRF transmission
+
+	}
+}
+#endif
